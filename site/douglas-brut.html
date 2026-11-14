@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Douglas brut de sciage · Scierie Rétif (maquette)</title>
+<meta name="description" content="Douglas brut de sciage, sec, non traité, qualité C18, stocké à l’abri : 29 sections au tarif, de 2 à 6 m. Prix directs de scierie, TTC à emporter, près d’Angers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+/* ---------- Fiche produit « Douglas brut de sciage » : préfixe fp- ---------- */
+.fp-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap}
+.fp-fil{display:flex; flex-wrap:wrap; gap:4px 8px}
+.fp-fil a{text-decoration:underline; text-decoration-color:var(--sauge); text-underline-offset:3px}
+
+/* Mise en page : contenu à gauche, configurateur collant à droite */
+.fp-haut{display:grid; grid-template-columns:minmax(0,1fr) 378px; column-gap:48px; margin-top:18px;
+  grid-template-areas:"gal conf" "intro conf" "usages conf" "tarif conf" "savoir conf"}
+.fp-galerie{grid-area:gal}
+.fp-intro{grid-area:intro}
+.fp-col-config{grid-area:conf}
+.fp-usages{grid-area:usages}
+.fp-tarif{grid-area:tarif}
+.fp-savoir{grid-area:savoir}
+
+/* Galerie : chaque photo a une case à sa mesure (jamais plus de 1,5 fois sa taille) */
+.fp-galerie{position:relative; display:grid; grid-template-columns:290fr 170fr 270fr; grid-template-rows:262px 160px; grid-template-areas:"a a b" "c d d"; gap:10px; max-width:750px}
+.fp-ph{position:relative; display:block; overflow:hidden; border-radius:16px; background:var(--sc); cursor:zoom-in}
+.fp-ph img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease)}
+.fp-ph:hover img{transform:scale(1.03)}
+.fp-ph:focus-visible{outline:2px solid var(--noir); outline-offset:2px}
+.fp-ph--a{grid-area:a; border-radius:22px 16px 16px 16px}
+.fp-ph--b{grid-area:b; border-radius:16px 22px 16px 16px}
+.fp-ph--b img{object-position:72% 50%}
+.fp-ph--c{grid-area:c; border-radius:16px 16px 16px 22px}
+.fp-ph--d{grid-area:d; border-radius:16px 16px 22px 16px}
+.fp-gal-n{position:absolute; left:12px; bottom:12px; z-index:1; display:inline-flex; align-items:center; gap:7px; background:color-mix(in srgb, var(--blanc) 94%, transparent); color:var(--noir); font-size:13px; font-weight:700; padding:6px 11px; border-radius:999px; pointer-events:none}
+.fp-gal-n svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round}
+
+/* Titre, sous-titre, fiche technique */
+.fp-intro{padding-top:30px; max-width:750px}
+.fp-intro .r-kicker{font-size:12.5px}
+.fp-intro h1{font-size:58px; margin:8px 0 10px}
+.fp-sous{font-size:19px; font-weight:600; margin:0 0 16px}
+.fp-sous i{font-style:normal; color:var(--olive); margin:0 .2em}
+.fp-texte{font-size:17px; color:var(--of); margin:0}
+.fp-specs{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0 26px; margin:22px 0 0; border-top:1px solid var(--ligne)}
+.fp-specs > div{padding:11px 0 12px; border-bottom:1px solid var(--ligne)}
+.fp-specs dt{font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--olive)}
+.fp-specs dd{margin:2px 0 0; font-weight:600; font-size:15px; line-height:1.35}
+
+/* Configurateur */
+.fp-config{position:sticky; top:calc(var(--fp-colle, var(--hd)) + 16px); background:var(--blanc); border:1px solid var(--ligne); border-radius:var(--r); padding:16px 20px 14px; box-shadow:0 30px 60px -46px rgba(17,20,17,.4)}
+body.fp-court .fp-config{position:static}
+.fp-config.fp-flash{animation:fp-flash 1.1s var(--ease)}
+@keyframes fp-flash{0%{box-shadow:0 0 0 0 var(--vert)} 22%{box-shadow:0 0 0 5px var(--vert)} 100%{box-shadow:0 0 0 0 transparent}}
+.fp-c-tete{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:8px}
+.fp-c-tete h2{font-size:27px}
+.fp-c-tete span{font-size:12.5px; font-weight:600; color:var(--of)}
+.fp-c-lbl{display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-weight:700; font-size:14.5px; margin:0 0 6px}
+.fp-c-lbl small{font-weight:500; font-size:12.5px; color:var(--of)}
+.fp-select{position:relative}
+.fp-select select{appearance:none; -webkit-appearance:none; width:100%; font:inherit; font-size:16px; font-weight:700; color:var(--noir); background:var(--sc); border:1.5px solid transparent; border-radius:var(--r-s); padding:10px 42px 10px 14px; cursor:pointer; transition:border-color .2s, background .2s}
+.fp-select select:hover{background:var(--sc2)}
+.fp-select select:focus-visible{outline:none; border-color:var(--noir)}
+.fp-select svg{position:absolute; right:14px; top:50%; width:20px; height:20px; margin-top:-10px; fill:none; stroke:var(--noir); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; pointer-events:none}
+.fp-puces{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; margin-top:8px}
+.fp-puce{display:grid; padding:3px 6px 3px; border-radius:12px; background:var(--blanc); border:1px solid var(--ligne); text-align:center; line-height:1.15; transition:background .2s, border-color .2s, color .2s}
+.fp-puce b{font-size:13.5px}
+.fp-puce small{font-size:11.5px; color:var(--of)}
+.fp-puce:hover{border-color:var(--noir)}
+.fp-puce[aria-pressed="true"]{background:var(--noir); border-color:var(--noir); color:var(--blanc)}
+.fp-puce[aria-pressed="true"] small{color:var(--vert)}
+.fp-c-milieu{display:grid; grid-template-columns:128px minmax(0,1fr); gap:14px; margin-top:12px; align-items:start}
+.fp-dessin{margin:0; background:var(--sc); border-radius:var(--r-s); padding:8px 5px 7px; text-align:center}
+.fp-dessin svg{display:block; width:100%; height:auto; overflow:visible}
+.fp-dessin figcaption{font-size:11px; line-height:1.3; color:var(--of); margin-top:3px}
+.fp-dessin figcaption b{display:block; font-size:13px; color:var(--noir)}
+.fp-quad{fill:none; stroke:var(--ligne); stroke-width:.8}
+.fp-sol{stroke:var(--olive); stroke-width:1; opacity:.6}
+.fp-bois-fond{fill:var(--vert-stock)}
+.fp-cernes circle{fill:none; stroke:var(--olive); stroke-width:.7; opacity:.38}
+.fp-bois-trait{fill:none; stroke:var(--noir); stroke-width:1.3}
+.fp-fantome{fill:none; stroke:var(--of); stroke-width:1; stroke-dasharray:3 3; opacity:0}
+.fp-fantome.fp-vu{opacity:.8}
+.fp-fantome.fp-part{opacity:0; transition:opacity .9s .1s}
+.fp-cote{fill:none; stroke:var(--of); stroke-width:.9}
+.fp-cote-t{font-family:var(--texte); font-size:11px; font-weight:700; fill:var(--noir)}
+.fp-lgs{display:grid; gap:4px}
+.fp-lg{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:3px 11px; border-radius:10px; border:1px solid var(--ligne); background:var(--blanc); transition:background .2s, border-color .2s, color .2s}
+.fp-lg span{font-weight:700; font-size:14.5px}
+.fp-lg b{font-weight:600; font-size:14px; color:var(--of)}
+.fp-lg:hover:not(:disabled){border-color:var(--noir)}
+.fp-lg:focus-visible{outline:2px solid var(--noir); outline-offset:1px}
+.fp-lg[aria-pressed="true"]{background:var(--noir); border-color:var(--noir); color:var(--blanc)}
+.fp-lg[aria-pressed="true"] b{color:var(--vert)}
+.fp-lg:disabled{cursor:not-allowed; background:var(--sc); border-color:transparent; color:color-mix(in srgb, var(--of) 50%, var(--blanc))}
+.fp-lg:disabled b{color:inherit}
+.fp-pop{animation:fp-pop .55s var(--ressort)}
+@keyframes fp-pop{35%{transform:scale(1.07)}}
+.fp-c-prix{display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-top:12px; padding-top:11px; border-top:1px solid var(--ligne)}
+.fp-px{margin:0; font-size:36px; font-weight:800; letter-spacing:-.035em; line-height:1; white-space:nowrap}
+.fp-px small{font-size:23px; margin-left:5px; letter-spacing:0}
+.fp-px-u{margin:4px 0 0; font-size:13px; color:var(--of)}
+.fp-pm{margin:0 0 2px; text-align:right; font-size:13.5px; color:var(--of); line-height:1.4; white-space:nowrap}
+.fp-pm b{color:var(--noir); font-size:15px}
+.fp-c-achat{display:grid; grid-template-columns:auto minmax(0,1fr); gap:10px; margin-top:12px}
+.fp-qte{display:grid; grid-template-columns:38px 44px 38px; align-items:center; background:var(--sc); border-radius:999px; padding:3px}
+.fp-qte-b{width:38px; height:42px; border-radius:999px; font-size:21px; line-height:1; font-weight:600; text-align:center; transition:background .2s}
+.fp-qte-b:hover{background:var(--blanc)}
+.fp-qte-b:focus-visible{outline:2px solid var(--noir)}
+.fp-qte input{width:100%; height:38px; border:0; background:none; text-align:center; font:inherit; font-weight:800; font-size:16px; color:var(--noir); -moz-appearance:textfield; appearance:textfield; border-radius:8px}
+.fp-qte input::-webkit-inner-spin-button, .fp-qte input::-webkit-outer-spin-button{-webkit-appearance:none; margin:0}
+.fp-qte input:focus-visible{outline:2px solid var(--noir)}
+.fp-ajout{width:100%; padding:14px 16px}
+.fp-ajout svg{width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.fp-ajout.fp-ok{background:var(--vert); color:var(--noir)}
+.fp-c-total{margin:8px 2px 0; font-size:13px; line-height:20px; color:var(--of)}
+.fp-tot, .fp-tot-ok{display:flex; justify-content:space-between; align-items:center; gap:10px}
+.fp-c-total b{color:var(--noir)}
+.fp-tot-ok{display:none; color:var(--ok); font-weight:700}
+.fp-c-total.fp-fait .fp-tot{display:none}
+.fp-c-total.fp-fait .fp-tot-ok{display:flex; animation:fp-entre .4s var(--ease)}
+@keyframes fp-entre{from{opacity:0; transform:translateY(4px)}}
+.fp-tot-ok svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.fp-tot-ok span{margin-right:auto}
+.fp-tot-ok button{color:var(--noir); font-weight:700; text-decoration:underline; text-decoration-color:var(--sauge); text-underline-offset:3px; white-space:nowrap}
+.fp-c-infos{list-style:none; margin:11px 0 0; padding:10px 0 0; border-top:1px solid var(--ligne); display:grid; gap:5px; font-size:13px; color:var(--of)}
+.fp-c-infos li{display:flex; gap:7px; align-items:flex-start; line-height:1.4}
+.fp-c-infos li.fp-c-stock{display:block}
+.fp-c-infos li > svg{width:18px; height:18px; flex:none; fill:none; stroke:var(--olive); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.fp-c-infos .r-stock{font-size:13px; margin-right:4px}
+
+/* Sections de la colonne de gauche */
+.fp-usages, .fp-tarif, .fp-savoir{padding-top:60px; min-width:0}
+.fp-sec-tete{margin-bottom:20px}
+.fp-sec-tete h2{font-size:40px}
+.fp-sec-tete p{color:var(--of); margin:8px 0 0; font-size:17px; max-width:640px}
+
+/* C'est pour quoi faire ? : six sections à la même échelle, posées sur une ligne de sol */
+.fp-rang{display:grid; grid-template-columns:repeat(6, minmax(0,1fr))}
+.fp-u{display:flex; flex-direction:column; align-items:flex-start; padding:0 9px 12px; border-radius:0 0 var(--r-s) var(--r-s); text-align:left; transition:background .25s}
+.fp-u-d{align-self:stretch; height:122px; display:flex; align-items:flex-end; justify-content:center; border-bottom:1.5px solid color-mix(in srgb, var(--noir) 40%, transparent); margin:0 -9px 10px}
+.fp-u-d svg{display:block; overflow:visible; transition:transform .45s var(--ressort); transform-origin:50% 100%}
+.fp-u-rect{fill:var(--vert-stock); stroke:var(--noir); stroke-width:1.2; transition:fill .25s}
+.fp-u:hover{background:var(--sc)}
+.fp-u:hover .fp-u-d svg{transform:translateY(-4px)}
+.fp-u:focus-visible{outline:2px solid var(--noir); outline-offset:2px}
+.fp-u[aria-pressed="true"]{background:var(--sc)}
+.fp-u[aria-pressed="true"] .fp-u-rect{fill:var(--vert)}
+.fp-u b{font-size:15.5px; line-height:1.2}
+.fp-u-dim{font-size:13px; color:var(--of)}
+.fp-u-us{font-size:13px; line-height:1.35; color:var(--of); margin-top:5px}
+.fp-u-px{font-size:13.5px; font-weight:700; margin-top:7px}
+
+/* Grille des prix, à la façon de leurs tarifs */
+.fp-glisser{display:none}
+.fp-defile{position:relative}
+.fp-table{font-size:14px}
+.fp-table .fp-col-s{width:20%}
+.fp-table .fp-col-l{width:10%}
+.fp-table .fp-col-u{width:10%}
+.fp-table th{top:var(--fp-colle, var(--hd)); padding:10px 6px}
+.fp-table th.fp-th-u{background:var(--sc2)}
+.fp-table th.fp-th-on{box-shadow:inset 0 -3px 0 var(--noir)}
+.fp-table td{padding:9px 6px}
+.fp-table td.p{padding:0}
+.fp-case{display:block; width:100%; padding:9px 6px; text-align:right; white-space:nowrap}
+.fp-case:focus-visible{outline:2px solid var(--noir); outline-offset:-3px}
+.fp-table td.u{font-size:13.5px}
+.fp-table tr.fp-tr-on td:first-child{background:var(--sc)}
+.fp-tarif .r-tarif-titre b{font-size:14.5px}
+.fp-tarif .r-tarif-note{line-height:1.5}
+
+/* Bon à savoir */
+.fp-sav-grille{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.fp-sav{display:flex; flex-direction:column; gap:8px; border:1px solid var(--ligne); border-radius:var(--r); padding:18px 18px 20px}
+.fp-sav-ic{width:46px; height:46px; border-radius:50%; background:var(--sc); display:grid; place-items:center; margin-bottom:4px}
+.fp-sav-ic svg{width:26px; height:26px; fill:none; stroke:var(--noir); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round}
+.fp-sav h3{font-size:17.5px}
+.fp-sav p{margin:0; font-size:15px; color:var(--of); line-height:1.5}
+.fp-sav .r-lien{margin-top:auto; padding-top:6px; align-self:flex-start; font-size:15px}
+.fp-savoir .r-conseil{margin-top:14px}
+.fp-savoir .r-conseil .r-lien{white-space:nowrap}
+
+/* Souvent pris avec */
+.fp-avec-grille{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:16px}
+.fp-avec-grille .r-carte-img{height:150px}
+.fp-avec-grille .r-carte-img img{position:absolute; inset:0}
+.r-carte-img img.fp-contain{object-fit:contain; background:var(--blanc)}
+
+/* Barre d'achat collante (téléphone et tablette) */
+.fp-barre{position:fixed; left:0; right:0; bottom:0; z-index:45; background:color-mix(in srgb, var(--blanc) 96%, transparent); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border-top:1px solid var(--ligne); box-shadow:0 -18px 40px -30px rgba(17,20,17,.45); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); transform:translateY(110%); visibility:hidden; transition:transform .45s var(--ease), visibility 0s .45s}
+.fp-barre.fp-on{transform:none; visibility:visible; transition:transform .45s var(--ease), visibility 0s}
+.fp-barre-in{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:10px; align-items:center; max-width:720px; margin:0 auto}
+.fp-barre-px{min-width:0; line-height:1.15}
+.fp-barre-px small{display:block; font-size:12.5px; color:var(--of); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.fp-barre-px b{font-size:21px; font-weight:800; letter-spacing:-.02em; white-space:nowrap}
+.fp-barre .fp-qte{grid-template-columns:34px 36px 34px}
+.fp-barre .fp-qte-b{width:34px; height:38px}
+.fp-barre .fp-qte input{height:34px}
+.fp-barre-aj{padding:12px 18px}
+.fp-barre-aj.fp-ok{background:var(--vert); color:var(--noir)}
+.fp-barre.fp-pouls{animation:fp-pouls .7s var(--ease)}
+@keyframes fp-pouls{30%{background:var(--sc2)}}
+.fp-barre-cale{height:78px}
+@media (min-width:1200px){ body:not(.fp-court) .fp-barre, body:not(.fp-court) .fp-barre-cale{display:none} }
+
+/* Visionneuse de photos */
+.fp-lb{border:0; padding:0; margin:0; background:transparent; width:100vw; height:100vh; max-width:100vw; max-height:100vh; color:var(--blanc); overflow:hidden}
+.fp-lb::backdrop{background:color-mix(in srgb, var(--noir) 90%, transparent)}
+.fp-lb[open]{display:grid; place-items:center}
+.fp-lb-fig{margin:0; display:grid; justify-items:center; gap:12px; padding:0 70px}
+.fp-lb-fig img{border-radius:12px; max-width:calc(100vw - 140px); max-height:76vh; height:auto; background:var(--olive)}
+.fp-lb-fig figcaption{font-size:15px; text-align:center; opacity:.92}
+.fp-lb-b, .fp-lb-x{position:fixed; width:50px; height:50px; border-radius:50%; background:color-mix(in srgb, var(--blanc) 15%, transparent); color:var(--blanc); display:grid; place-items:center; transition:background .2s}
+.fp-lb-b:hover, .fp-lb-x:hover{background:color-mix(in srgb, var(--blanc) 28%, transparent)}
+.fp-lb-b svg, .fp-lb-x svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.fp-lb-prec{left:18px; top:50%; margin-top:-25px}
+.fp-lb-suiv{right:18px; top:50%; margin-top:-25px}
+.fp-lb-x{right:18px; top:18px}
+
+/* ---------- Écrans plus petits ---------- */
+@media (max-width:1199px){
+  .fp-haut{grid-template-columns:minmax(0,1fr); grid-template-areas:"gal" "intro" "conf" "usages" "tarif" "savoir"}
+  .fp-config{position:static; max-width:560px; margin-top:28px}
+  .fp-avec-grille{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .fp-fil{font-size:13.5px; padding-top:16px}
+  .fp-haut{margin-top:14px}
+  .fp-galerie{grid-template-columns:repeat(3, minmax(0,1fr)); grid-template-rows:auto 84px; grid-template-areas:"a a a" "c d b"; gap:8px}
+  .fp-ph--a{aspect-ratio:3 / 2; border-radius:18px}
+  .fp-ph--b, .fp-ph--c, .fp-ph--d{border-radius:12px}
+  .fp-intro{padding-top:22px}
+  .fp-intro h1{font-size:40px}
+  .fp-sous{font-size:16.5px}
+  .fp-texte{font-size:16px}
+  .fp-specs{grid-template-columns:repeat(2, minmax(0,1fr)); gap:0 18px}
+  .fp-config{padding:16px 16px 14px; margin-top:24px}
+  .fp-c-milieu{grid-template-columns:118px minmax(0,1fr); gap:12px}
+  .fp-lg{padding:9px 11px}
+  .fp-usages, .fp-tarif, .fp-savoir{padding-top:48px}
+  .fp-sec-tete h2{font-size:30px}
+  .fp-sec-tete p{font-size:15.5px}
+  .fp-rang{grid-template-columns:repeat(3, minmax(0,1fr)); row-gap:14px}
+  .fp-u{padding:0 7px 10px}
+  .fp-u-d{height:112px; margin:0 -7px 8px}
+  .fp-glisser{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--of); margin:-6px 0 10px}
+  .fp-glisser svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+  .fp-tarif-bloc.r-tarif-bloc{overflow:clip}
+  .fp-defile{overflow-x:auto; overscroll-behavior-x:contain}
+  .fp-table th{top:0}
+  .fp-table td:first-child, .fp-table th:first-child{position:sticky; left:0}
+  .fp-table td:first-child{z-index:1; background:var(--blanc); box-shadow:1px 0 0 var(--ligne)}
+  .fp-table tr.on td:first-child{box-shadow:inset 4px 0 0 var(--noir), 1px 0 0 var(--ligne)}
+  .fp-table th:first-child{z-index:3}
+  .fp-sav-grille{grid-template-columns:minmax(0,1fr); gap:10px}
+  .fp-avec-grille{grid-template-columns:minmax(0,1fr); gap:10px}
+  .fp-avec-grille .r-carte{flex-direction:row; border-radius:var(--r-s)}
+  .fp-avec-grille .r-carte:hover{transform:none}
+  .fp-avec-grille .r-carte-img{width:108px; height:auto; min-height:112px; flex:none}
+  .fp-avec-grille .r-carte-img .r-dispo{right:auto; left:6px; top:auto; bottom:6px; font-size:10.5px; padding:2px 7px}
+  .fp-avec-grille .r-carte-corps{padding:12px 14px}
+  .fp-avec-grille .r-carte-corps h3{font-size:16px}
+  .fp-avec-grille .r-carte-corps p{font-size:13.5px; margin:4px 0 10px}
+  .fp-avec-grille .r-prix{font-size:15px}
+  .fp-avec-grille .r-voir{font-size:12.5px; padding:6px 11px}
+  .fp-lb-fig{padding:0 12px}
+  .fp-lb-fig img{max-width:calc(100vw - 24px)}
+  .fp-lb-prec, .fp-lb-suiv{top:auto; bottom:22px; margin-top:0}
+}
+</style>
+</head>
+<body data-page="produit">
+<header data-entete></header>
+<main>
+  <div class="r-wrap">
+    <nav class="r-fil fp-fil" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><a href="produits.html">Nos produits</a><span aria-hidden="true">›</span><a href="produits.html#charpente">Charpente et ossature</a><span aria-hidden="true">›</span><span aria-current="page">Douglas brut de sciage</span></nav>
+
+    <div class="fp-haut">
+      <!-- Galerie -->
+      <div class="fp-galerie" role="group" aria-label="Photos : cliquez pour agrandir">
+        <button type="button" class="fp-ph fp-ph--a" data-i="0" data-legende="Les piles de Douglas sous le hangar de la scierie"><img src="img/stock-planches.jpg" alt="Les piles de Douglas sous le hangar de la scierie" width="450" height="300"><span class="fp-gal-n" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-4.5 3.5 3 3-2.5L20 17"/></svg>4 photos · agrandir</span></button>
+        <button type="button" class="fp-ph fp-ph--c" data-i="1" data-legende="Planches empilées"><img src="img/produits/poteaux-poutres.jpg" alt="Une pile de planches" width="200" height="150"></button>
+        <button type="button" class="fp-ph fp-ph--d" data-i="2" data-legende="Le hangar de stockage de la scierie"><img src="img/depot-hangar-droite.png" alt="Le hangar de stockage de la scierie" width="305" height="144"></button>
+        <button type="button" class="fp-ph fp-ph--b" data-i="3" data-legende="Chez un client : une terrasse sur lambourdes et plots"><img src="img/terrasse-chantier.jpg" alt="Chez un client : une terrasse sur lambourdes et plots, en cours de pose" width="1400" height="1050"></button>
+      </div>
+
+      <!-- Titre -->
+      <div class="fp-intro">
+        <span class="r-kicker">Bois de charpente · prix directs de scierie</span>
+        <h1>Douglas brut de sciage</h1>
+        <p class="fp-sous">Sec, non traité <i>·</i> qualité&nbsp;C18 <i>·</i> stocké à&nbsp;l’abri</p>
+        <p class="fp-texte">Que vous cherchiez un profil pour une charpente, une ossature ou une clôture (bastaings, madriers, poteaux, chevrons, pannes, solives, lambourdes, planches, voliges…), vous trouverez ici nos dimensions standards, sur stock.</p>
+        <dl class="fp-specs">
+          <div><dt>Essence</dt><dd>Douglas des forêts de France</dd></div>
+          <div><dt>Qualité</dt><dd>C18 · C24 rabotable sur commande</dd></div>
+          <div><dt>Traitement</dt><dd>Aucun&nbsp;: naturel, classe III</dd></div>
+          <div><dt>Séchage</dt><dd>Naturel, stocké à l’abri</dd></div>
+          <div><dt>Sections</dt><dd class="js-fp-spec-s">29, de 18&nbsp;×&nbsp;150 à 200&nbsp;×&nbsp;200&nbsp;mm</dd></div>
+          <div><dt>Longueurs</dt><dd class="js-fp-spec-l">De 2,00 à 6,00&nbsp;m</dd></div>
+        </dl>
+      </div>
+
+      <!-- Configurateur -->
+      <aside class="fp-col-config" aria-labelledby="fp-config-t">
+        <div class="fp-config js-fp-config">
+          <div class="fp-c-tete"><h2 id="fp-config-t">Votre pièce</h2><span>Prix TTC, à emporter</span></div>
+          <label class="fp-c-lbl" for="fp-sel"><span>Section</span><small>épaisseur × largeur, en mm</small></label>
+          <div class="fp-select"><select id="fp-sel" class="js-fp-sel"></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></div>
+          <div class="fp-puces js-fp-puces" role="group" aria-label="Sections courantes"></div>
+          <div class="fp-c-milieu">
+            <figure class="fp-dessin">
+              <svg class="js-fp-svg" viewBox="0 0 150 204" role="img" aria-labelledby="fp-svg-t"><title id="fp-svg-t">Section dessinée à l’échelle</title></svg>
+              <figcaption><b class="js-fp-nom"></b>1 carreau = 5 cm</figcaption>
+            </figure>
+            <div>
+              <p class="fp-c-lbl" id="fp-lg-t"><span>Longueur</span><small class="js-fp-nb-lg"></small></p>
+              <div class="fp-lgs js-fp-lgs" role="group" aria-labelledby="fp-lg-t"></div>
+            </div>
+          </div>
+          <div class="fp-c-prix">
+            <div><p class="fp-px"><span class="js-fp-px">0,00</span><small>€</small></p><p class="fp-px-u js-fp-px-u">la pièce, TTC</p></div>
+            <p class="fp-pm"><b><span class="js-fp-pm">0,00</span>&nbsp;€</b> le mètre<span class="js-fp-m2"></span></p>
+          </div>
+          <div class="fp-c-achat js-fp-achat">
+            <div class="fp-qte" role="group" aria-label="Quantité">
+              <button type="button" class="fp-qte-b" data-pas="-1" aria-label="Une pièce de moins">−</button>
+              <input type="number" class="js-fp-q" value="1" min="1" max="999" step="1" inputmode="numeric" aria-label="Nombre de pièces">
+              <button type="button" class="fp-qte-b" data-pas="1" aria-label="Une pièce de plus">+</button>
+            </div>
+            <button type="button" class="r-btn r-btn--noir fp-ajout js-fp-ajout"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1.3 11.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></svg><span>Ajouter à ma liste</span></button>
+          </div>
+          <p class="fp-c-total js-fp-total-l"><span class="fp-tot js-fp-total"></span><span class="fp-tot-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="js-fp-ajoute-t">Ajouté à votre liste</span><button type="button" data-ouvrir-liste>Voir ma liste</button></span></p>
+          <ul class="fp-c-infos">
+            <li class="fp-c-stock"><span class="r-stock">En stock</span> réserve permanente de 1&nbsp;000&nbsp;m³</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7.5" width="13" height="7.5" rx="1"/><path d="M15.5 12.5h6"/><circle cx="8" cy="17.5" r="2"/></svg><span>Retrait sur place ou par transporteur · remorque prêtée dès 300&nbsp;€</span></li>
+          </ul>
+          <p class="fp-sr" aria-live="polite" id="fp-annonce"></p>
+        </div>
+      </aside>
+
+      <!-- C'est pour quoi faire ? -->
+      <section class="fp-usages" aria-labelledby="fp-usages-t">
+        <div class="fp-sec-tete"><h2 id="fp-usages-t">C’est pour quoi faire&nbsp;?</h2><p>Six sections courantes, dessinées à la même échelle. Cliquez sur l’une d’elles pour la choisir.</p></div>
+        <div class="fp-rang js-fp-rang"></div>
+      </section>
+
+      <!-- La grille complète des prix -->
+      <section class="fp-tarif" id="tarif" aria-labelledby="fp-tarif-t">
+        <div class="fp-sec-tete"><h2 id="fp-tarif-t">La grille complète des prix</h2><p class="js-fp-tarif-p">29 sections, de 2 à 6&nbsp;m. Cliquez sur un prix&nbsp;: la pièce se met dans le configurateur.</p></div>
+        <p class="fp-glisser"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M15 7l5 5-5 5"/></svg>Faites glisser le tableau pour voir toutes les longueurs.</p>
+        <div class="r-tarif-bloc fp-tarif-bloc">
+          <div class="r-tarif-titre"><b>Bois de charpente Douglas brut de sciage — sec, non traité, qualité C18</b><span>Sections en mm · prix TTC à la pièce, à emporter</span></div>
+          <div class="fp-defile">
+            <table class="r-tarif fp-table">
+              <caption class="fp-sr">Tarif du Douglas brut de sciage, sec, non traité, qualité C18 : prix TTC à la pièce selon la section et la longueur, prix au mètre et au mètre carré.</caption>
+              <colgroup><col class="fp-col-s"><col class="fp-col-l" span="6"><col class="fp-col-u" span="2"></colgroup>
+              <thead><tr class="js-fp-thead"></tr></thead>
+              <tbody class="js-fp-tbody"></tbody>
+            </table>
+          </div>
+          <p class="r-tarif-note">Sections indicatives, qui peuvent varier selon la durée du stockage. Sur commande&nbsp;: qualité rabotable C24, +30&nbsp;% du tarif C18, préparé à partir de bois en stock. Tarif TTC à emporter, <span class="js-fp-date">juin 2026</span>.</p>
+        </div>
+      </section>
+
+      <!-- Bon à savoir -->
+      <section class="fp-savoir" aria-labelledby="fp-savoir-t">
+        <div class="fp-sec-tete"><h2 id="fp-savoir-t">Bon à savoir</h2></div>
+        <div class="fp-sav-grille">
+          <article class="fp-sav">
+            <span class="fp-sav-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5h18v3H3z"/><path d="M5 13.5 4 17M19 13.5l1 3.5"/><path d="M12 3v5M10 6l2 2 2-2"/></svg></span>
+            <h3>C18 ou C24&nbsp;?</h3>
+            <p>Ce sont des classes de résistance&nbsp;: plus le chiffre est grand, plus le bois est résistant. Notre Douglas brut est en C18. Sur commande, nous préparons du rabotable C24 à partir du bois en stock, à +30&nbsp;% du tarif C18.</p>
+            <a class="r-lien" href="conseils.html#c18-c24">C18 ou C24&nbsp;: bien choisir</a>
+          </article>
+          <article class="fp-sav">
+            <span class="fp-sav-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="5" width="8" height="14" rx="1"/><rect x="5" y="3" width="14" height="18" rx="1.5" stroke-dasharray="2 2.5"/></svg></span>
+            <h3>Des sections indicatives</h3>
+            <p>Les sections peuvent varier selon la durée du stockage. Si une cote compte au millimètre près, appelez-nous avant de venir.</p>
+            <a class="r-lien js-fp-tel" href="tel:+33241480068">02 41 48 00 68</a>
+          </article>
+          <article class="fp-sav">
+            <span class="fp-sav-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span>
+            <h3>Des prix TTC, à emporter</h3>
+            <p>Tarif de <span class="js-fp-date">juin 2026</span>, pour du bois enlevé à la scierie. La scierie ne livre pas&nbsp;: elle vous indique ses transporteurs partenaires. Remorque prêtée gratuitement dès 300&nbsp;€, si vous avez un attelage.</p>
+            <a class="r-lien" href="contact.html">Commande et retrait</a>
+          </article>
+        </div>
+        <div class="r-conseil"><div><b>Le conseil de la scierie</b>Pour savoir combien de solives ou de lambourdes prévoir, et à quel espacement, suivez notre <a class="r-lien" href="conseils.html#solivage">guide de solivage</a>. Pour une terrasse, faites d’abord le <a class="r-lien" href="conseils.html#calepinage">calepinage</a>.</div></div>
+      </section>
+    </div>
+
+    <!-- Souvent pris avec -->
+    <section class="r-section r-reveal" aria-labelledby="fp-avec-t">
+      <div class="r-tete"><div><h2 id="fp-avec-t">Souvent pris avec</h2><p>Pour assembler, fixer, poser et protéger votre bois.</p></div><a class="r-lien" href="produits.html#quincaillerie">Toute la quincaillerie</a></div>
+      <div class="fp-avec-grille js-fp-avec"></div>
+    </section>
+  </div>
+</main>
+<footer data-pied></footer>
+<div class="fp-barre-cale" aria-hidden="true"></div>
+
+<!-- Barre d'achat collante -->
+<div class="fp-barre js-fp-barre" inert>
+  <div class="fp-barre-in">
+    <div class="fp-barre-px"><small class="js-fp-b-sel"></small><b><span class="js-fp-b-px">0,00</span>&nbsp;€</b></div>
+    <div class="fp-qte" role="group" aria-label="Quantité">
+      <button type="button" class="fp-qte-b" data-pas="-1" aria-label="Une pièce de moins">−</button>
+      <input type="number" class="js-fp-q" value="1" min="1" max="999" step="1" inputmode="numeric" aria-label="Nombre de pièces">
+      <button type="button" class="fp-qte-b" data-pas="1" aria-label="Une pièce de plus">+</button>
+    </div>
+    <button type="button" class="r-btn r-btn--noir fp-barre-aj js-fp-b-aj">Ajouter</button>
+  </div>
+</div>
+
+<!-- Visionneuse -->
+<dialog class="fp-lb js-fp-lb" aria-label="Photos du Douglas brut">
+  <figure class="fp-lb-fig"><img class="js-fp-lb-img" src="img/stock-planches.jpg" alt=""><figcaption class="js-fp-lb-cap"></figcaption></figure>
+  <button type="button" class="fp-lb-b fp-lb-prec" data-lb="-1" aria-label="Photo précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button>
+  <button type="button" class="fp-lb-b fp-lb-suiv" data-lb="1" aria-label="Photo suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
+  <button type="button" class="fp-lb-x" data-lb="x" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</dialog>
+
+<script src="donnees.js"></script>
+<script src="base.js"></script>
+<script>
+(function(){
+'use strict';
+var S = window.RetifSite, D = S.donnees, I = S.infos;
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var NB = ' ', L = D.LONGUEURS, NOMS = D.NOMS;
+var LIGNES = {}; D.TARIF.forEach(function(r){ LIGNES[r[0]] = r; });
+var COURANTES = {}; D.SECTIONS.forEach(function(s){ COURANTES[s.id] = s; });
+var etat = {id:'63x175', lg:'4,00', q:1}, pret = false;
+
+/* ---------- Outils ---------- */
+function dims(id){ var d = id.split('x'); return [+d[0], +d[1]]; }
+function lib(id){ var d = dims(id); return d[0] + NB + '×' + NB + d[1]; }
+function maj1(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function nomDe(id){ return COURANTES[id] ? COURANTES[id].nom : (NOMS[id] ? maj1(NOMS[id]) : ''); }
+function prix(id, lg){ var r = LIGNES[id]; return r ? r[1][lg] : undefined; }
+function eur(v){ return S.fmt(v) + NB + '€'; }
+function dispo(id){ var r = LIGNES[id][1]; return L.filter(function(l){ return r[l]; }); }
+function proche(id, voulu){
+  var r = LIGNES[id][1], ds = dispo(id);
+  if (voulu && r[voulu]) return voulu;
+  if (!voulu) return r['4,00'] ? '4,00' : ds[0];
+  var v = S.lenNum(voulu);
+  return ds.reduce(function(a, b){ return Math.abs(S.lenNum(b) - v) < Math.abs(S.lenNum(a) - v) ? b : a; });
+}
+function hauteurCollee(){
+  var hd = $('.r-hd'); if (!hd) return 0;
+  var p = hd.parentElement, cp = getComputedStyle(p), ch = getComputedStyle(hd);
+  if (cp.position === 'sticky' || cp.position === 'fixed') return Math.max(0, p.offsetHeight + (parseFloat(cp.top) || 0));
+  if (ch.position === 'fixed') return hd.offsetHeight;
+  if (ch.position !== 'sticky') return 0;
+  return (p === document.body || cp.display === 'contents' || p.offsetHeight > hd.offsetHeight * 4) ? hd.offsetHeight : 0;
+}
+
+/* ---------- Textes tirés des données ---------- */
+var premier = D.TARIF[0][0], dernier = D.TARIF[D.TARIF.length - 1][0];
+$('.js-fp-spec-s').textContent = D.TARIF.length + ', de ' + lib(premier) + ' à ' + lib(dernier) + NB + 'mm';
+$('.js-fp-spec-l').textContent = 'De ' + L[0] + ' à ' + L[L.length - 1] + NB + 'm';
+$('.js-fp-tarif-p').textContent = D.TARIF.length + ' sections, de ' + S.lenNum(L[0]) + ' à ' + S.lenNum(L[L.length - 1]) + NB + 'm. Cliquez sur un prix' + NB + ': la pièce se met dans le configurateur.';
+$$('.js-fp-tel').forEach(function(a){ a.href = 'tel:+33' + I.tel.replace(/\s/g, '').slice(1); a.textContent = I.tel; });
+$$('.js-fp-date').forEach(function(e){ e.textContent = I.tarifsDate; });
+
+/* ---------- Configurateur : sections, puces, longueurs ---------- */
+var sel = $('.js-fp-sel'), puces = $('.js-fp-puces'), lgs = $('.js-fp-lgs');
+var groupes = {};
+D.TARIF.forEach(function(r){ var e = dims(r[0])[0]; (groupes[e] = groupes[e] || []).push(r[0]); });
+sel.innerHTML = Object.keys(groupes).sort(function(a, b){ return a - b; }).map(function(e){
+  return '<optgroup label="Épaisseur ' + e + ' mm">' + groupes[e].map(function(id){ return '<option value="' + id + '">' + lib(id) + ' mm' + (NOMS[id] ? ' · ' + NOMS[id] : '') + '</option>'; }).join('') + '</optgroup>';
+}).join('');
+puces.innerHTML = D.SECTIONS.map(function(s){ return '<button type="button" class="fp-puce" data-sec="' + s.id + '" aria-pressed="false"><b>' + s.nom + '</b><small>' + lib(s.id) + '</small></button>'; }).join('');
+lgs.innerHTML = L.map(function(l){ return '<button type="button" class="fp-lg" data-lg="' + l + '" aria-pressed="false"><span>' + l + NB + 'm</span><b>—</b></button>'; }).join('');
+
+/* ---------- Dessin de la section, à l'échelle (0,5 px par mm : 1 carreau de 25 px = 5 cm) ---------- */
+var K = 0.5, CX = 75, BASE = 166, Q = 50 * K;
+var svg = $('.js-fp-svg');
+var cercles = ''; for (var i = 0; i < 40; i++) cercles += '<circle r="' + (4 + i * 5.4).toFixed(1) + '"/>';
+svg.insertAdjacentHTML('beforeend',
+  '<defs><pattern id="fp-quad" width="' + Q + '" height="' + Q + '" patternUnits="userSpaceOnUse" x="' + (CX % Q) + '" y="' + (BASE % Q) + '"><path class="fp-quad" d="M' + Q + ' 0H0V' + Q + '"/></pattern><clipPath id="fp-clip"><rect class="js-fp-clip"/></clipPath></defs>' +
+  '<rect x="0" y="0" width="150" height="' + BASE + '" fill="url(#fp-quad)"/><path class="fp-sol" d="M0 ' + BASE + 'H150"/>' +
+  '<rect class="fp-fantome js-fp-fantome"/>' +
+  '<g clip-path="url(#fp-clip)"><rect class="fp-bois-fond js-fp-fond"/><g class="fp-cernes js-fp-cernes">' + cercles + '</g></g>' +
+  '<rect class="fp-bois-trait js-fp-rect"/>' +
+  '<path class="fp-cote js-fp-cote-l"/><text class="fp-cote-t js-fp-t-l" text-anchor="middle" y="195"></text>' +
+  '<path class="fp-cote js-fp-cote-h"/><text class="fp-cote-t js-fp-t-h" text-anchor="middle" dy=".35em"></text>');
+var bRect = $('.js-fp-rect', svg), bFond = $('.js-fp-fond', svg), bClip = $('.js-fp-clip', svg), bCernes = $('.js-fp-cernes', svg), bFant = $('.js-fp-fantome', svg);
+var cL = $('.js-fp-cote-l', svg), cH = $('.js-fp-cote-h', svg), tL = $('.js-fp-t-l', svg), tH = $('.js-fp-t-h', svg), svgT = $('#fp-svg-t');
+var cur = {w:0, h:0}, anim = 0;
+function geo(el, x, y, w, h){ el.setAttribute('x', x.toFixed(2)); el.setAttribute('y', y.toFixed(2)); el.setAttribute('width', Math.max(0, w).toFixed(2)); el.setAttribute('height', Math.max(0, h).toFixed(2)); }
+function poser(w, h){
+  cur.w = w; cur.h = h;
+  var x = CX - w / 2, y = BASE - h, xr = x + w + 7;
+  geo(bRect, x, y, w, h); geo(bFond, x, y, w, h); geo(bClip, x, y, w, h);
+  bCernes.setAttribute('transform', 'translate(' + (x + w * 0.6).toFixed(2) + ' ' + (BASE + 4 + h * 0.08).toFixed(2) + ')');
+  cL.setAttribute('d', 'M' + x.toFixed(2) + ' 179H' + (x + w).toFixed(2) + 'M' + x.toFixed(2) + ' 175V183M' + (x + w).toFixed(2) + ' 175V183');
+  tL.setAttribute('x', CX);
+  cH.setAttribute('d', 'M' + xr.toFixed(2) + ' ' + y.toFixed(2) + 'V' + BASE + 'M' + (xr - 4).toFixed(2) + ' ' + y.toFixed(2) + 'H' + (xr + 4).toFixed(2) + 'M' + (xr - 4).toFixed(2) + ' ' + BASE + 'H' + (xr + 4).toFixed(2));
+  var tx = (xr + 9).toFixed(2), ty = (y + h / 2).toFixed(2);
+  tH.setAttribute('x', tx); tH.setAttribute('y', ty); tH.setAttribute('transform', 'rotate(-90 ' + tx + ' ' + ty + ')');
+}
+function ressort(p){ var c1 = 1.2, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); }
+function dessiner(ep, larg, animer){
+  var tw = ep * K, th = larg * K;
+  cancelAnimationFrame(anim);
+  if (!animer || S.reduit || !cur.w){ poser(tw, th); return; }
+  geo(bFant, CX - cur.w / 2, BASE - cur.h, cur.w, cur.h);
+  bFant.classList.remove('fp-part'); bFant.classList.add('fp-vu'); void bFant.getBBox();
+  requestAnimationFrame(function(){ bFant.classList.add('fp-part'); bFant.classList.remove('fp-vu'); });
+  var w0 = cur.w, h0 = cur.h, t0 = performance.now(), dur = 620;
+  (function pas(t){
+    var p = Math.min(1, (t - t0) / dur), e = ressort(p);
+    poser(w0 + (tw - w0) * e, h0 + (th - h0) * e);
+    if (p < 1) anim = requestAnimationFrame(pas);
+  })(t0);
+}
+
+/* ---------- C'est pour quoi faire ? ---------- */
+var KU = 0.46, rang = $('.js-fp-rang');
+rang.innerHTML = D.SECTIONS.map(function(s){
+  var w = s.w * KU, h = s.h * KU, r = LIGNES[s.id][1], mini = Math.min.apply(null, L.filter(function(l){ return r[l]; }).map(function(l){ return r[l]; }));
+  return '<button type="button" class="fp-u" data-sec="' + s.id + '" aria-pressed="false"><span class="fp-u-d"><svg width="' + (w + 2).toFixed(1) + '" height="' + (h + 1).toFixed(1) + '" viewBox="-1 -1 ' + (w + 2).toFixed(1) + ' ' + (h + 1).toFixed(1) + '" aria-hidden="true"><rect class="fp-u-rect" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="1"/></svg></span>' +
+    '<b>' + s.nom + '</b><span class="fp-u-dim">' + lib(s.id) + NB + 'mm</span><span class="fp-u-us">' + maj1(s.usage) + '</span><span class="fp-u-px">dès ' + eur(mini) + '</span></button>';
+}).join('');
+
+/* ---------- La grille complète des prix ---------- */
+$('.js-fp-thead').innerHTML = '<th scope="col">Section</th>' + L.map(function(l, i){ return '<th scope="col" data-col="' + i + '">' + l + NB + 'm</th>'; }).join('') + '<th scope="col" class="fp-th-u">Le mètre</th><th scope="col" class="fp-th-u">Le m²</th>';
+var tbody = $('.js-fp-tbody');
+tbody.innerHTML = D.TARIF.map(function(r){
+  var id = r[0], nm = NOMS[id];
+  var cases = L.map(function(l, i){
+    var p = r[1][l];
+    return p ? '<td class="p" data-col="' + i + '"><button type="button" class="fp-case" data-sec="' + id + '" data-lg="' + l + '" aria-label="' + lib(id) + ' mm, ' + l + ' m : ' + eur(p) + '">' + eur(p) + '</button></td>'
+             : '<td class="na"><span aria-hidden="true">—</span><span class="fp-sr">non proposé</span></td>';
+  }).join('');
+  return '<tr data-sec="' + id + '"><td><b>' + lib(id) + '</b>' + (nm ? '<small>' + nm + '</small>' : '') + '</td>' + cases +
+    '<td class="u">' + eur(r[2]) + '</td>' + (r[3] ? '<td class="u">' + eur(r[3]) + '</td>' : '<td class="na"><span aria-hidden="true">—</span><span class="fp-sr">non indiqué</span></td>') + '</tr>';
+}).join('');
+
+/* ---------- Mise à jour de tout l'écran ---------- */
+var pxEl = $('.js-fp-px'), pxU = $('.js-fp-px-u'), pmEl = $('.js-fp-pm'), m2El = $('.js-fp-m2'), totalEl = $('.js-fp-total');
+var cNom = $('.js-fp-nom'), nbLg = $('.js-fp-nb-lg'), annonce = $('#fp-annonce'), config = $('.js-fp-config');
+var barre = $('.js-fp-barre'), bSel = $('.js-fp-b-sel'), bPx = $('.js-fp-b-px'), ligneTotal = $('.js-fp-total-l');
+function finAjout(){ clearTimeout(ligneTotal._t); ligneTotal.classList.remove('fp-fait'); }
+function majTotal(){
+  var p = prix(etat.id, etat.lg), d = dims(etat.id), vol = d[0] / 1000 * (d[1] / 1000) * S.lenNum(etat.lg) * etat.q;
+  totalEl.innerHTML = '<span>Total' + NB + ': <b>' + eur(p * etat.q) + '</b> pour ' + etat.q + ' pièce' + (etat.q > 1 ? 's' : '') + '</span><span>' + vol.toFixed(3).replace('.', ',') + NB + 'm³</span>';
+}
+function pop(el){ if (!el || S.reduit) return; el.classList.remove('fp-pop'); void el.offsetWidth; el.classList.add('fp-pop'); }
+function flash(){ if (S.reduit) return; config.classList.remove('fp-flash'); void config.offsetWidth; config.classList.add('fp-flash'); }
+function rendre(chg, src, el){
+  var id = etat.id, lg = etat.lg, p = prix(id, lg), r = LIGNES[id], d = dims(id), nm = nomDe(id), co = COURANTES[id], ms = pret ? 480 : 0;
+  sel.value = id;
+  $$('[data-sec]', puces).concat($$('[data-sec]', rang)).forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-sec') === id ? 'true' : 'false'); });
+  var ds = dispo(id);
+  $$('.fp-lg', lgs).forEach(function(b){
+    var l = b.getAttribute('data-lg'), v = r[1][l];
+    b.disabled = !v;
+    b.querySelector('b').textContent = v ? eur(v) : '—';
+    b.setAttribute('aria-pressed', l === lg ? 'true' : 'false');
+    b.setAttribute('aria-label', l + ' m : ' + (v ? eur(v) : 'pas dans cette section'));
+  });
+  nbLg.textContent = ds.length > 1 ? ds.length + ' longueurs' : '1 longueur';
+  cNom.textContent = nm || lib(id);
+  svgT.textContent = 'Section ' + lib(id) + ' mm, dessinée à l’échelle';
+  tL.textContent = d[0]; tH.textContent = d[1];
+  dessiner(d[0], d[1], chg && pret);
+  S.compte(pxEl, p, ms);
+  pxU.textContent = 'la pièce de ' + lg + NB + 'm';
+  S.compte(pmEl, r[2], ms);
+  m2El.innerHTML = r[3] ? '<br><b>' + eur(r[3]) + '</b> le m²' : '';
+  majTotal();
+  // la case de la grille
+  $$('.fp-table td.sel').forEach(function(t){ t.classList.remove('sel'); });
+  $$('.fp-table tr.on').forEach(function(t){ t.classList.remove('on'); });
+  var cas = $('.fp-case[data-sec="' + id + '"][data-lg="' + lg + '"]');
+  if (cas){ cas.parentNode.classList.add('sel'); cas.closest('tr').classList.add('on'); }
+  // la barre d'achat
+  bSel.textContent = lib(id) + ' · ' + lg + NB + 'm';
+  S.compte(bPx, p, ms);
+  if (pret){
+    finAjout();
+    try { history.replaceState(null, '', location.pathname + '?sel=' + id + location.hash); } catch (e) {}
+    annonce.textContent = (nm ? nm + ' ' : 'Section ') + lib(id) + ' mm, ' + lg + ' m : ' + eur(p) + ' la pièce';
+    pop($('.fp-lg[aria-pressed="true"]', lgs));
+    if (src === 'grille' || src === 'usages'){ flash(); if (barre.classList.contains('fp-on')){ barre.classList.remove('fp-pouls'); void barre.offsetWidth; barre.classList.add('fp-pouls'); } }
+    if (src === 'grille' && el) pop(el);
+  }
+}
+function choisir(id, lg, src, el){
+  if (!LIGNES[id]) return;
+  var chg = id !== etat.id;
+  etat.id = id;
+  etat.lg = (lg && prix(id, lg)) ? lg : proche(id, etat.lg);
+  rendre(chg, src, el);
+}
+
+/* ---------- Événements du configurateur ---------- */
+sel.addEventListener('change', function(){ choisir(sel.value, null, 'liste'); });
+puces.addEventListener('click', function(e){ var b = e.target.closest('[data-sec]'); if (b) choisir(b.getAttribute('data-sec'), null, 'puce'); });
+lgs.addEventListener('click', function(e){ var b = e.target.closest('.fp-lg'); if (b && !b.disabled) choisir(etat.id, b.getAttribute('data-lg'), 'longueur'); });
+rang.addEventListener('click', function(e){ var b = e.target.closest('[data-sec]'); if (b) choisir(b.getAttribute('data-sec'), null, 'usages'); });
+tbody.addEventListener('click', function(e){ var b = e.target.closest('.fp-case'); if (b) choisir(b.getAttribute('data-sec'), b.getAttribute('data-lg'), 'grille', b); });
+/* Survol de la grille : la ligne et la longueur s'éclairent */
+var ths = $$('.js-fp-thead th[data-col]');
+tbody.addEventListener('mouseover', function(e){
+  var td = e.target.closest('td.p'); $$('.fp-tr-on', tbody).forEach(function(t){ t.classList.remove('fp-tr-on'); }); ths.forEach(function(t){ t.classList.remove('fp-th-on'); });
+  if (!td) return; td.parentNode.classList.add('fp-tr-on'); ths[+td.getAttribute('data-col')].classList.add('fp-th-on');
+});
+tbody.addEventListener('mouseleave', function(){ $$('.fp-tr-on', tbody).forEach(function(t){ t.classList.remove('fp-tr-on'); }); ths.forEach(function(t){ t.classList.remove('fp-th-on'); }); });
+
+/* Quantité (partagée entre le configurateur et la barre du bas) */
+var qs = $$('.js-fp-q');
+function majQ(v, source){
+  v = Math.max(1, Math.min(999, Math.round(+v) || 1));
+  etat.q = v;
+  qs.forEach(function(i){ if (i !== source) i.value = v; });
+  finAjout();
+  majTotal();
+}
+qs.forEach(function(i){
+  i.addEventListener('input', function(){ if (i.value !== '' && +i.value >= 1) majQ(i.value, i); });
+  i.addEventListener('change', function(){ majQ(i.value); i.value = etat.q; });
+});
+$$('[data-pas]').forEach(function(b){ b.addEventListener('click', function(){ majQ(etat.q + (+b.getAttribute('data-pas'))); }); });
+
+/* Ajouter à ma liste */
+function ajouter(btn){
+  var id = etat.id, lg = etat.lg, p = prix(id, lg), d = dims(id);
+  S.liste.ajouter({cle:'douglas-' + id + '-' + lg, nom:'Douglas brut ' + d[0] + '×' + d[1], detail:lg + ' m', prix:p, q:etat.q, vol:(d[0] / 1000) * (d[1] / 1000) * S.lenNum(lg)}, btn);
+  $('.js-fp-ajoute-t').textContent = etat.q > 1 ? etat.q + ' pièces ajoutées' : '1 pièce ajoutée';
+  finAjout(); void ligneTotal.offsetWidth; ligneTotal.classList.add('fp-fait');
+  ligneTotal._t = setTimeout(finAjout, 6000);
+  var txt = btn.querySelector('span') || btn, avant = txt.textContent;
+  btn.classList.add('fp-ok'); txt.textContent = btn === boutonAjout ? 'Ajouté à ma liste' : 'Ajouté';
+  clearTimeout(btn._t); btn._t = setTimeout(function(){ btn.classList.remove('fp-ok'); txt.textContent = avant; }, 1600);
+}
+var boutonAjout = $('.js-fp-ajout');
+boutonAjout.addEventListener('click', function(){ ajouter(boutonAjout); });
+$('.js-fp-b-aj').addEventListener('click', function(){ ajouter(this); });
+
+/* ---------- Galerie et visionneuse ---------- */
+var lb = $('.js-fp-lb'), lbImg = $('.js-fp-lb-img'), lbCap = $('.js-fp-lb-cap'), lbI = 0;
+var PHOTOS = $$('.fp-ph').sort(function(a, b){ return a.getAttribute('data-i') - b.getAttribute('data-i'); }).map(function(b){ var im = b.querySelector('img'); return {src:im.getAttribute('src'), alt:im.alt, cap:b.getAttribute('data-legende'), w:+im.getAttribute('width'), h:+im.getAttribute('height')}; });
+function montrer(i){
+  lbI = (i + PHOTOS.length) % PHOTOS.length;
+  var ph = PHOTOS[lbI], w = Math.min(ph.w * 1.5, innerWidth - (innerWidth > 760 ? 140 : 24), innerHeight * 0.76 * ph.w / ph.h);
+  lbImg.src = ph.src; lbImg.alt = ph.alt; lbImg.style.width = Math.round(w) + 'px';
+  lbCap.textContent = ph.cap + ' · ' + (lbI + 1) + ' / ' + PHOTOS.length;
+  if (!lb.open) lb.showModal();
+}
+$$('.fp-ph').forEach(function(b){ b.addEventListener('click', function(){ montrer(+b.getAttribute('data-i')); }); });
+lb.addEventListener('click', function(e){
+  var b = e.target.closest('[data-lb]');
+  if (b){ var v = b.getAttribute('data-lb'); if (v === 'x') lb.close(); else montrer(lbI + (+v)); return; }
+  if (e.target === lb) lb.close();
+});
+lb.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') montrer(lbI + 1); if (e.key === 'ArrowLeft') montrer(lbI - 1); });
+
+/* ---------- Souvent pris avec (depuis donnees.js) ---------- */
+var AVEC = ['Connecteurs et pieds de poteaux', 'Vis zinguées et inox', 'Plots réglables et film géotextile', 'Huiles, saturateurs et dégriseur'];
+var TOUS = []; D.CATEGORIES.forEach(function(c){ c.produits.forEach(function(p){ TOUS.push(p); }); });
+$('.js-fp-avec').innerHTML = AVEC.map(function(t){ var r = null; TOUS.forEach(function(p){ if (p.t === t) r = p; }); return r; }).filter(Boolean).map(S.carteProduit).join('');
+/* Photos petites ou schémas : jamais plus de 1,5 fois leur taille, schémas montrés entiers */
+var SCHEMAS = /\/(plot|lambourde)\.jpg$/;
+function gardeTaille(img){
+  if (!img.naturalWidth) return;
+  var b = img.parentNode.getBoundingClientRect(); if (!b.width) return;
+  img.classList.toggle('fp-contain', SCHEMAS.test(img.getAttribute('src')) || Math.max(b.width / img.naturalWidth, b.height / img.naturalHeight) > 1.5);
+}
+function gardeTout(){ $$('.fp-avec-grille .r-carte-img img').forEach(gardeTaille); }
+$$('.fp-avec-grille .r-carte-img img').forEach(function(img){ if (img.complete) gardeTaille(img); else img.addEventListener('load', function(){ gardeTaille(img); }); });
+
+/* ---------- Barre d'achat : visible quand le configurateur est sorti de l'écran ---------- */
+function montrerBarre(on){
+  if (barre.classList.contains('fp-on') === on) return;
+  barre.classList.toggle('fp-on', on);
+  if (on) barre.removeAttribute('inert'); else barre.setAttribute('inert', '');
+}
+/* La barre apparaît quand la ligne « quantité + Ajouter » est passée sous l'en-tête (vérifié à chaque défilement, même après un saut) */
+var achat = $('.js-fp-achat'), colle = 0, attente = false;
+function verifierBarre(){ attente = false; montrerBarre(achat.getBoundingClientRect().bottom < colle + 4); }
+window.addEventListener('scroll', function(){ if (!attente){ attente = true; requestAnimationFrame(verifierBarre); } }, {passive:true});
+function surveiller(){ colle = hauteurCollee(); verifierBarre(); }
+/* Écran trop bas pour le configurateur collant : il défile normalement et la barre prend le relais */
+function majMesures(){
+  document.documentElement.style.setProperty('--fp-colle', hauteurCollee() + 'px');
+  var large = window.matchMedia('(min-width:1200px)').matches;
+  document.body.classList.toggle('fp-court', large && config.offsetHeight + hauteurCollee() + 32 > innerHeight);
+  gardeTout();
+}
+function apresEntete(){ majMesures(); surveiller(); }
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apresEntete); else apresEntete();
+window.addEventListener('load', apresEntete);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(apresEntete);
+var tRes = 0;
+window.addEventListener('resize', function(){ clearTimeout(tRes); tRes = setTimeout(apresEntete, 150); });
+
+/* ---------- Démarrage : ?sel=50x75 présélectionne la section ---------- */
+var demande = (new URLSearchParams(location.search).get('sel') || '').toLowerCase().replace(/[×*]/g, 'x').replace(/\s|mm/g, '');
+if (demande && !LIGNES[demande]){ var dd = demande.split('x'); if (dd.length === 2 && LIGNES[dd[1] + 'x' + dd[0]]) demande = dd[1] + 'x' + dd[0]; }
+etat.id = LIGNES[demande] ? demande : '63x175';
+etat.lg = proche(etat.id, null);
+rendre(false, 'init');
+pret = true;
+})();
+</script>
+</body>
+</html>

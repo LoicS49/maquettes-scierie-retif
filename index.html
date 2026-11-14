@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre futur site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="retif-proto.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:#fff; color:var(--r-noir); font:17px/1.55 'Schibsted Grotesk', system-ui, sans-serif; -webkit-font-smoothing:antialiased}
+img{display:block; max-width:100%}
+a{color:var(--r-noir)}
+.wrap{max-width:1180px; margin:0 auto; padding:0 16px}
+h1, h2, h3{margin:0; letter-spacing:-.03em; line-height:1.05}
+.entete{padding:34px 0 30px; border-bottom:1px solid var(--r-ligne)}
+.marque{display:flex; align-items:center; gap:12px; font-size:14px; font-weight:600; color:var(--r-of)}
+.marque img{width:48px; height:48px; border-radius:50%; clip-path:circle(46%)}
+.entete h1{font-size:clamp(38px, 7vw, 76px); font-weight:700; margin:22px 0 16px; letter-spacing:-.04em}
+.entete h1 span{color:var(--r-olive)}
+.lead{font-size:clamp(17px, 2.2vw, 21px); color:var(--r-of); max-width:760px; margin:0}
+
+.essai{display:grid; grid-template-columns:minmax(0,1fr); gap:34px; padding:40px 0 20px; align-items:start}
+@media (min-width:960px){ .essai{grid-template-columns:380px minmax(0,1fr); gap:56px} }
+.essai-tel{max-width:380px; width:100%; margin:0 auto}
+.ctrls{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px 0 6px}
+.ctrls button{font:inherit; font-size:14px; font-weight:600; border:0; background:var(--r-sc); color:var(--r-noir); padding:9px 14px; border-radius:999px; cursor:pointer}
+.ctrls button:hover{background:var(--r-noir); color:var(--r-vert)}
+.plein-lien{text-align:center; font-size:14.5px; color:var(--r-of); margin:6px 0 0}
+.tel-ifr{display:block; width:100%; height:100%; border:0}
+.essai-txt h2{font-size:clamp(30px, 4vw, 44px); font-weight:700}
+.essai-txt > p{color:var(--r-of); font-size:18px; margin:12px 0 26px; max-width:620px}
+.essai-txt h3{font-size:20px; font-weight:700; margin:0 0 14px}
+.benef{display:grid; grid-template-columns:minmax(0,1fr); gap:12px}
+@media (min-width:640px){ .benef{grid-template-columns:repeat(2, minmax(0,1fr))} }
+.benef div{background:var(--r-sc); border-radius:20px; padding:18px}
+.benef .ic{width:42px; height:42px; border-radius:50%; background:var(--r-noir); display:grid; place-items:center; margin-bottom:12px}
+.benef .ic svg{width:21px; height:21px; fill:none; stroke:var(--r-vert); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+.benef b{display:block; font-size:17px; letter-spacing:-.01em; margin-bottom:4px}
+.benef span{font-size:15.5px; color:var(--r-of)}
+
+.ordi{padding:34px 0 10px; border-top:1px solid var(--r-ligne)}
+.ordi-h{display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap}
+.ordi-h h2{font-size:clamp(30px, 4vw, 44px); font-weight:700}
+.ordi-h p{color:var(--r-of); font-size:18px; margin:12px 0 0; max-width:720px}
+.btn-ordi{display:inline-block; background:var(--r-noir); color:var(--r-vert); font-weight:700; font-size:15px; padding:12px 18px; border-radius:999px; text-decoration:none; white-space:nowrap}
+.ordi-liens{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 14px}
+.ordi-liens button{font:inherit; font-size:14.5px; font-weight:600; border:0; background:var(--r-sc); color:var(--r-noir); padding:9px 14px; border-radius:999px; cursor:pointer}
+.ordi-liens button.on{background:var(--r-noir); color:#fff}
+.ifit{position:relative; width:100%}
+.iscale{position:absolute; left:0; top:0; width:1280px; height:840px; transform-origin:0 0; transform:scale(var(--is,1))}
+.browser.grand{width:1280px; height:840px}
+.browser.grand iframe{display:block; width:1280px; height:800px; border:0; background:#fff}
+.ordi-note{font-size:14.5px; color:var(--r-of); margin:12px 0 0; text-align:center}
+.couleurs{padding:30px 0 44px; display:grid; grid-template-columns:minmax(0,1fr); gap:20px; align-items:center}
+@media (min-width:960px){ .couleurs{grid-template-columns:380px minmax(0,1fr); gap:56px} }
+.couleurs .logo-grand{width:140px; height:140px; border-radius:50%; margin:0 auto; overflow:hidden; box-shadow:0 0 0 4px var(--r-vert), 0 20px 40px -20px rgba(0,0,0,.5)}
+.couleurs .logo-grand img{width:100%; height:100%; transform:scale(1.12)}
+.couleurs h2{font-size:clamp(26px, 3.4vw, 36px); font-weight:700}
+.couleurs p{color:var(--r-of); margin:8px 0 16px}
+.nuancier{display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:8px}
+.nuancier div{font-size:13px; line-height:1.3; color:var(--r-of)}
+.nuancier i{display:block; height:64px; border-radius:14px; border:1px solid rgba(0,0,0,.08); margin-bottom:6px}
+.nuancier b{display:block; color:var(--r-noir); font-size:13.5px}
+
+.gestion{background:var(--r-sc); padding:46px 0 50px}
+.gestion h2{font-size:clamp(30px, 4.4vw, 48px); font-weight:700; margin-bottom:12px}
+.gestion .lead{margin-bottom:24px}
+.dash-row{display:grid; grid-template-columns:minmax(0,1fr); gap:26px; align-items:start}
+@media (min-width:1080px){ .dash-row{grid-template-columns:minmax(0,1fr) 240px} }
+.browser iframe.ep-ifr{display:block; width:1120px; height:680px; border:0; background:#F3F6F0}
+.gestion .ordi-h{margin-bottom:24px}
+.dphone .fit{max-width:240px; margin:0 auto}
+.dphone p{font-size:14.5px; color:var(--r-of); text-align:center; margin:10px 0 0}
+.petit-ecran{font-size:14.5px; color:var(--r-of); margin:-10px 0 16px}
+@media (min-width:760px){ .petit-ecran{display:none} }
+.benef3{display:grid; grid-template-columns:minmax(0,1fr); gap:12px; margin-top:26px}
+@media (min-width:760px){ .benef3{grid-template-columns:repeat(3, minmax(0,1fr))} }
+.benef3 div{background:#fff; border-radius:20px; padding:18px}
+.benef3 b{display:block; font-size:17px; margin-bottom:4px}
+.benef3 span{font-size:15.5px; color:var(--r-of)}
+
+.garde{padding:44px 16px 20px}
+.garde h2{font-size:clamp(28px, 4vw, 42px); font-weight:700; margin-bottom:16px}
+.checks{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:minmax(0,1fr); gap:10px}
+@media (min-width:760px){ .checks{grid-template-columns:repeat(2, minmax(0,1fr))} }
+.checks li{display:grid; grid-template-columns:30px 1fr; gap:12px; align-items:start; font-size:17px; padding:14px 16px; border:1px solid var(--r-ligne); border-radius:18px}
+.checks li::before{content:""; width:26px; height:26px; border-radius:50%; background:var(--r-noir) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%2388BD87' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat}
+footer{padding:26px 0 44px; font-size:14px; color:var(--r-of)}
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="wrap">
+    <div class="marque"><img src="img/logo-rond.png" alt="Logo de la Scierie Rétif"><span>Proposition pour la Scierie Rétif · novembre 2026</span></div>
+    <h1>Votre futur site,<br><span>en avant-première.</span></h1>
+    <p class="lead">Vos prix, vos conseils et votre logo, dans un site clair, rapide et facile à utiliser depuis un téléphone. Une proposition préparée par un de vos clients.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="essai">
+    <div class="essai-tel">
+      <div class="fit"><div class="phone-scale"><div class="bezel"><div class="screen"><iframe class="tel-ifr js-tel-ifr" src="site/index.html" title="Le futur site sur téléphone"></iframe></div></div></div></div>
+      <div class="ctrls"><button type="button" data-tel-accueil>Revenir à l'accueil</button></div>
+      <p class="plein-lien">Sur un téléphone : <a href="site/index.html">l'essayer en plein écran</a></p>
+    </div>
+    <div class="essai-txt">
+      <h2>Essayez-le</h2>
+      <p>Touchez «&nbsp;Les prix du Douglas&nbsp;», choisissez une section et une longueur, puis ajoutez-la à «&nbsp;Ma liste&nbsp;». Le menu, en haut à droite, mène au catalogue, au projet terrasse, aux conseils et au contact.</p>
+      <h3>Ce qui change pour vos clients</h3>
+      <div class="benef">
+        <div><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><b>Ils trouvent par projet</b><span>Terrasse, charpente, bardage… Chaque projet réunit tout ce qu'il faut, avec vos conseils.</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></svg></span><b>Ils lisent vos prix sur leur téléphone</b><span>De vrais tableaux, lisibles sans zoomer. Google et les assistants comme ChatGPT savent les lire aussi.</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 4.8M3.5 12l1.2 1.2L7 10.8M3.5 18l1.2 1.2L7 16.8"/></svg></span><b>Ils préparent leur liste en quelques touches</b><span>Section, longueur, quantité : le total se calcule, et la demande vous arrive propre et complète.</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 7h3M8 11h2M8 15h3M8 19h2"/></svg></span><b>Ils comprennent sans être du métier</b><span>Chaque bois est expliqué en une phrase, avec un dessin de la section à l'échelle.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ordi">
+    <div class="ordi-h"><div><h2>Et sur ordinateur</h2><p>Le site complet, en grand, qui garde l'esprit de votre site actuel : vos titres, votre bandeau vert à trois photos, vos vignettes, vos tableaux de prix avec leur bandeau vert et leurs longueurs en jaune.</p></div><a class="btn-ordi" href="site/index.html" target="_blank" rel="noopener">Ouvrir en plein écran ↗</a></div>
+    <div class="ordi-liens"><button type="button" class="on" data-ifr="site/index.html">L'accueil</button><button type="button" data-ifr="site/produits.html">Nos produits</button><button type="button" data-ifr="site/douglas-brut.html">La fiche Douglas brut</button><button type="button" data-ifr="site/terrasse.html">Le projet terrasse</button><button type="button" data-ifr="site/conseils.html">Les conseils</button><button type="button" data-ifr="site/la-scierie.html">La scierie</button><button type="button" data-ifr="site/realisations.html">Les réalisations</button><button type="button" data-ifr="site/contact.html">Contact et commande</button></div>
+    <div class="ifit"><div class="iscale"><div class="browser grand"><div class="br-bar"><i></i><i></i><i></i><div class="br-url js-ifr-url">scierie-retif.com</div></div><iframe class="js-ifr" src="site/index.html" title="Le futur site sur ordinateur"></iframe></div></div></div>
+    <p class="ordi-note">Cliquez dedans comme sur un vrai site : menu « Produits », recherche, catégories, prix, « Ma liste ». Les conseils et le calculateur de la page terrasse sont en option.</p>
+  </section>
+
+  <section class="couleurs">
+    <div class="logo-grand"><img src="img/logo-rond.png" alt="Logo de la Scierie Rétif"></div>
+    <div>
+      <h2>Vos couleurs, votre identité</h2>
+      <p>Relevées sur votre logo et sur votre site actuel. Votre logo reste votre logo.</p>
+      <div class="nuancier">
+        <div><i style="background:#111411"></i><b>Noir</b>du logo</div>
+        <div><i style="background:#88BD87"></i><b>Vert</b>du logo</div>
+        <div><i style="background:#ADC895"></i><b>Sauge</b>de votre site</div>
+        <div><i style="background:#707C64"></i><b>Olive</b>de votre menu</div>
+        <div><i style="background:#FFFFFF"></i><b>Blanc</b>pour respirer</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="gestion">
+  <div class="wrap">
+    <div class="ordi-h"><div><h2>Et pour vous&nbsp;: tout se gère ici</h2>
+    <p class="lead">Depuis l'ordinateur du bureau ou le téléphone du dépôt. Cliquez dans le menu de gauche : les demandes, le catalogue, les pages, les photos et les horaires. L'onglet « Modules » montre ce que vous pourrez ajouter plus tard.</p></div><a class="btn-ordi" href="site/espace-pro.html" target="_blank" rel="noopener">Ouvrir l'espace pro ↗</a></div>
+    <p class="petit-ecran">Sur un petit écran, l'espace pro apparaît ici en tout petit. Ouvrez-le avec le bouton ci-dessus pour l'essayer en grand.</p>
+    <div class="dash-row">
+      <div class="dfit"><div class="dscale"><div class="browser">
+        <div class="br-bar"><i></i><i></i><i></i><div class="br-url">scierie-retif.com/espace-pro</div></div>
+        <iframe class="ep-ifr" src="site/espace-pro.html" title="L'espace pro sur ordinateur"></iframe>
+      </div></div></div>
+      <div class="dphone">
+        <div class="fit"><div class="phone-scale"><div class="bezel"><div class="screen"><iframe class="tel-ifr" src="site/espace-pro.html#demandes/1040" title="L'espace pro sur téléphone"></iframe></div></div></div></div>
+        <p>Au dépôt, depuis le téléphone : un bouton, et le client reçoit un mail.</p>
+      </div>
+    </div>
+    <div class="benef3">
+      <div><b>Des demandes propres</b><span>Chaque liste arrive complète, avec le total et le poids. Vous voyez où en est chaque demande, et le client reçoit un mail quand sa commande est prête.</span></div>
+      <div><b>Vos tarifs sans effort</b><span>Quand vos prix changent, vous envoyez votre fichier comme aujourd'hui. Ils sont en ligne dans la semaine, c'est compris dans la maintenance.</span></div>
+      <div><b>Vous gardez la main</b><span>Pages, photos, produits, horaires : tout se change en quelques clics, avec un aperçu avant de publier.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="garde wrap">
+  <h2>Ce qui ne change pas</h2>
+  <ul class="checks">
+    <li>Vos prix publics, affichés pour tous : c'est votre force.</li>
+    <li>Vos conseils de professionnel, mis en avant.</li>
+    <li>Votre logo et vos couleurs.</li>
+    <li>Votre façon de travailler : devis par mail, retrait sur place ou par transporteur.</li>
+    <li>Votre place sur Google : vos anciennes pages seront redirigées vers les nouvelles.</li>
+    <li>Votre adresse, vos horaires et votre numéro, bien en vue.</li>
+  </ul>
+</section>
+
+<footer><div class="wrap">Maquette non contractuelle, préparée pour la Scierie Rétif. Photos : votre site actuel (réalisations de vos clients et dépôt). Prix : votre tarif Douglas brut de juin 2026. Les demandes, les noms et les chiffres de l'espace pro sont des exemples.</div></footer>
+
+<script src="retif-donnees.js"></script>
+<script src="retif-proto.js"></script>
+<script>
+document.addEventListener('click', function(e){
+  if (e.target.closest('[data-tel-accueil]')){ document.querySelector('.js-tel-ifr').src = 'site/index.html'; return; }
+  var b = e.target.closest('[data-ifr]'); if (!b) return;
+  var f = document.querySelector('.js-ifr'), page = b.getAttribute('data-ifr');
+  f.src = page;
+  document.querySelector('.js-ifr-url').textContent = 'scierie-retif.com' + (page.indexOf('index.html') > -1 ? '' : '/' + page.replace('site/', '').replace('.html', ''));
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ifr]'), function(x){ x.classList.toggle('on', x === b); });
+});
+</script>
+</body>
+</html>

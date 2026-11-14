@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Je fais une terrasse · Scierie Rétif (maquette)</title>
+<meta name="description" content="Le projet terrasse de la Scierie Rétif : plots, lambourdes, lames Douglas, vis, espaceurs et huile, dans l’ordre du chantier, avec les prix et un calculateur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Page « Je fais une terrasse » : préfixe ter- */
+.ter-ancre{scroll-margin-top:calc(var(--hd) + 18px)}
+
+/* En-tête */
+.ter-hero{padding:0 0 64px; margin-bottom:0}
+.ter-hero .r-fil{color:var(--noir)}
+.ter-hero .r-fil a{text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--noir) 30%, transparent); text-underline-offset:3px}
+.ter-hero-in{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:56px; align-items:center; margin-top:20px}
+.ter-hero h1{font-size:80px; line-height:.98; margin:14px 0 18px}
+.ter-hero-btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.ter-hero-faits{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 0; padding:0}
+.ter-hero-faits li{display:inline-flex; align-items:center; gap:7px; font-size:14px; font-weight:600; background:color-mix(in srgb, var(--blanc) 55%, transparent); padding:7px 13px 7px 10px; border-radius:999px}
+.ter-hero-faits svg{width:16px; height:16px; fill:none; stroke:var(--ok); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.ter-hero-photo{position:relative; margin:0; height:540px; border-radius:30px; overflow:hidden; background:var(--sc2); box-shadow:0 40px 70px -42px color-mix(in srgb, var(--noir) 70%, transparent)}
+.ter-hero-photo img{width:100%; height:100%; object-fit:cover; animation:ter-zoom 1.8s var(--ease) both}
+@keyframes ter-zoom{from{transform:scale(1.1)} to{transform:scale(1)}}
+.ter-hero-prix{position:absolute; left:18px; bottom:18px; background:var(--noir); color:var(--blanc); border-radius:18px; padding:12px 18px 13px; line-height:1.2; animation:ter-monte .8s .5s var(--ressort) both}
+@keyframes ter-monte{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+.ter-hero-prix small{display:block; font-size:12.5px; font-weight:600; color:var(--vert); margin-bottom:3px}
+.ter-hero-prix b{font-size:30px; letter-spacing:-.02em}
+.ter-hero-prix span{font-size:14px; color:var(--sc2); margin-left:4px}
+
+/* Le chantier dans l'ordre */
+.ter-plan{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; padding:0}
+.ter-plan a{display:inline-flex; align-items:center; gap:9px; padding:7px 15px 7px 7px; border-radius:999px; background:var(--sc); font-weight:600; font-size:14.5px; transition:background .3s, color .3s}
+.ter-plan a span{display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--blanc); font-size:13px; font-weight:800; transition:background .3s, color .3s}
+.ter-plan a:hover{background:var(--sc2)}
+.ter-plan a.on{background:var(--noir); color:var(--blanc)}
+.ter-plan a.on span{background:var(--vert); color:var(--noir)}
+.ter-parcours{position:relative; padding-left:78px}
+.ter-parcours::before, .ter-prog{content:""; position:absolute; left:23px; top:26px; bottom:26px; width:2px; background:var(--ligne)}
+.ter-etapes{list-style:none; margin:0; padding:0; counter-reset:ter-e}
+.ter-prog{background:var(--noir); transform-origin:top; transform:scaleY(0); transition:transform .25s linear}
+.ter-etape{position:relative; counter-increment:ter-e; margin:0 0 26px}
+.ter-etape:last-child{margin-bottom:0}
+.ter-etape::before{content:counter(ter-e); position:absolute; left:-78px; top:2px; width:48px; height:48px; border-radius:50%; display:grid; place-items:center; background:var(--blanc); border:2px solid var(--ligne); font-weight:800; font-size:18px; transition:background .45s, color .45s, border-color .45s, transform .45s var(--ressort)}
+.ter-etape.fait::before{background:var(--sc2); border-color:var(--sc2)}
+.ter-etape.on::before{background:var(--noir); color:var(--vert); border-color:var(--noir); transform:scale(1.08)}
+.ter-etape-carte{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); border:1px solid var(--ligne); border-radius:var(--r); overflow:hidden; background:var(--blanc); transition:box-shadow .45s, border-color .45s}
+.ter-etape.on .ter-etape-carte{border-color:var(--sauge); box-shadow:0 30px 50px -40px color-mix(in srgb, var(--noir) 55%, transparent)}
+.ter-etape-txt{padding:28px 30px 26px}
+.ter-etape-txt h3{font-size:25px; margin:6px 0 10px}
+.ter-etape-txt > p{color:var(--of); margin:0}
+.ter-points{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:7px}
+.ter-points li{position:relative; padding-left:26px; font-size:15.5px; line-height:1.5}
+.ter-points li::before{content:""; position:absolute; left:2px; top:.42em; width:11px; height:6px; border-left:2px solid var(--ok); border-bottom:2px solid var(--ok); transform:rotate(-45deg)}
+.ter-prixbox{margin-top:18px; background:var(--sc); border-radius:var(--r-s); padding:13px 16px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; font-size:15px}
+.ter-prixbox b{font-size:18px; letter-spacing:-.01em}
+.ter-mini-prix{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px; width:100%}
+.ter-mini-prix li{display:grid; background:var(--blanc); border-radius:10px; padding:6px 10px; font-size:13px; line-height:1.25; color:var(--of)}
+.ter-mini-prix b{font-size:15px; color:var(--noir)}
+.ter-alerte{display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; margin-top:12px; font-size:14.5px; line-height:1.45; border-left:3px solid var(--olive-tarif); padding:4px 0 4px 12px}
+.ter-alerte svg{width:20px; height:20px; fill:none; stroke:var(--olive-tarif); stroke-width:2; stroke-linecap:round; margin-top:1px}
+.ter-etape-media{position:relative; min-height:320px; background:var(--sc); overflow:hidden}
+.ter-etape-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease)}
+.ter-etape.on .ter-etape-media img{transform:scale(1.04)}
+.ter-etape-media--schema{background:var(--blanc); border-left:1px solid var(--ligne)}
+.ter-etape-media--schema img{object-fit:contain; padding:26px; max-width:none}
+.ter-etape-media--duo{display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); gap:2px; background:var(--ligne)}
+.ter-etape-media--duo > div{position:relative; overflow:hidden; background:var(--sc)}
+.ter-etape-media--duo > div:first-child{aspect-ratio:600 / 372}
+.ter-etape-media--duo > div:last-child img{object-fit:contain}
+
+/* Tarif des lames */
+.ter-tarifs{display:grid; gap:18px}
+.ter-tarif th.ter-col-fin{width:40%}
+.ter-tarif--2 th.ter-col-fin{width:46%}
+.r-tarif.ter-tarif td:first-child{white-space:normal}
+.ter-fin{display:grid; grid-template-columns:64px minmax(0,1fr); column-gap:14px; align-items:center; line-height:1.3}
+.ter-fin .ter-profil{grid-row:1 / span 2; width:64px; height:17px}
+.r-tarif td:first-child .ter-fin small{display:block; margin:0; font-size:13px}
+.ter-profil{display:block; overflow:visible}
+.ter-profil path{fill:var(--sc2); stroke:var(--olive); stroke-width:1.4; stroke-linejoin:round}
+.r-tarif td.ter-cde{cursor:pointer; line-height:1.2; transition:background .2s}
+.r-tarif td.ter-cde:hover{background:var(--sc)}
+.r-tarif td.ter-cde i{display:block; font-style:normal; font-size:11.5px; font-weight:600; color:var(--of)}
+.r-tarif td.p:focus-visible, .r-tarif td.ter-cde:focus-visible{outline:2px solid var(--noir); outline-offset:-3px}
+.r-tarif td.u{font-weight:700; color:var(--noir)}
+.ter-glisse{display:none; font-size:13px; color:var(--of); margin:0 0 8px}
+.ter-legende{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13.5px; color:var(--of); margin:14px 0 0}
+.ter-legende span{display:inline-flex; align-items:center; gap:7px}
+.ter-legende i{width:16px; height:16px; border-radius:4px; border:1px solid var(--ligne); background:var(--blanc)}
+.ter-legende i.ter-leg-stock{background:color-mix(in srgb, var(--vert-stock) 55%, var(--blanc))}
+.ter-choix{margin-top:16px; border:1.5px dashed var(--sauge); border-radius:var(--r); padding:14px 18px; display:flex; align-items:center; min-height:76px; transition:background .35s, border-color .35s}
+.ter-choix.on{background:var(--sc); border-color:var(--sc)}
+.ter-choix-vide{margin:0; color:var(--of); display:flex; align-items:center; gap:10px}
+.ter-choix-vide svg{width:22px; height:22px; fill:none; stroke:var(--olive); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.ter-choix-plein{display:flex; align-items:center; flex-wrap:wrap; gap:12px 16px; width:100%; animation:ter-monte .45s var(--ease)}
+.ter-choix-plein[hidden], .ter-choix-vide[hidden]{display:none}
+.ter-choix-nom{flex:1; min-width:210px; line-height:1.35}
+.ter-choix-nom b{display:block; font-size:16.5px}
+.ter-choix-nom small{color:var(--of); font-size:14px}
+.ter-qte{display:inline-flex; align-items:center; background:var(--blanc); border:1px solid var(--ligne); border-radius:999px; padding:4px}
+.ter-qte button{width:36px; height:36px; border-radius:50%; font-size:19px; font-weight:700; text-align:center; line-height:1; transition:background .2s}
+.ter-qte button:hover{background:var(--sc)}
+.ter-qte input{width:56px; border:0; text-align:center; font:inherit; font-weight:700; font-size:16px; color:var(--noir); background:none; padding:0}
+.ter-qte input:focus{outline:none}
+.ter-qte:focus-within{border-color:var(--noir); box-shadow:0 0 0 3px var(--sc2)}
+.ter-choix-total{font-weight:800; font-size:17px; white-space:nowrap}
+
+/* Lisses ou striées */
+.ter-duo{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:16px; align-items:stretch}
+.ter-ou{align-self:center; font-size:14px; font-weight:700; color:var(--of); background:var(--sc); width:46px; height:46px; border-radius:50%; display:grid; place-items:center}
+.ter-option{border:1px solid var(--ligne); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; background:var(--blanc); transition:transform .35s var(--ease), box-shadow .35s}
+.ter-option:hover{transform:translateY(-4px); box-shadow:0 26px 40px -30px color-mix(in srgb, var(--noir) 50%, transparent)}
+.ter-option-vis{background:var(--sc); padding:22px 24px 16px}
+.ter-option-vis svg{display:block; width:100%; height:auto}
+.ter-option-corps{padding:20px 24px 22px; display:flex; flex-direction:column; flex:1}
+.ter-option-corps > small{font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--olive)}
+.ter-option-corps h3{font-size:24px; margin:4px 0 6px}
+.ter-option-pied{margin-top:auto; padding-top:14px; border-top:1px solid var(--ligne); display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; font-size:14.5px; color:var(--of)}
+.ter-option-pied b{color:var(--noir); font-size:17px}
+.ter-option .ter-points{margin:8px 0 16px}
+.ter-tex-lame{fill:var(--blanc); stroke:var(--sauge); stroke-width:1.2}
+.ter-tex-veine{fill:none; stroke:var(--sauge); stroke-width:1.1; stroke-linecap:round}
+.ter-tex-rainure{stroke:var(--olive); stroke-width:1; opacity:.5}
+.ter-savoir{margin-top:16px; display:grid; grid-template-columns:auto 1fr; gap:14px 18px; align-items:start; background:var(--sc2); border-radius:var(--r); padding:20px 24px}
+.ter-savoir-ic{width:42px; height:42px; border-radius:50%; background:var(--noir); display:grid; place-items:center}
+.ter-savoir-ic svg{width:22px; height:22px; fill:none; stroke:var(--vert); stroke-width:2; stroke-linecap:round}
+.ter-savoir p{margin:0}
+.ter-savoir p + p{margin-top:8px; color:var(--of); font-size:15px}
+
+/* Calculateur */
+.ter-calc{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); border:1px solid var(--ligne); border-radius:28px; overflow:hidden; background:var(--blanc)}
+.ter-calc-in{padding:36px 38px}
+.ter-calc-in h2{font-size:42px; margin:8px 0 10px}
+.ter-calc-in > p{color:var(--of); margin-bottom:22px}
+.ter-etiq{display:block; font-size:14.5px; font-weight:700; margin:0 0 8px}
+.ter-surface{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.ter-surface .ter-qte input{width:86px; font-size:22px}
+.ter-unite{font-weight:700; font-size:18px; color:var(--of)}
+.ter-curseur{display:block; width:100%; margin:16px 0 22px; accent-color:var(--noir)}
+.ter-larg{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:8px; align-items:center}
+.ter-larg button{border:1.5px solid var(--ligne); border-radius:var(--r-s); padding:12px 14px; text-align:left; transition:border-color .25s, background .25s}
+.ter-larg button:hover{background:var(--sc)}
+.ter-larg button b{display:block; font-size:19px}
+.ter-larg button small{display:block; color:var(--of); font-size:13px; line-height:1.35; margin-top:2px}
+.ter-larg button[aria-checked="true"]{border-color:var(--noir); background:var(--sc)}
+.ter-larg .ter-o{font-size:13px; color:var(--of)}
+.ter-apercu{margin:22px 0 0; background:var(--sc); border-radius:var(--r-s); padding:14px 14px 12px}
+.ter-apercu svg{display:block; width:100%; height:auto}
+.ter-apercu figcaption{font-size:13px; color:var(--of); margin-top:8px; line-height:1.4}
+.ter-ap-lamb{fill:var(--sauge)}
+.ter-ap-lame{fill:var(--blanc); stroke:var(--olive); stroke-width:.8; animation:ter-pose .5s var(--ease) both}
+.ter-ap-vis{fill:var(--noir); animation:ter-vis .4s var(--ressort) both; transform-box:fill-box; transform-origin:center}
+@keyframes ter-pose{from{opacity:0; transform:translateX(-14px)} to{opacity:1; transform:none}}
+@keyframes ter-vis{from{opacity:0; transform:scale(0)} to{opacity:1; transform:none}}
+.ter-calc-out{background:var(--noir); color:var(--sc2); padding:36px 38px; display:flex; flex-direction:column}
+.ter-calc-out .r-kicker{color:var(--vert)}
+.ter-res{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; margin:14px 0 0}
+.ter-res > div{background:color-mix(in srgb, var(--blanc) 8%, var(--noir)); border-radius:18px; padding:16px 18px 15px}
+.ter-res dt{font-size:14px; font-weight:600; color:var(--sc2)}
+.ter-res dd{margin:2px 0 0}
+.ter-res dd b{display:block; font-size:46px; line-height:1.08; font-weight:800; color:var(--vert); letter-spacing:-.02em}
+.ter-res dd b em{font-style:normal; font-size:20px; font-weight:700; margin-left:4px; letter-spacing:0}
+.ter-res dd small{display:block; font-size:12.5px; color:color-mix(in srgb, var(--sc2) 72%, var(--noir))}
+.ter-res .ter-res-large{grid-column:1 / -1}
+.ter-marge{display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; margin:14px 0 0; font-size:14.5px; line-height:1.45}
+.ter-marge svg{width:20px; height:20px; fill:none; stroke:var(--vert); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; margin-top:1px}
+.ter-marge b{color:var(--blanc)}
+.ter-aussi{margin-top:18px; border-top:1px solid color-mix(in srgb, var(--blanc) 14%, var(--noir)); padding-top:14px}
+.ter-aussi > b{display:block; font-size:12.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vert); margin-bottom:4px}
+.ter-aussi ul{list-style:none; margin:0; padding:0}
+.ter-aussi li{display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:8px 0; border-bottom:1px dashed color-mix(in srgb, var(--blanc) 16%, var(--noir)); font-size:14.5px}
+.ter-aussi li b{color:var(--blanc); white-space:nowrap; font-size:15.5px}
+.ter-ajout{margin-top:auto; padding-top:24px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px}
+.ter-ajout .r-btn{white-space:normal; text-align:center}
+.ter-ajout .r-btn[disabled]{opacity:.45; cursor:not-allowed; transform:none}
+.ter-ajout small{font-size:13px; color:color-mix(in srgb, var(--sc2) 72%, var(--noir))}
+
+/* Le conseil : le calepinage */
+.ter-conseil{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:18px; align-items:stretch}
+.ter-conseil .r-conseil{font-size:17px; padding:26px 28px; align-content:start}
+.ter-conseil .r-conseil p{margin:6px 0 0}
+.ter-conseil .r-conseil .r-lien{display:inline-block; margin-top:14px}
+.ter-croquis{margin:0; background:var(--sc); border-radius:var(--r); padding:20px 20px 14px; display:flex; flex-direction:column; justify-content:center}
+.ter-croquis svg{display:block; width:100%; height:auto}
+.ter-croquis figcaption{font-size:13px; color:var(--of); margin-top:6px}
+.ter-trace{fill:none; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.6s var(--ease)}
+.vu .ter-trace{stroke-dashoffset:0}
+.ter-cr-lame{stroke:var(--olive); stroke-width:1.4}
+.ter-cr-lamb{stroke:var(--olive); stroke-width:1.2; stroke-dasharray:4 4; opacity:0; transition:opacity .8s 1s}
+.ter-cr-double{stroke:var(--noir); stroke-width:1.8; opacity:0; transition:opacity .8s 1.3s}
+.vu .ter-cr-lamb{opacity:.7}
+.vu .ter-cr-double{opacity:1}
+.ter-cr-cote{stroke:var(--noir); stroke-width:1.2; fill:none}
+.ter-cr-txt{font-family:var(--texte); font-size:15px; font-weight:600; fill:var(--noir)}
+.ter-cr-txt--doux{fill:var(--of); font-weight:500; font-size:13px}
+.ter-cr-anim{opacity:0; transition:opacity .8s 1.5s}
+.vu .ter-cr-anim{opacity:1}
+
+/* Galerie */
+.ter-galerie{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); grid-auto-rows:200px; grid-auto-flow:dense; gap:12px}
+.ter-g{position:relative; display:block; width:100%; height:100%; border-radius:var(--r); overflow:hidden; background:var(--sc); cursor:zoom-in}
+.ter-g img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease)}
+.ter-g:hover img{transform:scale(1.06)}
+.ter-g:focus-visible{outline:2px solid var(--noir); outline-offset:3px}
+.ter-g--grand{grid-column:span 2; grid-row:span 2}
+.ter-g--large{grid-column:span 2}
+.ter-g--haut{grid-row:span 2}
+.ter-g .r-plaque{opacity:.96; transition:transform .4s var(--ease)}
+.ter-g:hover .r-plaque{transform:translateY(-3px)}
+.ter-visio{border:0; padding:0; background:transparent; width:min(1080px, 92vw); max-width:none; max-height:none; overflow:visible; color:var(--blanc)}
+.ter-visio::backdrop{background:color-mix(in srgb, var(--noir) 88%, transparent)}
+.ter-visio[open] figure{animation:ter-ouvre .45s var(--ease)}
+@keyframes ter-ouvre{from{opacity:0; transform:scale(.96)} to{opacity:1; transform:none}}
+.ter-visio figure{margin:0}
+.ter-visio img{width:100%; max-height:78vh; object-fit:contain; border-radius:16px; background:var(--noir)}
+.ter-visio figcaption{text-align:center; margin-top:12px; font-weight:600; font-size:15px}
+.ter-visio-btn{position:absolute; top:calc(50% - 40px); width:50px; height:50px; border-radius:50%; background:var(--blanc); color:var(--noir); display:grid; place-items:center; transition:background .2s}
+.ter-visio-btn:hover{background:var(--sc)}
+.ter-visio-btn svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.ter-visio-prec{left:-66px}
+.ter-visio-suiv{right:-66px}
+.ter-visio-x{top:-58px; right:0}
+
+/* Pour finir */
+.ter-cta{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:34px; align-items:center; background:var(--sauge); border-radius:28px; padding:42px 46px}
+.ter-cta h2{font-size:46px; margin:8px 0 12px}
+.ter-cta .r-kicker{color:var(--noir)}
+.ter-cta p{color:var(--noir); max-width:560px}
+.ter-cta .r-lien{text-decoration-color:var(--noir); white-space:nowrap}
+.ter-cta-btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px}
+.ter-cta-liste{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.ter-cta-liste li{display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; background:color-mix(in srgb, var(--blanc) 62%, transparent); border-radius:16px; padding:13px 15px; font-size:15px; line-height:1.45}
+.ter-cta-liste svg{width:24px; height:24px; fill:none; stroke:var(--noir); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+
+/* Écrans plus petits */
+@media (max-width:1100px){
+  .ter-hero h1{font-size:64px}
+  .ter-hero-photo{height:460px}
+  .ter-etape-carte{grid-template-columns:minmax(0,1fr)}
+  .ter-etape-media{min-height:260px; order:-1}
+  .ter-etape-media--schema{border-left:0; border-bottom:1px solid var(--ligne)}
+  .ter-etape-media--petit img, .ter-etape-media--duo img{object-fit:contain}
+  .ter-etape-media--duo{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); grid-template-rows:minmax(0,1fr)}
+  .ter-etape-media--duo > div:first-child{aspect-ratio:auto}
+  .ter-calc{grid-template-columns:minmax(0,1fr)}
+  .ter-conseil{grid-template-columns:minmax(0,1fr)}
+  .ter-cta{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:860px){
+  .ter-hero-in{grid-template-columns:minmax(0,1fr); gap:28px}
+  .ter-hero-photo{height:340px}
+  .ter-duo{grid-template-columns:minmax(0,1fr)}
+  .ter-ou{justify-self:center}
+  .ter-galerie{grid-template-columns:repeat(2, minmax(0,1fr)); grid-auto-rows:150px}
+  .ter-visio-prec{left:8px}
+  .ter-visio-suiv{right:8px}
+}
+@media (max-width:760px){
+  .ter-hero{padding-bottom:44px}
+  .ter-hero h1{font-size:46px; margin-top:10px}
+  .ter-hero-photo{height:260px; border-radius:22px}
+  .ter-hero-prix b{font-size:24px}
+  .ter-hero-btns .r-btn{flex:1 1 auto}
+  .ter-parcours{padding-left:46px}
+  .ter-parcours::before, .ter-prog{left:16px; top:20px; bottom:20px}
+  .ter-etape::before{left:-46px; width:34px; height:34px; font-size:15px}
+  .ter-etape-txt{padding:20px 18px 20px}
+  .ter-etape-txt h3{font-size:21px}
+  .ter-etape-media{min-height:200px}
+  .ter-etape-media--schema img{padding:16px}
+  .ter-plan a{font-size:13.5px; padding-right:12px}
+  .ter-glisse{display:block}
+  .ter-tarifs .r-tarif-titre{padding:12px 14px}
+  .r-tarif.ter-tarif{min-width:580px}
+  .ter-tarif th.ter-col-fin{width:150px}
+  .ter-tarifs .r-tarif-titre{position:sticky; left:0}
+  .r-tarif td.ter-cde{white-space:normal}
+  .r-tarif td.ter-cde i{font-size:11px; line-height:1.15; margin-top:2px}
+  .ter-tarif th:first-child, .ter-tarif td:first-child{position:sticky; left:0; z-index:1; background:var(--blanc); box-shadow:1px 0 0 var(--ligne)}
+  .ter-tarif th:first-child{background:var(--jaune); z-index:3}
+  .ter-tarif .ter-fin{grid-template-columns:minmax(0,1fr)}
+  .ter-tarif .ter-fin .ter-profil{grid-row:auto; margin-bottom:4px}
+  .r-tarif td:first-child .ter-fin small{font-size:12.5px}
+  .r-tarif.ter-tarif--2{min-width:0; font-size:13px}
+  .ter-tarif--2 th.ter-col-fin{width:40%}
+  .ter-tarif--2 th:first-child, .ter-tarif--2 td:first-child{position:static; box-shadow:none}
+  .r-tarif.ter-tarif--2 td, .r-tarif.ter-tarif--2 th{padding-left:6px; padding-right:7px}
+  .r-tarif.ter-tarif--2 td:first-child, .r-tarif.ter-tarif--2 th:first-child{padding-left:12px}
+  .ter-choix{padding:14px}
+  .ter-choix-plein .r-btn{width:100%}
+  .ter-calc{border-radius:22px}
+  .ter-calc-in, .ter-calc-out{padding:24px 18px}
+  .ter-calc-in h2{font-size:32px}
+  .ter-res dd b{font-size:36px}
+  .ter-res > div{padding:14px}
+  .ter-conseil .r-conseil{padding:20px}
+  .ter-cta{padding:28px 20px; border-radius:22px}
+  .ter-cta h2{font-size:34px}
+  .ter-visio-x{top:-54px}
+}
+</style>
+</head>
+<body data-page="projets">
+<header data-entete></header>
+<main>
+
+  <!-- En-tête du projet -->
+  <section class="r-tete-page r-tete-page--bandeau ter-hero">
+    <div class="r-wrap">
+      <nav class="r-fil" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="terrasse.html">Projets</a> › Je fais une terrasse</nav>
+      <div class="ter-hero-in">
+        <div>
+          <span class="r-kicker">Projet terrasse</span>
+          <h1>Je fais une terrasse</h1>
+          <p class="r-lead">Plots, lambourdes, lames, vis et huile&nbsp;: vous trouvez tout à la scierie, avec un Douglas sec et non traité. Voici le chantier dans l’ordre, avec nos prix et nos conseils de pro.</p>
+          <div class="ter-hero-btns">
+            <a class="r-btn r-btn--noir" href="#calculateur">Je calcule mes quantités</a>
+            <a class="r-btn r-btn--blanc" href="#prix">Voir le prix des lames</a>
+          </div>
+          <ul class="ter-hero-faits">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Douglas classe III, non traité</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Lames de 25&nbsp;mm, en 145 ou 200&nbsp;mm</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Prix TTC, à emporter</li>
+          </ul>
+        </div>
+        <figure class="ter-hero-photo">
+          <img src="img/terrasse-jardin.jpg" alt="Terrasse en lames de bois réalisée par un client de la scierie">
+          <figcaption class="ter-hero-prix"><small>Lames de terrasse Douglas</small><b>dès 35,25&nbsp;€</b><span>le m²</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="r-wrap">
+
+    <!-- Le parcours du chantier -->
+    <section class="r-section r-reveal" aria-labelledby="ter-titre-parcours">
+      <div class="r-tete"><div><h2 id="ter-titre-parcours">Le chantier, dans l’ordre</h2><p>Cinq étapes, du sol à la finition. Chaque étape a son matériel, et tout se trouve à la scierie.</p></div></div>
+      <ol class="ter-plan" aria-label="Les étapes">
+        <li><a href="#ter-e1"><span>1</span>Les plots</a></li>
+        <li><a href="#ter-e2"><span>2</span>Les lambourdes</a></li>
+        <li><a href="#ter-e3"><span>3</span>Les lames</a></li>
+        <li><a href="#ter-e4"><span>4</span>Vis et espaceurs</a></li>
+        <li><a href="#ter-e5"><span>5</span>L’huile</a></li>
+      </ol>
+
+      <div class="ter-parcours js-ter-etapes">
+      <span class="ter-prog js-ter-prog" aria-hidden="true"></span>
+      <ol class="ter-etapes">
+        <li class="ter-etape ter-ancre" id="ter-e1">
+          <article class="ter-etape-carte">
+            <div class="ter-etape-txt">
+              <span class="r-kicker">La base</span>
+              <h3>Les plots réglables</h3>
+              <p>Sur un terrain irrégulier ou sur une chape, les plots portent les lambourdes et isolent votre structure bois des remontées d’humidité. Robustes (1&nbsp;tonne par plot), ils résistent au froid et au gel.</p>
+              <ul class="ter-points">
+                <li>Plusieurs modèles selon la hauteur à compenser.</li>
+                <li>Pose directe sur chape&nbsp;: des cales isolantes de 8&nbsp;mm.</li>
+                <li>Sur herbe, gravier ou sable&nbsp;: un film géotextile empêche l’herbe de pousser.</li>
+                <li>Un plot tous les mètres sous les lambourdes&nbsp;: comptez en moyenne 3,5 à 4 plots par m².</li>
+              </ul>
+              <div class="ter-prixbox"><span><b>Vendus à l’unité</b><br>Vous prenez juste ce qu’il vous faut, et vous complétez si besoin.</span><a class="r-lien" href="produits.html#terrasse">Voir les plots</a></div>
+            </div>
+            <div class="ter-etape-media ter-etape-media--schema"><img src="img/produits/plot.jpg" alt="Schéma d’un plot réglable sous une lambourde, avec sa hauteur mini et maxi" loading="lazy"></div>
+          </article>
+        </li>
+
+        <li class="ter-etape ter-ancre" id="ter-e2">
+          <article class="ter-etape-carte">
+            <div class="ter-etape-txt">
+              <span class="r-kicker">La structure</span>
+              <h3>Les lambourdes 50&nbsp;×&nbsp;75</h3>
+              <p>En Douglas brut, sec et non traité, les lambourdes portent les lames. Posez-les perpendiculaires aux lames, tous les 50&nbsp;cm d’entraxe au maximum.</p>
+              <ul class="ter-points">
+                <li>Deux lames bout à bout&nbsp;? Doublez la lambourde à cet endroit.</li>
+                <li>Des entretoises renforcent et solidarisent l’ensemble.</li>
+                <li>Une vis inox 5&nbsp;×&nbsp;50 par plot, deux à la jonction de deux lambourdes.</li>
+              </ul>
+              <div class="ter-prixbox"><ul class="ter-mini-prix js-ter-lamb" aria-label="Prix des lambourdes 50 × 75 par longueur"></ul><span>Prix à la pièce, Douglas brut C18</span><a class="r-btn r-btn--noir r-btn--petit" href="douglas-brut.html?sel=50x75">Voir la fiche</a></div>
+              <p class="ter-alerte"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><span>Votre structure n’est pas soutenue tous les mètres sur plots&nbsp;? Choisissez vos sections avec le <a class="r-lien" href="conseils.html#solivage">guide de solivage</a>&nbsp;: c’est essentiel pour la solidité de l’ouvrage et votre sécurité.</span></p>
+            </div>
+            <div class="ter-etape-media"><img src="img/terrasse-chantier.jpg" alt="Terrasse en cours de pose&nbsp;: lambourdes sur plots, premières lames vissées" loading="lazy"></div>
+          </article>
+        </li>
+
+        <li class="ter-etape ter-ancre" id="ter-e3">
+          <article class="ter-etape-carte">
+            <div class="ter-etape-txt">
+              <span class="r-kicker">Le plancher</span>
+              <h3>Les lames de terrasse</h3>
+              <p>Douglas choix A, hors aubier, imputrescible et non traité, épais de 25&nbsp;mm. Deux largeurs&nbsp;: la section XXL 25&nbsp;×&nbsp;200 ou la classique 25&nbsp;×&nbsp;145.</p>
+              <ul class="ter-points">
+                <li>Trois finitions&nbsp;: rabotée 1 face lisse, 3 faces avec 2 quarts de rond, ou 4 faces striées.</li>
+                <li>Le calepinage vous dit quelles longueurs prendre, pour avoir le moins de perte.</li>
+                <li>Ajoutez environ 5&nbsp;% de matière pour les coupes.</li>
+              </ul>
+              <div class="ter-prixbox"><span><b>35,25&nbsp;€ à 40,59&nbsp;€</b> le m², selon la finition</span><a class="r-lien" href="#prix">Voir le tableau des prix</a></div>
+            </div>
+            <div class="ter-etape-media"><img src="img/produits/pergola-terrasse.jpg" alt="Terrasse en lames striées avec un garde-fou, chez un client" loading="lazy"></div>
+          </article>
+        </li>
+
+        <li class="ter-etape ter-ancre" id="ter-e4">
+          <article class="ter-etape-carte">
+            <div class="ter-etape-txt">
+              <span class="r-kicker">La fixation</span>
+              <h3>Les vis et les espaceurs</h3>
+              <p>Des vis inox A2 à double filet et tête Tx réduite, de qualité professionnelle. Le double filet se visse plus facilement et plus vite, attire la lame vers la lambourde et limite le soulèvement quand le bois se rétracte.</p>
+              <ul class="ter-points">
+                <li>Vis conseillée&nbsp;: 5&nbsp;×&nbsp;70&nbsp;mm pour des lames de 25&nbsp;mm.</li>
+                <li>Au moins 25 vis par m² en lames de 200&nbsp;mm, et 33 en lames de 145&nbsp;mm.</li>
+                <li>L’espaceur-écarteur de 4&nbsp;mm, en polypro imputrescible, garde un jeu régulier entre les lames. Sa base crantée évite que l’eau stagne et ventile le bois.</li>
+                <li>Le fraisoir pré-perce et fraise&nbsp;: la tête de vis se place bien et le bois n’éclate pas en bout de lame.</li>
+              </ul>
+              <div class="ter-prixbox"><span><b>12,00&nbsp;€</b> le sac de 100 espaceurs<br>Un espaceur pour 2 vis, soit un sac pour 8&nbsp;m² en lames de 200&nbsp;mm.</span><a class="r-lien" href="#calculateur">Calculer mes quantités</a></div>
+            </div>
+            <div class="ter-etape-media ter-etape-media--duo">
+              <div><img src="img/terrasse-fraisoir.jpg" alt="Le fraisoir monté sur une mèche, avec sa butée réglable" loading="lazy"></div>
+              <div><img src="img/produits/vis-terrasse.jpg" alt="Une vis inox et un espaceur-écarteur posés sur une lambourde" loading="lazy"></div>
+            </div>
+          </article>
+        </li>
+
+        <li class="ter-etape ter-ancre" id="ter-e5">
+          <article class="ter-etape-carte">
+            <div class="ter-etape-txt">
+              <span class="r-kicker">La finition</span>
+              <h3>L’huile de protection</h3>
+              <p>Une huile saturateur protège le bois et garde son aspect naturel. Sans protection, le Douglas grise et se tache.</p>
+              <ul class="ter-points">
+                <li>Traitez aussi les extrémités des lames, là où vous avez coupé.</li>
+                <li>La première fois, deux couches, sur un bois propre et sec. Comptez environ 1&nbsp;litre pour 10&nbsp;m² par couche.</li>
+                <li>Lames déjà grises&nbsp;? Passez d’abord le dégriseur concentré&nbsp;: 9,30&nbsp;€ la dose, pour environ 40&nbsp;m².</li>
+                <li>Ensuite, une couche tous les 2 ou 3 ans, selon l’exposition.</li>
+              </ul>
+              <div class="ter-prixbox"><ul class="ter-mini-prix" aria-label="Prix de l’huile par pot"><li><span>Pot de 1&nbsp;L</span><b>31,90&nbsp;€</b></li><li><span>Pot de 2,5&nbsp;L</span><b>72,00&nbsp;€</b></li><li><span>Pot de 5&nbsp;L</span><b>131,90&nbsp;€</b></li></ul><span>Huile hautes performances spéciale Douglas</span><a class="r-lien" href="conseils.html#entretien">Bien entretenir sa terrasse</a></div>
+            </div>
+            <div class="ter-etape-media ter-etape-media--petit"><img src="img/produits/huiles.jpg" alt="Pots d’huile de protection pour le bois" loading="lazy"></div>
+          </article>
+        </li>
+      </ol>
+      </div>
+    </section>
+
+    <!-- Le tarif des lames -->
+    <section class="r-section r-reveal ter-ancre" id="prix" aria-labelledby="ter-titre-prix">
+      <div class="r-tete"><div><h2 id="ter-titre-prix">Le prix des lames Douglas</h2><p>Prix directs de scierie, TTC à la lame, à emporter. Touchez un prix pour l’ajouter à votre liste.</p></div><a class="r-lien" href="produits.html#terrasse">Tout le rayon terrasse</a></div>
+      <p class="ter-glisse">Faites glisser le tableau sur le côté pour voir toutes les longueurs.</p>
+      <div class="ter-tarifs js-ter-tarifs"></div>
+      <p class="ter-legende"><span><i class="ter-leg-stock"></i>En stock</span><span><i></i>Sur commande</span><span>* Largeur maximale&nbsp;: le bois est un matériau vivant, il peut se rétracter de quelques millimètres selon le temps de séchage.</span></p>
+      <div class="ter-choix js-ter-choix" aria-live="polite">
+        <p class="ter-choix-vide js-ter-choix-vide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.6a6 6 0 0 1-4.9-2.6L4.6 15.3a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/></svg>Choisissez une finition et une longueur dans le tableau.</p>
+        <div class="ter-choix-plein js-ter-choix-plein" hidden>
+          <div class="ter-choix-nom"><b class="js-ter-choix-nom"></b><small class="js-ter-choix-det"></small></div>
+          <div class="ter-qte"><button type="button" class="js-ter-moins" aria-label="Une lame de moins">−</button><input class="js-ter-qte" type="text" inputmode="numeric" value="10" aria-label="Nombre de lames"><button type="button" class="js-ter-plus" aria-label="Une lame de plus">+</button></div>
+          <span class="ter-choix-total js-ter-choix-total"></span>
+          <button type="button" class="r-btn r-btn--noir js-ter-ajout-lame">Ajouter à ma liste</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lisses ou striées -->
+    <section class="r-section r-reveal" aria-labelledby="ter-titre-lisses">
+      <div class="r-tete"><div><h2 id="ter-titre-lisses">Lisses ou striées&nbsp;?</h2><p>Une simple question de goût&nbsp;? Presque. Voici ce qui change vraiment.</p></div><a class="r-lien" href="conseils.html#lisses-striees">Lire le guide complet</a></div>
+      <div class="ter-duo">
+        <article class="ter-option">
+          <div class="ter-option-vis">
+            <svg viewBox="0 0 320 150" role="img" aria-label="Trois lames lisses vues de dessus, et leur profil à quarts de rond">
+              <rect class="ter-tex-lame" x="4" y="6" width="312" height="30" rx="3"/><rect class="ter-tex-lame" x="4" y="40" width="312" height="30" rx="3"/><rect class="ter-tex-lame" x="4" y="74" width="312" height="30" rx="3"/>
+              <path class="ter-tex-veine" d="M20 17c40-6 70 6 120 2s90-8 160 0M30 28c50 4 100-5 150-1s80 5 120-1"/>
+              <path class="ter-tex-veine" d="M14 50c60 5 90-6 140-2s100 7 150-1M40 61c40-4 90 4 140 1s70-4 120 1"/>
+              <path class="ter-tex-veine" d="M18 85c50-5 90 5 130 1s100-6 156 1M28 96c60 4 110-4 160 0s70 3 110-1"/>
+              <path class="ter-profil-grand" d="M60 140v-17q0-5 5-5h190q5 0 5 5v17z" fill="var(--sc2)" stroke="var(--olive)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <div class="ter-option-corps">
+            <small>R1F et R3F QDR</small>
+            <h3>Les lames lisses</h3>
+            <ul class="ter-points">
+              <li>Elles gardent intactes les nuances et les teintes du bois.</li>
+              <li>Un style contemporain et moderne&nbsp;: l’effet lisse allonge la terrasse.</li>
+              <li>L’eau s’écoule dans toutes les directions, la terrasse sèche vite.</li>
+            </ul>
+            <div class="ter-option-pied"><span>Lisse 1 face ou 3 faces</span><span>dès <b>35,25&nbsp;€</b> le m²</span></div>
+          </div>
+        </article>
+        <span class="ter-ou">ou</span>
+        <article class="ter-option">
+          <div class="ter-option-vis">
+            <svg viewBox="0 0 320 150" role="img" aria-label="Trois lames striées vues de dessus, et leur profil à rainures en V">
+              <rect class="ter-tex-lame" x="4" y="6" width="312" height="30" rx="3"/><rect class="ter-tex-lame" x="4" y="40" width="312" height="30" rx="3"/><rect class="ter-tex-lame" x="4" y="74" width="312" height="30" rx="3"/>
+              <g class="ter-tex-rainure js-ter-rainures"></g>
+              <path d="M60 140v-17q0-5 5-5h190q5 0 5 5v17z" fill="var(--sc2)" stroke="var(--olive)" stroke-width="1.6" class="js-ter-profil-v"/>
+            </svg>
+          </div>
+          <div class="ter-option-corps">
+            <small>R4F 10V et R4F 6V</small>
+            <h3>Les lames striées</h3>
+            <ul class="ter-points">
+              <li>Du relief et de la profondeur pour votre terrasse.</li>
+              <li>Elles atténuent les contrastes naturels du bois et l’homogénéisent.</li>
+              <li>Un esprit plus traditionnel, ou cosy.</li>
+            </ul>
+            <div class="ter-option-pied"><span>Rabotées 4 faces, peigne en V</span><span><b>40,59&nbsp;€</b> le m²</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="ter-savoir">
+        <span class="ter-savoir-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v8M12 18v.5"/></svg></span>
+        <div>
+          <p><b>Bon à savoir&nbsp;: les lames striées ne sont pas forcément antidérapantes.</b> L’eau stagne dans les rainures, une petite mousse verte peut s’y former, et elles peuvent alors glisser plus que des lames lisses.</p>
+          <p>Ce qui évite les glissades&nbsp;: un entretien régulier, à l’eau et au balai brosse, en laissant bien sécher. La tendance actuelle va plutôt vers les lames lisses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le calculateur -->
+    <section class="r-section r-reveal ter-ancre" id="calculateur" aria-labelledby="ter-titre-calc">
+      <div class="ter-calc">
+        <div class="ter-calc-in">
+          <span class="r-kicker">Petit calculateur</span>
+          <h2 id="ter-titre-calc">Combien de vis, d’espaceurs et de lames&nbsp;?</h2>
+          <p>Entrez la surface de votre terrasse et la largeur de vos lames&nbsp;: le compte se fait tout seul, avec nos règles de pose.</p>
+          <label class="ter-etiq" for="ter-m2">Surface de la terrasse</label>
+          <div class="ter-surface">
+            <div class="ter-qte"><button type="button" class="js-ter-m2-moins" aria-label="Un mètre carré de moins">−</button><input id="ter-m2" class="js-ter-m2" type="text" inputmode="decimal" value="20" autocomplete="off"><button type="button" class="js-ter-m2-plus" aria-label="Un mètre carré de plus">+</button></div>
+            <span class="ter-unite">m²</span>
+          </div>
+          <input class="ter-curseur js-ter-curseur" type="range" min="1" max="100" step="1" value="20" aria-label="Surface en mètres carrés">
+          <span class="ter-etiq" id="ter-etiq-larg">Largeur des lames</span>
+          <div class="ter-larg" role="radiogroup" aria-labelledby="ter-etiq-larg">
+            <button type="button" role="radio" aria-checked="true" data-larg="200"><b>200&nbsp;mm</b><small>Section XXL · 25 vis par m²</small></button>
+            <span class="ter-o">ou</span>
+            <button type="button" role="radio" aria-checked="false" data-larg="145"><b>145&nbsp;mm</b><small>Section classique · 33 vis par m²</small></button>
+          </div>
+          <figure class="ter-apercu">
+            <svg class="js-ter-apercu" viewBox="0 0 320 138" role="img" aria-label="Aperçu de la pose&nbsp;: lames vissées sur cinq lambourdes"></svg>
+            <figcaption>Aperçu&nbsp;: des lames de 2&nbsp;m sur 5 lambourdes espacées de 50&nbsp;cm, 2 vis à chaque lambourde, et un jeu de 4&nbsp;mm entre les lames.</figcaption>
+          </figure>
+        </div>
+        <div class="ter-calc-out" aria-live="polite">
+          <span class="r-kicker">Il vous faut</span>
+          <dl class="ter-res">
+            <div><dt>Vis inox 5&nbsp;×&nbsp;70</dt><dd><b class="js-ter-r-vis">0</b><small class="js-ter-r-taux">25 vis par m²</small></dd></div>
+            <div><dt>Espaceurs 4&nbsp;mm</dt><dd><b class="js-ter-r-esp">0</b><small>Un espaceur pour 2 vis</small></dd></div>
+            <div><dt>Sacs de 100 espaceurs</dt><dd><b class="js-ter-r-sacs">0</b><small>12,00&nbsp;€ le sac</small></dd></div>
+            <div><dt>Lames</dt><dd><b><span class="js-ter-r-ml">0</span><em>m</em></b><small>Mètres linéaires&nbsp;: surface ÷ (largeur + 4&nbsp;mm de jeu)</small></dd></div>
+          </dl>
+          <p class="ter-marge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M14 4h6v6"/></svg><span><b>Prévoyez une marge pour les coupes.</b> Notre guide de pose conseille 5&nbsp;% de matière en plus, soit environ <b class="js-ter-r-ml5">0</b>&nbsp;m de lames.</span></p>
+          <div class="ter-aussi">
+            <b>À prévoir aussi</b>
+            <ul>
+              <li><span>Plots, 3,5 à 4 par m² en moyenne</span><b class="js-ter-r-plots">0</b></li>
+              <li><span>Huile, 2 couches (1&nbsp;L pour 10&nbsp;m²)</span><b><span class="js-ter-r-huile">0</span>&nbsp;L</b></li>
+              <li><span>Lambourdes 50&nbsp;×&nbsp;75</span><b>une tous les 50&nbsp;cm</b></li>
+            </ul>
+          </div>
+          <div class="ter-ajout">
+            <button type="button" class="r-btn r-btn--blanc js-ter-ajout-sacs">Ajouter les sacs à ma liste</button>
+            <small>Estimation minimum. Votre calepinage donne le compte exact.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le conseil de la scierie -->
+    <section class="r-section r-reveal" aria-label="Le conseil de la scierie">
+      <div class="ter-conseil">
+        <div class="r-conseil">
+          <div>
+            <b>Le conseil de la scierie</b>
+            <p>Avant toute chose, faites un croquis de votre terrasse. Ce calepinage préalable vous aide à calculer vos besoins précis&nbsp;: bois, longueurs de lames et accessoires.</p>
+            <p>À surface égale, le type de pose change les coupes, mais aussi le nombre de lambourdes, de plots et de vis. Faites le dessin avant d’acheter.</p>
+            <a class="r-lien" href="conseils.html#calepinage">Faire mon calepinage</a>
+          </div>
+        </div>
+        <figure class="ter-croquis">
+          <svg viewBox="0 0 520 270" role="img" aria-label="Croquis d’un calepinage&nbsp;: lames posées dans la longueur, lambourdes à entraxe régulier, double lambourde sous chaque aboutage">
+            <g>
+              <line class="ter-cr-lamb" x1="62" y1="38" x2="62" y2="214"/><line class="ter-cr-lamb" x1="128" y1="38" x2="128" y2="214"/><line class="ter-cr-lamb" x1="262" y1="38" x2="262" y2="214"/><line class="ter-cr-lamb" x1="400" y1="38" x2="400" y2="214"/><line class="ter-cr-lamb" x1="466" y1="38" x2="466" y2="214"/>
+              <line class="ter-cr-double" x1="191" y1="38" x2="191" y2="214"/><line class="ter-cr-double" x1="199" y1="38" x2="199" y2="214"/><line class="ter-cr-double" x1="327" y1="38" x2="327" y2="214"/><line class="ter-cr-double" x1="335" y1="38" x2="335" y2="214"/>
+            </g>
+            <g>
+              <rect class="ter-trace ter-cr-lame" pathLength="1" x="40" y="44" width="290" height="30" rx="2"/><rect class="ter-trace ter-cr-lame" pathLength="1" x="332" y="44" width="148" height="30" rx="2"/>
+              <rect class="ter-trace ter-cr-lame" pathLength="1" x="40" y="78" width="154" height="30" rx="2"/><rect class="ter-trace ter-cr-lame" pathLength="1" x="196" y="78" width="284" height="30" rx="2"/>
+              <rect class="ter-trace ter-cr-lame" pathLength="1" x="40" y="112" width="290" height="30" rx="2"/><rect class="ter-trace ter-cr-lame" pathLength="1" x="332" y="112" width="148" height="30" rx="2"/>
+              <rect class="ter-trace ter-cr-lame" pathLength="1" x="40" y="146" width="154" height="30" rx="2"/><rect class="ter-trace ter-cr-lame" pathLength="1" x="196" y="146" width="284" height="30" rx="2"/>
+              <rect class="ter-trace ter-cr-lame" pathLength="1" x="40" y="180" width="290" height="30" rx="2"/><rect class="ter-trace ter-cr-lame" pathLength="1" x="332" y="180" width="148" height="30" rx="2"/>
+            </g>
+            <g class="ter-cr-anim">
+              <path class="ter-cr-cote" d="M40 22h440M40 16v12M480 16v12"/>
+              <text class="ter-cr-txt" x="260" y="14" text-anchor="middle">Longueur (L)</text>
+              <path class="ter-cr-cote" d="M22 44v166M16 44h12M16 210h12"/>
+              <text class="ter-cr-txt" transform="translate(12 127) rotate(-90)" text-anchor="middle">Profondeur (P)</text>
+              <path class="ter-cr-cote" d="M62 232h66M62 226v12M128 226v12"/>
+              <text class="ter-cr-txt" x="95" y="256" text-anchor="middle">Entraxe (E)</text>
+              <path class="ter-cr-cote" d="M331 232v-14"/>
+              <text class="ter-cr-txt" x="331" y="256" text-anchor="middle">Double lambourde</text>
+            </g>
+          </svg>
+          <figcaption>Pointillés&nbsp;: les lambourdes sous les lames. En noir&nbsp;: une double lambourde sous chaque aboutage.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Galerie de réalisations -->
+    <section class="r-section r-reveal" aria-labelledby="ter-titre-galerie">
+      <div class="r-tete"><div><h2 id="ter-titre-galerie">Quelques réalisations de clients</h2><p>Des terrasses posées par nos clients. Touchez une photo pour l’agrandir.</p></div><a class="r-lien" href="realisations.html">Toutes les réalisations</a></div>
+      <div class="ter-galerie">
+        <button type="button" class="ter-g ter-g--grand" data-legende="Terrasse"><img src="img/terrasse-jardin.jpg" alt="Terrasse en bois devant une maison, réalisée par un client" loading="lazy"></button>
+        <button type="button" class="ter-g" data-legende="Kiosque"><img src="img/kiosque.jpg" alt="Kiosque installé sur une terrasse en bois" loading="lazy"><span class="r-plaque">Kiosque</span></button>
+        <button type="button" class="ter-g ter-g--haut" data-legende="Pièce d’angle, coin de terrasse"><img src="img/terrasse-piece-angle.jpg" alt="Coin de terrasse en lames striées, avec une pièce d’angle" loading="lazy"><span class="r-plaque">Pièce d’angle</span></button>
+        <button type="button" class="ter-g" data-legende="Terrasse avec marche"><img src="img/terrasse-garage.jpg" alt="Terrasse en bois avec une marche, devant une maison" loading="lazy"><span class="r-plaque">Avec marche</span></button>
+        <button type="button" class="ter-g ter-g--large" data-legende="Terrasse avec décrochement"><img src="img/terrasse-decrochement.jpg" alt="Grande terrasse en bois avec un décrochement, dans un jardin" loading="lazy"><span class="r-plaque">Avec décrochement</span></button>
+        <button type="button" class="ter-g" data-legende="Terrasse sur lambourdes et plots"><img src="img/terrasse-chantier.jpg" alt="Terrasse en cours de pose sur lambourdes et plots" loading="lazy"><span class="r-plaque">Sur lambourdes et plots</span></button>
+        <button type="button" class="ter-g" data-legende="Coins arrondis"><img src="img/terrasse-coins-arrondis.jpg" alt="Terrasse en bois aux coins arrondis, devant une maison aux volets bruns" loading="lazy"><span class="r-plaque">Coins arrondis</span></button>
+        <button type="button" class="ter-g ter-g--large" data-legende="Garde-fou sur terrasse"><img src="img/produits/pergola-terrasse.jpg" alt="Terrasse en lames striées bordée d’un garde-fou en bois" loading="lazy"><span class="r-plaque">Garde-fou sur terrasse</span></button>
+        <button type="button" class="ter-g" data-legende="Terrasse avec rampe d’accès"><img src="img/produits/terrasse-rampe.jpg" alt="Terrasse en bois avec une rampe d’accès" loading="lazy"><span class="r-plaque">Avec rampe d’accès</span></button>
+        <button type="button" class="ter-g" data-legende="Terrasse"><img src="img/terrasse-maison.jpg" alt="Terrasse en bois le long d’une maison, réalisée par un client" loading="lazy"></button>
+      </div>
+    </section>
+
+    <!-- Pour finir -->
+    <section class="r-section r-reveal" aria-labelledby="ter-titre-fin">
+      <div class="ter-cta">
+        <div>
+          <span class="r-kicker">Prêt à commander&nbsp;?</span>
+          <h2 id="ter-titre-fin">Votre terrasse, au prix direct de scierie</h2>
+          <p>Faites votre liste avec les prix, recevez votre devis par mail, avec le poids et le volume, puis venez charger au dépôt. Une question sur votre projet&nbsp;? Appelez-nous au <a class="r-lien" href="tel:+33241480068">02&nbsp;41&nbsp;48&nbsp;00&nbsp;68</a>.</p>
+          <div class="ter-cta-btns">
+            <a class="r-btn r-btn--noir" href="contact.html">Je prépare ma demande</a>
+            <button type="button" class="r-btn r-btn--blanc" data-ouvrir-liste>Voir ma liste</button>
+          </div>
+        </div>
+        <ul class="ter-cta-liste">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7.5" width="13" height="7.5" rx="1"/><path d="M15.5 12.5h6"/><circle cx="8" cy="17.5" r="2"/></svg><span>Si vous avez un attelage, une remorque vous est prêtée gratuitement à partir de 300&nbsp;€ de commande.</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>La scierie ne livre pas, mais vous indique ses transporteurs partenaires.</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Du lundi au vendredi, 8&nbsp;h - 13&nbsp;h et 14&nbsp;h - 18&nbsp;h, le samedi de 8&nbsp;h à 12&nbsp;h.</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <dialog class="ter-visio js-ter-visio" aria-label="Photo agrandie">
+    <figure><img class="js-ter-visio-img" src="img/terrasse-jardin.jpg" alt=""><figcaption class="js-ter-visio-cap"></figcaption></figure>
+    <button type="button" class="ter-visio-btn ter-visio-prec js-ter-visio-prec" aria-label="Photo précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button>
+    <button type="button" class="ter-visio-btn ter-visio-suiv js-ter-visio-suiv" aria-label="Photo suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
+    <button type="button" class="ter-visio-btn ter-visio-x js-ter-visio-x" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </dialog>
+</main>
+<footer data-pied></footer>
+<script src="donnees.js"></script>
+<script src="base.js"></script>
+<script>
+(function(){
+'use strict';
+var S = window.RetifSite, D = S.donnees, NB = ' ', REDUIT = S.reduit;
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function nombre(n, dec){
+  var p = Math.pow(10, dec || 0), s = (Math.round(n * p) / p).toFixed(dec || 0).split('.');
+  return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, NB) + (s[1] ? ',' + s[1] : '');
+}
+function euros(n){ return S.fmt(n) + NB + '€'; }
+function lire(v){ v = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isNaN(v) ? 0 : v; }
+
+/* ---------- Lambourdes 50 × 75 : prix lus dans TARIF (donnees.js) ---------- */
+var lamb = null;
+D.TARIF.forEach(function(t){ if (t[0] === '50x75') lamb = t[1]; });
+if (lamb) $('.js-ter-lamb').innerHTML = Object.keys(lamb).map(function(l){ return '<li><span>' + l + NB + 'm</span><b>' + euros(lamb[l]) + '</b></li>'; }).join('');
+
+/* ---------- Tarif des lames de terrasse Douglas (relevé sur leur tarif) ---------- */
+/* prix : [prix TTC de la lame, 1 = en stock / 0 = sur commande] */
+var LAMES = [
+  {sec:'25 × 200', larg:200, titre:'Section XXL 25 × 200*', sous:'Exclusivité nationale · choix A, hors aubier, imputrescible, non traité', longueurs:['2,00', '2,50', '3,00', '4,00'], rangs:[
+    {id:'R1F', nom:'Raboté 1 face lisse', profil:0, m2:35.25, prix:{'2,00':[14.10, 1], '2,50':[17.62, 1], '3,00':[21.15, 0], '4,00':[28.20, 0]}},
+    {id:'R3F QDR', nom:'Raboté 3 faces et 2 quarts de rond', profil:1, m2:39.33, prix:{'3,00':[23.60, 1], '4,00':[31.46, 1]}},
+    {id:'R4F 10V', nom:'Raboté 4 faces et peigne 10 V', profil:10, m2:40.59, prix:{'3,00':[24.35, 1], '4,00':[32.47, 1]}}
+  ]},
+  {sec:'25 × 145', larg:145, titre:'Section classique 25 × 145*', sous:'Choix A, hors aubier, imputrescible, non traité', longueurs:['3,00', '4,00'], rangs:[
+    {id:'R3F QDR', nom:'Raboté 3 faces et 2 quarts de rond', profil:1, m2:39.33, prix:{'3,00':[17.11, 1], '4,00':[22.81, 1]}},
+    {id:'R4F 6V', nom:'Raboté 4 faces et peigne 6 V', profil:6, m2:40.59, prix:{'3,00':[17.66, 1], '4,00':[23.54, 1]}}
+  ]}
+];
+/* Profil de lame en coupe : 0 = arêtes vives, 1 = quarts de rond, n = quarts de rond et n rainures en V */
+function cheminProfil(t, x0, x1, y0, y1, r){
+  if (!t) return 'M' + x0 + ' ' + y1 + 'V' + y0 + 'H' + x1 + 'V' + y1 + 'z';
+  var d = 'M' + x0 + ' ' + y1 + 'V' + (y0 + r) + 'Q' + x0 + ' ' + y0 + ' ' + (x0 + r) + ' ' + y0, n = t > 1 ? t : 0, a = x0 + r + 3, b = x1 - r - 3, w = (y1 - y0) * .11, h = (y1 - y0) * .2;
+  for (var i = 0; i < n; i++){ var c = a + (b - a) * (i + .5) / n; d += 'L' + (c - w).toFixed(1) + ' ' + y0 + 'l' + w.toFixed(1) + ' ' + h.toFixed(1) + 'l' + w.toFixed(1) + ' ' + (-h).toFixed(1); }
+  return d + 'L' + (x1 - r) + ' ' + y0 + 'Q' + x1 + ' ' + y0 + ' ' + x1 + ' ' + (y0 + r) + 'V' + y1 + 'z';
+}
+function profil(t){ return '<svg class="ter-profil" viewBox="0 0 120 32" aria-hidden="true"><path d="' + cheminProfil(t, 3, 117, 6, 28, 4) + '"/></svg>'; }
+
+function tableLames(g, gi){
+  var h = '<div class="r-tarif-bloc"><div class="r-tarif-titre"><b>Lames de terrasse Douglas · ' + g.titre + '</b><span>' + g.sous + ' · prix TTC à la lame, à emporter</span></div>' +
+    '<table class="r-tarif ter-tarif ter-tarif--' + g.longueurs.length + '"><thead><tr><th class="ter-col-fin">Finition</th>' +
+    g.longueurs.map(function(l){ return '<th>' + l + NB + 'm</th>'; }).join('') + '<th>Soit le m²</th></tr></thead><tbody>';
+  g.rangs.forEach(function(r, ri){
+    h += '<tr><td><span class="ter-fin">' + profil(r.profil) + '<b>' + r.id + '</b><small>' + r.nom + '</small></span></td>';
+    g.longueurs.forEach(function(l){
+      var p = r.prix[l];
+      if (!p){ h += '<td class="na">—</td>'; return; }
+      h += '<td class="' + (p[1] ? 'p' : 'ter-cde') + '" role="button" tabindex="0" data-g="' + gi + '" data-r="' + ri + '" data-l="' + l + '" aria-label="' + r.id + ' ' + g.sec + ', ' + l + ' m : ' + S.fmt(p[0]) + ' euros' + (p[1] ? ', en stock' : ', sur commande') + '">' +
+        euros(p[0]) + (p[1] ? '' : '<i>sur commande</i>') + '</td>';
+    });
+    h += '<td class="u">' + euros(r.m2) + '</td></tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+var zoneTarifs = $('.js-ter-tarifs');
+zoneTarifs.innerHTML = LAMES.map(tableLames).join('');
+
+var choix = null, champQte = $('.js-ter-qte');
+function qte(){ var q = Math.round(lire(champQte.value)); return Math.max(1, Math.min(999, q || 1)); }
+function majTotal(){ if (choix) $('.js-ter-choix-total').textContent = qte() + ' × ' + euros(choix.prix) + ' = ' + euros(qte() * choix.prix); }
+function choisir(td){
+  $$('td.sel', zoneTarifs).forEach(function(c){ c.classList.remove('sel'); });
+  $$('tr.on', zoneTarifs).forEach(function(r){ r.classList.remove('on'); });
+  td.classList.add('sel'); td.parentNode.classList.add('on');
+  var g = LAMES[+td.getAttribute('data-g')], r = g.rangs[+td.getAttribute('data-r')], l = td.getAttribute('data-l'), p = r.prix[l];
+  choix = {g:g, r:r, l:l, prix:p[0], stock:!!p[1]};
+  $('.js-ter-choix-nom').textContent = 'Lame Douglas ' + r.id + ' ' + g.sec + ', ' + l + ' m';
+  $('.js-ter-choix-det').textContent = r.nom + ' · ' + euros(p[0]) + ' la lame · ' + (p[1] ? 'en stock' : 'sur commande');
+  $('.js-ter-choix-vide').hidden = true;
+  var plein = $('.js-ter-choix-plein'); plein.hidden = false; plein.style.animation = 'none'; void plein.offsetWidth; plein.style.animation = '';
+  $('.js-ter-choix').classList.add('on');
+  majTotal();
+}
+zoneTarifs.addEventListener('click', function(e){ var td = e.target.closest('td[data-l]'); if (td) choisir(td); });
+champQte.addEventListener('input', majTotal);
+champQte.addEventListener('blur', function(){ champQte.value = qte(); majTotal(); });
+$('.js-ter-moins').addEventListener('click', function(){ champQte.value = Math.max(1, qte() - 1); majTotal(); });
+$('.js-ter-plus').addEventListener('click', function(){ champQte.value = Math.min(999, qte() + 1); majTotal(); });
+$('.js-ter-ajout-lame').addEventListener('click', function(){
+  if (!choix) return;
+  var q = qte(), c = choix;
+  S.liste.ajouter({cle:'lame-terrasse-' + c.g.larg + '-' + c.r.id.replace(/\s/g, '') + '-' + c.l, nom:'Lame terrasse Douglas ' + c.r.id + ' ' + c.g.sec, detail:c.l + ' m' + (c.stock ? '' : ' · sur commande'), prix:c.prix, q:q, vol:0.025 * (c.g.larg / 1000) * S.lenNum(c.l)}, this);
+  S.toast(q + (q > 1 ? ' lames ajoutées' : ' lame ajoutée') + ' à votre liste');
+});
+
+/* ---------- Lisses ou striées : rainures et profil en V dessinés une fois ---------- */
+(function(){
+  var g = $('.js-ter-rainures'), h = '';
+  [6, 40, 74].forEach(function(y){ for (var k = 1; k <= 8; k++){ var yy = y + k * 30 / 9; h += '<line x1="8" y1="' + yy.toFixed(1) + '" x2="312" y2="' + yy.toFixed(1) + '"/>'; } });
+  g.innerHTML = h;
+  $('.js-ter-profil-v').setAttribute('d', cheminProfil(10, 60, 260, 118, 140, 5));
+})();
+
+/* ---------- Calculateur ---------- */
+var calc = {m2:20, larg:200}, champM2 = $('.js-ter-m2'), curseur = $('.js-ter-curseur'), boutonSacs = $('.js-ter-ajout-sacs'), sacs = 0;
+function anime(el, vers, dec){
+  var de = parseFloat(el.getAttribute('data-v') || '0'); el.setAttribute('data-v', vers);
+  if (REDUIT || de === vers){ el.textContent = nombre(vers, dec); return; }
+  var t0 = performance.now(), ms = 700;
+  (function pas(t){ var p = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - p, 3); el.textContent = nombre(de + (vers - de) * e, dec); if (p < 1) requestAnimationFrame(pas); })(t0);
+}
+function calculer(){
+  var taux = calc.larg === 200 ? 25 : 33, m2 = Math.max(0, calc.m2);
+  var vis = Math.ceil(m2 * taux - 1e-9), esp = Math.ceil(vis / 2), ml = m2 / ((calc.larg + 4) / 1000);
+  sacs = Math.ceil(esp / 100);
+  anime($('.js-ter-r-vis'), vis, 0);
+  anime($('.js-ter-r-esp'), esp, 0);
+  anime($('.js-ter-r-sacs'), sacs, 0);
+  anime($('.js-ter-r-ml'), Math.round(ml * 10) / 10, 1);
+  anime($('.js-ter-r-ml5'), Math.round(ml * 1.05 * 10) / 10, 1);
+  $('.js-ter-r-taux').textContent = taux + ' vis par m², au moins';
+  var pMin = Math.ceil(m2 * 3.5 - 1e-9), pMax = Math.ceil(m2 * 4 - 1e-9), huile = Math.round(m2 * 2 / 10 * 10) / 10;
+  $('.js-ter-r-plots').textContent = pMin === pMax ? String(pMin) : pMin + ' à ' + pMax;
+  $('.js-ter-r-huile').textContent = nombre(huile, huile % 1 ? 1 : 0);
+  boutonSacs.disabled = !sacs;
+  boutonSacs.textContent = sacs ? 'Ajouter ' + sacs + (sacs > 1 ? ' sacs' : ' sac') + ' à ma liste · ' + euros(sacs * 12) : 'Entrez une surface';
+}
+function majSurface(v, depuis){
+  calc.m2 = Math.max(0, Math.min(2000, v));
+  if (depuis !== 'champ') champM2.value = String(calc.m2).replace('.', ',');
+  if (depuis !== 'curseur') curseur.value = Math.min(100, Math.max(1, Math.round(calc.m2)));
+  calculer();
+}
+champM2.addEventListener('input', function(){ majSurface(lire(champM2.value), 'champ'); });
+champM2.addEventListener('blur', function(){ champM2.value = String(calc.m2).replace('.', ','); });
+curseur.addEventListener('input', function(){ majSurface(+curseur.value, 'curseur'); });
+$('.js-ter-m2-moins').addEventListener('click', function(){ majSurface(Math.max(1, Math.ceil(calc.m2) - 1)); });
+$('.js-ter-m2-plus').addEventListener('click', function(){ majSurface(Math.floor(calc.m2) + 1); });
+$$('.ter-larg [data-larg]').forEach(function(b){
+  b.addEventListener('click', function(){
+    calc.larg = +b.getAttribute('data-larg');
+    $$('.ter-larg [data-larg]').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+    calculer(); apercu();
+  });
+});
+boutonSacs.addEventListener('click', function(){
+  if (!sacs) return;
+  S.liste.ajouter({cle:'espaceurs-4mm', nom:'Espaceurs-écarteurs 4 mm', detail:'sac de 100', prix:12, q:sacs, vol:0}, this);
+  S.toast(sacs + (sacs > 1 ? ' sacs d’espaceurs ajoutés' : ' sac d’espaceurs ajouté') + ' à votre liste');
+});
+
+/* Aperçu : 2 m de lames sur 5 lambourdes (entraxe 50 cm), 2 vis par lambourde, jeu de 4 mm */
+function apercu(){
+  var svg = $('.js-ter-apercu'), k = .15, larg = calc.larg, n = larg === 200 ? 4 : 5, h = larg * k, pas = (larg + 4) * k;
+  var y0 = 8, haut = n * pas - 4 * k, out = '';
+  for (var i = 0; i < 5; i++){ var x = 10 + i * 75; out += '<rect class="ter-ap-lamb" x="' + (x - 3.75) + '" y="' + (y0 - 4) + '" width="7.5" height="' + (haut + 8).toFixed(1) + '" rx="1.5"/>'; }
+  for (var j = 0; j < n; j++){
+    var y = y0 + j * pas;
+    out += '<rect class="ter-ap-lame" style="animation-delay:' + (j * 55) + 'ms" x="6" y="' + y.toFixed(1) + '" width="308" height="' + h.toFixed(1) + '" rx="1.5"/>';
+    for (var m = 0; m < 5; m++){
+      var cx = 10 + m * 75, d = (j * 55 + 260 + m * 30) + 'ms';
+      out += '<circle class="ter-ap-vis" style="animation-delay:' + d + '" cx="' + cx + '" cy="' + (y + 3.3).toFixed(1) + '" r="1.5"/><circle class="ter-ap-vis" style="animation-delay:' + d + '" cx="' + cx + '" cy="' + (y + h - 3.3).toFixed(1) + '" r="1.5"/>';
+    }
+  }
+  svg.innerHTML = out;
+}
+calculer(); apercu();
+
+/* ---------- Le chantier : fil de progression et étape en cours ---------- */
+var liste = $('.js-ter-etapes'), prog = $('.js-ter-prog'), etapes = $$('.ter-etape'), puces = $$('.ter-plan a'), attente = false;
+function suivre(){
+  attente = false;
+  var r = liste.getBoundingClientRect(), repere = innerHeight * .55, p = Math.max(0, Math.min(1, (repere - r.top) / r.height)), actif = -1;
+  prog.style.transform = 'scaleY(' + p.toFixed(3) + ')';
+  etapes.forEach(function(e, i){ if (e.getBoundingClientRect().top < repere) actif = i; });
+  etapes.forEach(function(e, i){ e.classList.toggle('fait', i < actif); e.classList.toggle('on', i === actif); });
+  puces.forEach(function(a, i){ a.classList.toggle('on', i === actif); });
+}
+window.addEventListener('scroll', function(){ if (!attente){ attente = true; requestAnimationFrame(suivre); } }, {passive:true});
+window.addEventListener('resize', suivre);
+suivre();
+
+/* ---------- Galerie : visionneuse ---------- */
+var photos = $$('.ter-g'), visio = $('.js-ter-visio'), vImg = $('.js-ter-visio-img'), vCap = $('.js-ter-visio-cap'), courant = 0;
+function montrer(i){
+  courant = (i + photos.length) % photos.length;
+  var b = photos[courant], im = b.querySelector('img');
+  vImg.src = im.getAttribute('src'); vImg.alt = im.alt; vCap.textContent = b.getAttribute('data-legende') || '';
+}
+photos.forEach(function(b, i){ b.addEventListener('click', function(){ montrer(i); if (visio.showModal) visio.showModal(); else visio.setAttribute('open', ''); }); });
+$('.js-ter-visio-prec').addEventListener('click', function(){ montrer(courant - 1); });
+$('.js-ter-visio-suiv').addEventListener('click', function(){ montrer(courant + 1); });
+$('.js-ter-visio-x').addEventListener('click', function(){ visio.close(); });
+visio.addEventListener('click', function(e){ if (e.target === visio) visio.close(); });
+visio.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') montrer(courant - 1); else if (e.key === 'ArrowRight') montrer(courant + 1); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conseils et guides · Scierie Rétif (maquette)</title>
+<meta name="description" content="Les guides de la Scierie Rétif : guide de solivage, calepinage d’une terrasse, lames lisses ou striées, C18 ou C24, séchage naturel et entretien du bois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Page « Conseils et guides » : préfixe cons- */
+.cons-ancre{scroll-margin-top:calc(var(--hd) + 20px)}
+
+/* En-tête et sommaire */
+.cons-tete{padding-bottom:120px; margin-bottom:0}
+.cons-tete .r-fil{color:var(--noir)}
+.cons-tete .r-fil a{text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--noir) 30%, transparent); text-underline-offset:3px}
+.cons-tete-in{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:40px; align-items:end; margin-top:20px}
+.cons-tete h1{font-size:76px; line-height:.98; margin:14px 0 18px}
+.cons-tete-citation{margin:0 0 6px; padding:20px 22px; border-radius:var(--r); background:color-mix(in srgb, var(--blanc) 55%, transparent); font-size:16px; line-height:1.5}
+.cons-tete-citation b{display:block; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--noir); margin-bottom:6px}
+.cons-sommaire{position:relative; z-index:2; margin-top:-86px; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.cons-carte{display:flex; flex-direction:column; gap:8px; padding:22px 22px 20px; border:1px solid var(--ligne); border-radius:var(--r); background:var(--blanc); box-shadow:0 24px 40px -36px color-mix(in srgb, var(--noir) 60%, transparent); transition:transform .35s var(--ease), box-shadow .35s}
+.cons-carte:hover{transform:translateY(-4px); box-shadow:0 30px 46px -30px color-mix(in srgb, var(--noir) 50%, transparent)}
+.cons-carte:focus-visible{outline:2px solid var(--noir); outline-offset:3px}
+.cons-carte-ic{width:52px; height:52px; border-radius:50%; background:var(--sc); display:grid; place-items:center; margin-bottom:6px; transition:background .3s}
+.cons-carte-ic svg{width:26px; height:26px; fill:none; stroke:var(--noir); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; transition:stroke .3s}
+.cons-carte:hover .cons-carte-ic{background:var(--noir)}
+.cons-carte:hover .cons-carte-ic svg{stroke:var(--vert)}
+.cons-carte small{font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--olive)}
+.cons-carte-titre{font-weight:700; font-size:20px; letter-spacing:-.015em; line-height:1.2}
+.cons-carte p{margin:0; color:var(--of); font-size:15px; line-height:1.45}
+.cons-carte-lire{margin-top:auto; padding-top:10px; font-weight:700; font-size:14.5px; display:inline-flex; align-items:center; gap:6px}
+.cons-carte-lire svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .35s var(--ease)}
+.cons-carte:hover .cons-carte-lire svg{transform:translateY(3px)}
+
+/* Mise en page : sommaire latéral et contenu */
+.cons-corps{display:grid; grid-template-columns:200px minmax(0,1fr); gap:56px; align-items:start}
+.cons-nav{position:sticky; top:calc(var(--hd) + 24px); padding-top:72px}
+.cons-nav p{font-size:12.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); margin:0 0 10px}
+.cons-nav ul{list-style:none; margin:0; padding:0; border-left:2px solid var(--ligne)}
+.cons-nav a{display:block; margin-left:-2px; padding:7px 0 7px 16px; border-left:2px solid transparent; font-size:14.5px; font-weight:600; line-height:1.3; color:var(--of); transition:color .25s, border-color .25s}
+.cons-nav a:hover{color:var(--noir)}
+.cons-nav a.on{color:var(--noir); border-left-color:var(--noir)}
+.cons-nav .r-btn{margin-top:20px}
+.cons-contenu > section + section{border-top:1px solid var(--ligne); margin-top:72px}
+.cons-contenu h3{font-size:22px; margin:34px 0 12px}
+.cons-contenu .r-tete{margin-bottom:22px}
+.cons-txt{max-width:720px}
+.cons-txt p{color:var(--noir)}
+.cons-source{font-size:13.5px; color:var(--of); margin:16px 0 0}
+.cons-liens{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+
+/* Petits éléments communs à la page */
+.cons-points{list-style:none; margin:10px 0 0; padding:0; display:grid; gap:7px}
+.cons-points li{position:relative; padding-left:26px; font-size:15.5px; line-height:1.5}
+.cons-points li::before{content:""; position:absolute; left:2px; top:.42em; width:11px; height:6px; border-left:2px solid var(--ok); border-bottom:2px solid var(--ok); transform:rotate(-45deg)}
+.cons-ou-sep{align-self:center; justify-self:center; font-size:14px; font-weight:700; color:var(--of); background:var(--sc); width:46px; height:46px; border-radius:50%; display:grid; place-items:center}
+.cons-option{border:1px solid var(--ligne); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; background:var(--blanc); transition:transform .35s var(--ease), box-shadow .35s}
+.cons-option:hover{transform:translateY(-4px); box-shadow:0 26px 40px -30px color-mix(in srgb, var(--noir) 50%, transparent)}
+.cons-option-vis{background:var(--sc); padding:18px 20px 14px}
+.cons-option-vis svg{display:block; width:100%; height:auto}
+.cons-option-corps{padding:18px 20px 20px; display:flex; flex-direction:column; flex:1}
+.cons-option-corps > small{font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--olive)}
+.cons-option-corps h4{font-size:19px; margin:4px 0 6px}
+.cons-option-corps p{margin:0; color:var(--of); font-size:15px; line-height:1.5}
+.cons-option-pied{margin-top:auto; padding-top:14px; border-top:1px solid var(--ligne); font-size:14.5px; color:var(--of); line-height:1.45}
+.cons-option-pied b{color:var(--noir)}
+.cons-option .cons-points{margin:8px 0 16px}
+.cons-svg-txt{font-family:var(--texte); font-size:14.5px; font-weight:600; fill:var(--noir)}
+.cons-svg-txt--doux{font-weight:500; fill:var(--of)}
+.cons-cote{fill:none; stroke:var(--noir); stroke-width:1.2}
+
+/* Guide de solivage */
+.cons-soli-haut{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:20px; margin-bottom:20px}
+.cons-schema{margin:0; background:var(--sc); border-radius:var(--r); padding:20px 22px 14px}
+.cons-schema svg{display:block; width:100%; max-width:440px; height:auto; margin:0 auto}
+.cons-schema figcaption{font-size:13px; color:var(--of); margin-top:8px}
+.cons-s-porteur{fill:var(--sauge); stroke:var(--olive); stroke-width:1.2}
+.cons-s-solive{fill:var(--blanc); stroke:var(--olive); stroke-width:1.2}
+.cons-s-section{fill:var(--sc2); stroke:var(--olive); stroke-width:1.4}
+.cons-lexique{margin:0; display:grid; gap:2px; align-content:start}
+.cons-lexique div{padding:12px 0; border-bottom:1px solid var(--ligne)}
+.cons-lexique dt{font-weight:700}
+.cons-lexique dd{margin:3px 0 0; color:var(--of); font-size:15px; line-height:1.5}
+.cons-outil{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:18px; background:var(--sc); border-radius:var(--r); padding:22px; margin-bottom:16px}
+.cons-etiq{display:block; font-size:14.5px; font-weight:700; margin:0 0 8px}
+.cons-charges{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
+.cons-charges button{font-weight:700; font-size:15px; background:var(--blanc); border:1.5px solid var(--ligne); padding:9px 14px; border-radius:999px; transition:background .25s, color .25s, border-color .25s}
+.cons-charges button:hover{border-color:var(--olive)}
+.cons-charges button[aria-checked="true"]{background:var(--noir); color:var(--blanc); border-color:var(--noir)}
+.cons-o{font-size:13px; color:var(--of)}
+.cons-selects{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; margin-top:16px}
+.cons-res{background:var(--blanc); border-radius:var(--r-s); padding:18px 20px; animation:cons-entre .45s var(--ease)}
+@keyframes cons-entre{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+.cons-res-etiq{font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--olive)}
+.cons-res-sec{font-family:var(--titre); font-size:46px; line-height:1.05; margin:6px 0 8px}
+.cons-res-sec i{font-style:normal; font-family:var(--texte); font-size:18px; color:var(--of); margin:0 6px}
+.cons-res-badge{display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:700; color:var(--ok); background:color-mix(in srgb, var(--vert-stock) 55%, var(--blanc)); padding:5px 11px; border-radius:999px}
+.cons-res-badge::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--ok)}
+.cons-res-badge--non{color:var(--of); background:var(--sc)}
+.cons-res-badge--non::before{background:var(--olive)}
+.cons-res-phrase{font-size:14.5px; color:var(--of); margin:10px 0 0}
+.cons-res-prix{margin-top:12px; padding-top:12px; border-top:1px solid var(--ligne); display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; font-size:14px}
+.cons-res-prix > span{width:100%; font-weight:700}
+.cons-res-prix ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px}
+.cons-res-prix li{display:grid; background:var(--sc); border-radius:10px; padding:5px 9px; font-size:12.5px; line-height:1.25; color:var(--of)}
+.cons-res-prix li b{font-size:14.5px; color:var(--noir)}
+.r-tarif.cons-soli td{white-space:normal; line-height:1.3; text-align:center}
+.r-tarif.cons-soli th{text-align:center}
+.r-tarif.cons-soli td:first-child, .r-tarif.cons-soli th:first-child{text-align:left}
+.r-tarif.cons-soli td.cons-c{cursor:pointer; transition:background .2s}
+.r-tarif.cons-soli td.cons-c:hover{background:var(--sc)}
+.r-tarif.cons-soli td.p:focus-visible, .r-tarif.cons-soli td.cons-c:focus-visible{outline:2px solid var(--noir); outline-offset:-3px}
+.cons-ou{display:block; font-size:12.5px; color:var(--of); font-weight:500}
+.r-tarif td.p:hover .cons-ou, .r-tarif td.sel .cons-ou{color:inherit}
+.cons-soli-bloc{margin-bottom:16px}
+.cons-fortes{display:grid; grid-template-columns:150px minmax(0,1fr); gap:18px; align-items:center; border:1px solid var(--ligne); border-radius:var(--r); padding:16px 20px}
+.cons-fortes svg{width:100%; height:auto; display:block}
+.cons-fortes p{margin:4px 0 0; color:var(--of); font-size:15px}
+.cons-f-solive{fill:var(--blanc); stroke:var(--olive); stroke-width:1.2}
+.cons-f-entretoise{fill:var(--olive-tarif)}
+
+/* Calepinage */
+.cons-poses{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); gap:12px; align-items:stretch}
+.cons-p-lame{fill:var(--blanc); stroke:var(--olive); stroke-width:1}
+.cons-p-lamb{stroke:var(--olive); stroke-width:1; stroke-dasharray:3 3; opacity:.65}
+.cons-p-double{stroke:var(--noir); stroke-width:1.6}
+.cons-legende-p{font-size:13.5px; color:var(--of); margin:12px 0 0}
+.cons-mesures{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:20px; align-items:start}
+.cons-mesures .cons-schema svg{max-width:480px}
+.cons-m-lame{fill:var(--sc2); stroke:var(--olive); stroke-width:1.3}
+.cons-m-lamb{fill:var(--sauge); stroke:var(--olive); stroke-width:1.3}
+.cons-m-vis{fill:var(--noir)}
+.cons-m-plaque{fill:var(--noir)}
+.cons-reperes{margin:0; display:grid; gap:2px}
+.cons-reperes div{display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; padding:11px 0; border-bottom:1px solid var(--ligne); font-size:15px; line-height:1.45}
+.cons-reperes dt{font-weight:700}
+.cons-reperes dd{margin:0; color:var(--noir)}
+.cons-about{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:12px; align-items:stretch}
+.cons-about .cons-option-vis svg{max-width:300px; margin:0 auto}
+.cons-eviter{margin-top:14px; display:grid; grid-template-columns:180px minmax(0,1fr); gap:18px; align-items:center; background:var(--sc2); border-radius:var(--r); padding:16px 20px}
+.cons-eviter svg{display:block; width:100%; height:auto}
+.cons-eviter b{display:block}
+.cons-eviter p{margin:4px 0 0; font-size:15px}
+.cons-croix circle{fill:var(--jaune)}
+.cons-croix path{stroke:var(--noir); stroke-width:2.2; stroke-linecap:round; fill:none}
+.cons-eau{fill:var(--vert); stroke:var(--ok); stroke-width:1}
+.cons-table{width:100%; border-collapse:collapse; font-size:15px; margin-top:4px}
+.cons-table th{font-size:13px; font-weight:800; text-align:right; padding:10px 12px; background:var(--sc); color:var(--noir)}
+.cons-table td{padding:10px 12px; text-align:right; border-top:1px solid var(--ligne)}
+.cons-table th:first-child, .cons-table td:first-child{text-align:left}
+.cons-table th:first-child{border-radius:12px 0 0 12px}
+.cons-table th:last-child{border-radius:0 12px 12px 0}
+.cons-table tr:hover td{background:var(--sc)}
+.cons-table-note{font-size:14.5px; color:var(--of); margin:12px 0 0}
+.cons-erreurs{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.cons-erreur{border:1px solid var(--ligne); border-radius:var(--r); padding:20px}
+.cons-erreur svg{width:40px; height:40px; display:block; margin-bottom:12px}
+.cons-erreur h4{font-size:17px; margin:0 0 6px}
+.cons-erreur p{margin:0; color:var(--of); font-size:15px; line-height:1.5}
+
+/* Lisses ou striées */
+.cons-question{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:22px; align-items:center; background:var(--sc); border-radius:var(--r); padding:24px 26px}
+.cons-question h3{margin:0 0 8px}
+.cons-question p{margin:0 0 10px; font-size:15.5px}
+.cons-question p:last-child{margin-bottom:0}
+.cons-reponse{display:inline-block; font-weight:800; background:var(--noir); color:var(--vert); padding:4px 12px; border-radius:999px; margin-bottom:10px; font-size:14.5px}
+.cons-eaux{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px}
+.cons-eaux figure{margin:0; background:var(--blanc); border-radius:var(--r-s); padding:12px 12px 10px}
+.cons-eaux svg{display:block; width:100%; height:auto}
+.cons-eaux figcaption{font-size:13px; line-height:1.4; color:var(--of); margin-top:6px}
+.cons-eaux figcaption b{color:var(--noir)}
+.cons-duo{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:14px; align-items:stretch; margin-top:16px}
+.cons-tex-lame{fill:var(--blanc); stroke:var(--sauge); stroke-width:1.2}
+.cons-tex-veine{fill:none; stroke:var(--sauge); stroke-width:1.1; stroke-linecap:round}
+.cons-tex-rainure{stroke:var(--olive); stroke-width:1; opacity:.5}
+.cons-profil{fill:var(--sc2); stroke:var(--olive); stroke-width:1.6; stroke-linejoin:round}
+.cons-tendance{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 20px; margin-top:16px; padding:14px 18px; border:1px dashed var(--sauge); border-radius:var(--r)}
+.cons-tendance p{margin:0}
+
+/* C18 ou C24 */
+.cons-mpa{margin:0 0 18px; border:1px solid var(--ligne); border-radius:var(--r); padding:18px 22px 14px}
+.cons-mpa figcaption{display:flex; align-items:baseline; gap:8px; margin-bottom:10px}
+.cons-mpa figcaption b{font-size:16px}
+.cons-mpa figcaption span{font-size:14px; color:var(--of)}
+.cons-mpa-rang{display:grid; grid-template-columns:44px minmax(0,1fr) 74px; gap:12px; align-items:center; padding:6px 0}
+.cons-mpa-rang > span{font-weight:800; font-size:15px}
+.cons-mpa-rang > b{font-size:15px; text-align:right; white-space:nowrap}
+.cons-mpa-piste{position:relative; height:18px; background:repeating-linear-gradient(90deg, var(--ligne) 0 1px, transparent 1px 25%); border-left:2px solid var(--noir)}
+.cons-mpa-piste i{position:absolute; left:0; top:2px; bottom:2px; width:calc(var(--v) * 100%); background:var(--olive); border-radius:0 4px 4px 0; transform:scaleX(0); transform-origin:left; transition:transform 1.3s var(--ease) .2s}
+.vu .cons-mpa-piste i{transform:scaleX(1)}
+.cons-mpa-rang:hover .cons-mpa-piste i{background:var(--noir)}
+.cons-mpa-axe{display:grid; grid-template-columns:44px minmax(0,1fr) 74px; gap:12px; font-size:12.5px; color:var(--of)}
+.cons-mpa-axe > div{position:relative; height:18px}
+.cons-mpa-axe > div > span{position:absolute; top:0; transform:translateX(-50%)}
+.cons-classes{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:14px; align-items:stretch}
+.cons-classe{border:1px solid var(--ligne); border-radius:var(--r); padding:22px 22px 20px; display:flex; flex-direction:column; background:var(--blanc); transition:transform .35s var(--ease), box-shadow .35s}
+.cons-classe:hover{transform:translateY(-4px); box-shadow:0 26px 40px -30px color-mix(in srgb, var(--noir) 50%, transparent)}
+.cons-classe-tete{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+.cons-classe-tete b{font-family:var(--titre); font-weight:400; font-size:54px; line-height:1}
+.cons-classe-tete span{font-size:14px; font-weight:700; color:var(--of)}
+.cons-classe .cons-points{margin:12px 0 16px}
+.cons-classe-pied{margin-top:auto; background:var(--sc); border-radius:var(--r-s); padding:12px 14px; font-size:14.5px; line-height:1.45}
+.cons-classe-pied b{display:block; margin-bottom:2px}
+.cons-classe-pied a{display:inline-block; margin-top:6px}
+.cons-commun{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px; margin-top:16px}
+.cons-commun > div{background:var(--sc); border-radius:var(--r); padding:20px 22px}
+.cons-commun h4{font-size:17px; margin:0 0 6px}
+.cons-commun p{margin:0; font-size:15px; line-height:1.55}
+.cons-commun .r-conseil{background:var(--sc2)}
+
+/* Séchage naturel */
+.cons-sechage{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:22px; align-items:start}
+.cons-se-toit{fill:none; stroke:var(--olive); stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+.cons-se-sol{stroke:var(--ligne); stroke-width:2}
+.cons-se-cale{fill:var(--olive)}
+.cons-se-rang{fill:var(--sc2); stroke:var(--olive); stroke-width:1.1}
+.cons-se-latte{fill:var(--olive)}
+.cons-se-air{fill:none; stroke:var(--ok); stroke-width:2; stroke-linecap:round; stroke-dasharray:7 9; animation:cons-souffle 1.8s linear infinite}
+.cons-se-pointe{fill:none; stroke:var(--ok); stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+@keyframes cons-souffle{to{stroke-dashoffset:-32}}
+.cons-legende-s{list-style:none; margin:10px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13.5px; color:var(--of)}
+.cons-legende-s li{display:inline-flex; align-items:center; gap:7px}
+.cons-legende-s i{display:inline-block; width:18px; height:0; border-top:2px dashed var(--ok)}
+.cons-legende-s i.cons-l-latte{width:12px; height:8px; border:0; background:var(--olive); border-radius:1px}
+.cons-legende-s i.cons-l-toit{width:16px; height:8px; border:0; border-top:3px solid var(--olive); border-radius:8px 8px 0 0}
+.cons-chiffre{display:flex; align-items:center; gap:16px; margin:16px 0; padding:16px 18px; background:var(--noir); color:var(--sc2); border-radius:var(--r)}
+.cons-chiffre b{font-family:var(--titre); font-weight:400; font-size:44px; line-height:1; color:var(--vert); white-space:nowrap}
+.cons-photo{margin:16px 0 0}
+.cons-photo img{width:100%; max-width:450px; border-radius:var(--r-s)}
+.cons-photo figcaption{font-size:13px; color:var(--of); margin-top:6px}
+
+/* Entretien */
+.cons-entretien{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:16px}
+.cons-carte-bloc{border:1px solid var(--ligne); border-radius:var(--r); padding:20px 22px}
+.cons-carte-bloc h4{font-size:17px; margin:0 0 8px}
+.cons-non{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+.cons-non li{display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; font-size:15px; line-height:1.45}
+.cons-non svg{width:22px; height:22px}
+.cons-huile-champ{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.cons-huile-champ input{width:90px; font:inherit; font-weight:700; font-size:20px; text-align:center; border:1px solid var(--ligne); border-radius:var(--r-s); padding:8px 10px; color:var(--noir)}
+.cons-huile-champ input:focus{outline:none; border-color:var(--noir); box-shadow:0 0 0 3px var(--sc2)}
+.cons-huile-res{margin:14px 0 0; padding:14px 16px; background:var(--sc); border-radius:var(--r-s)}
+.cons-huile-res b.cons-litres{display:block; font-size:30px; font-weight:800; letter-spacing:-.02em; line-height:1.1}
+.cons-huile-res p{margin:6px 0 0; font-size:14.5px}
+.cons-huile-res .r-btn{margin-top:12px}
+.cons-huile-note{font-size:13px; color:var(--of); margin:10px 0 0}
+.cons-ensuite{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin-top:4px}
+.cons-ensuite > div{background:var(--sc); border-radius:var(--r); padding:18px 20px}
+.cons-ensuite h4{font-size:16.5px; margin:0 0 6px}
+.cons-ensuite p{margin:0; font-size:14.5px; color:var(--of); line-height:1.5}
+.cons-entretien-bas{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px; align-items:center; margin-top:16px}
+.cons-fin{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:18px; align-items:stretch}
+.cons-fin .r-conseil{font-size:16.5px; padding:24px 26px}
+.cons-fin .r-conseil p{margin:6px 0 0}
+.cons-fin-btns{display:flex; flex-direction:column; justify-content:center; gap:10px; background:var(--sauge); border-radius:var(--r); padding:24px}
+.cons-fin-btns .r-btn{white-space:normal; text-align:center}
+.cons-fin-btns small{text-align:center; color:var(--noir); font-size:14px}
+
+/* Écrans plus petits */
+@media (max-width:1100px){
+  .cons-corps{grid-template-columns:minmax(0,1fr)}
+  .cons-nav{display:none}
+  .cons-sommaire{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .cons-poses{grid-template-columns:minmax(0,1fr)}
+  .cons-poses .cons-ou-sep{margin:0 auto}
+}
+@media (max-width:860px){
+  .cons-tete-in{grid-template-columns:minmax(0,1fr); gap:16px}
+  .cons-soli-haut, .cons-outil, .cons-mesures, .cons-question, .cons-sechage, .cons-entretien, .cons-fin, .cons-commun{grid-template-columns:minmax(0,1fr)}
+  .cons-about, .cons-duo, .cons-classes{grid-template-columns:minmax(0,1fr)}
+  .cons-erreurs, .cons-ensuite{grid-template-columns:minmax(0,1fr)}
+  .cons-entretien-bas{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .cons-tete{padding-bottom:96px}
+  .cons-tete h1{font-size:46px; margin-top:10px}
+  .cons-sommaire{grid-template-columns:minmax(0,1fr); margin-top:-70px; gap:10px}
+  .cons-carte{display:grid; grid-template-columns:48px minmax(0,1fr); column-gap:14px; row-gap:2px; padding:16px}
+  .cons-carte-ic{grid-row:1 / span 3; width:48px; height:48px; margin:0}
+  .cons-carte p{grid-column:2}
+  .cons-carte-lire{display:none}
+  .cons-contenu > section + section{margin-top:52px}
+  .cons-contenu h3{font-size:20px; margin-top:28px}
+  .cons-outil{padding:16px}
+  .cons-res-sec{font-size:38px}
+  .r-tarif.cons-soli{min-width:0; font-size:13px}
+  .r-tarif.cons-soli td, .r-tarif.cons-soli th{padding-left:4px; padding-right:4px}
+  .r-tarif.cons-soli td:first-child, .r-tarif.cons-soli th:first-child{padding-left:10px}
+  .cons-ou{font-size:11.5px}
+  .cons-fortes{grid-template-columns:minmax(0,1fr); padding:16px}
+  .cons-fortes svg{max-width:200px}
+  .cons-eviter{grid-template-columns:minmax(0,1fr)}
+  .cons-eviter svg{max-width:220px}
+  .cons-reperes div{grid-template-columns:minmax(0,1fr); gap:2px}
+  .cons-table{font-size:14px}
+  .cons-table th, .cons-table td{padding:9px 8px}
+  .cons-question{padding:18px}
+  .cons-classe-tete b{font-size:44px}
+  .cons-mpa{padding:14px 14px 10px}
+  .cons-mpa-rang, .cons-mpa-axe{grid-template-columns:36px minmax(0,1fr) 62px; gap:8px}
+  .cons-chiffre b{font-size:36px}
+}
+</style>
+</head>
+<body data-page="conseils">
+<header data-entete></header>
+<main>
+
+  <!-- En-tête -->
+  <section class="r-tete-page r-tete-page--bandeau cons-tete">
+    <div class="r-wrap">
+      <nav class="r-fil" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › Conseils et guides</nav>
+      <div class="cons-tete-in">
+        <div>
+          <span class="r-kicker">Les guides de la scierie</span>
+          <h1>Conseils et guides</h1>
+          <p class="r-lead">Nos guides de pro, en clair&nbsp;: choisir vos sections, préparer votre terrasse, choisir votre bois et le faire durer. Pour les professionnels comme pour les particuliers.</p>
+        </div>
+        <p class="cons-tete-citation"><b>Notre devise</b>«&nbsp;Tout ce qu’il vous faut, et juste ce qu’il vous faut&nbsp;!&nbsp;» Un bon plan évite d’acheter trop, ou pas assez.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="r-wrap">
+    <!-- Sommaire en cartes -->
+    <nav class="cons-sommaire" aria-label="Les guides">
+      <a class="cons-carte" href="#solivage">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 17h18M7 4.5v15M12 4.5v15M17 4.5v15"/></svg></span>
+        <small>Charpente et plancher</small>
+        <span class="cons-carte-titre">Guide de solivage</span>
+        <p>La bonne section de solive selon la portée, l’entraxe et la charge.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="cons-carte" href="#calepinage">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M3.5 14.5h17M12 4.5v5M8 9.5v5M15.5 14.5v5"/></svg></span>
+        <small>Terrasse</small>
+        <span class="cons-carte-titre">Faire un calepinage</span>
+        <p>Le plan de votre terrasse, pour acheter juste et poser sans erreur.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="cons-carte" href="#lisses-striees">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="5.5" rx="1.5"/><rect x="3" y="13.5" width="18" height="5.5" rx="1.5"/><path d="M6.5 15.5v1.5M9.5 15.5v1.5M12.5 15.5v1.5M15.5 15.5v1.5M18 15.5v1.5"/></svg></span>
+        <small>Terrasse</small>
+        <span class="cons-carte-titre">Lisses ou striées</span>
+        <p>Ce qui change vraiment entre les deux, glissades comprises.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="cons-carte" href="#c18-c24">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10c5 4 13 4 18 0M3 14.5c5 4 13 4 18 0M12 3v4.5M10 5.5l2 2 2-2"/></svg></span>
+        <small>Le bois</small>
+        <span class="cons-carte-titre">Bien choisir C18 ou C24</span>
+        <p>Deux classes de résistance du Douglas, deux usages.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="cons-carte" href="#sechage">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4.5l9 5M6 13h12M6 16.5h12M6 20h12"/></svg></span>
+        <small>Le bois</small>
+        <span class="cons-carte-titre">Le séchage naturel</span>
+        <p>Pourquoi notre Douglas sèche à l’abri, lentement, à l’ancienne.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+      <a class="cons-carte" href="#entretien">
+        <span class="cons-carte-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.2 4.2 5 6.8 5 9.3a5 5 0 0 1-10 0c0-2.5 1.8-5.1 5-9.3z"/><path d="M9.6 13.6a2.5 2.5 0 0 0 2.4 2.4"/></svg></span>
+        <small>Terrasse</small>
+        <span class="cons-carte-titre">Entretenir sa terrasse</span>
+        <p>L’huile, le nettoyage et le bon rythme pour garder un bois naturel.</p>
+        <span class="cons-carte-lire">Lire le guide <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+      </a>
+    </nav>
+
+    <div class="cons-corps">
+      <nav class="cons-nav" aria-label="Sur cette page">
+        <p>Sur cette page</p>
+        <ul>
+          <li><a href="#solivage">Guide de solivage</a></li>
+          <li><a href="#calepinage">Faire un calepinage</a></li>
+          <li><a href="#lisses-striees">Lisses ou striées</a></li>
+          <li><a href="#c18-c24">C18 ou C24</a></li>
+          <li><a href="#sechage">Le séchage naturel</a></li>
+          <li><a href="#entretien">Entretenir sa terrasse</a></li>
+        </ul>
+        <a class="r-btn r-btn--sauge r-btn--petit" href="terrasse.html">Le projet terrasse</a>
+      </nav>
+
+      <div class="cons-contenu">
+
+        <!-- Guide de solivage -->
+        <section class="r-section cons-ancre" id="solivage" aria-labelledby="cons-t-soli">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Charpente et plancher</span><h2 id="cons-t-soli">Guide de solivage</h2><p>Le choix des profils Douglas brut et l’espacement des solives conseillé, pour les planchers courants. Votre terrasse n’est pas soutenue tous les mètres sur plots&nbsp;? C’est aussi ce guide qu’il faut suivre&nbsp;: c’est essentiel pour la solidité de l’ouvrage et pour votre sécurité.</p></div></div>
+          <div class="cons-soli-haut r-reveal">
+            <figure class="cons-schema">
+              <svg viewBox="0 0 360 276" role="img" aria-label="Schéma d’un solivage&nbsp;: deux porteurs, des solives posées dessus, la portée entre les appuis, l’entraxe entre deux solives et la section A × B">
+                <text class="cons-svg-txt" x="10" y="13">Porteurs</text>
+                <rect class="cons-s-porteur" x="10" y="22" width="244" height="16" rx="2"/>
+                <rect class="cons-s-porteur" x="10" y="196" width="244" height="16" rx="2"/>
+                <rect class="cons-s-solive" x="30" y="18" width="11" height="198" rx="1.5"/><rect class="cons-s-solive" x="95" y="18" width="11" height="198" rx="1.5"/><rect class="cons-s-solive" x="160" y="18" width="11" height="198" rx="1.5"/><rect class="cons-s-solive" x="225" y="18" width="11" height="198" rx="1.5"/>
+                <text class="cons-svg-txt" x="236" y="13" text-anchor="end">Solives</text>
+                <path class="cons-cote" d="M262 38h16M262 196h16M270 38v158"/>
+                <text class="cons-svg-txt" text-anchor="middle" transform="translate(292 117) rotate(-90)">Portée</text>
+                <path class="cons-cote" d="M35.5 222v14M100.5 222v14M35.5 230h65"/>
+                <text class="cons-svg-txt" x="68" y="254" text-anchor="middle">Entraxe</text>
+                <text class="cons-svg-txt" x="326" y="186" text-anchor="middle">Section</text>
+                <rect class="cons-s-section" x="316" y="196" width="20" height="48" rx="1.5"/>
+                <path class="cons-cote" d="M316 250v8M336 250v8M316 254h20M342 196h8M342 244h8M346 196v48"/>
+                <text class="cons-svg-txt" x="326" y="272" text-anchor="middle">A</text>
+                <text class="cons-svg-txt" x="355" y="225" text-anchor="middle">B</text>
+              </svg>
+              <figcaption>Vue de dessus d’un plancher&nbsp;: les solives posées sur deux porteurs, et la section d’une solive.</figcaption>
+            </figure>
+            <dl class="cons-lexique">
+              <div><dt>La portée</dt><dd>La distance que franchit la solive, d’un appui à l’autre, en millimètres.</dd></div>
+              <div><dt>L’entraxe</dt><dd>La distance entre deux solives, mesurée d’axe en axe.</dd></div>
+              <div><dt>La section A × B</dt><dd>L’épaisseur (A) et la hauteur (B) de la solive, en millimètres.</dd></div>
+              <div><dt>La charge</dt><dd>Le poids que porte le plancher, en kg/m²&nbsp;: la charge permanente (l’ouvrage lui-même) et la charge temporaire (ce qui vient dessus).</dd></div>
+            </dl>
+          </div>
+
+          <div class="cons-outil r-reveal">
+            <div>
+              <span class="cons-etiq" id="cons-etiq-charge">Votre charge permanente</span>
+              <div class="cons-charges" role="radiogroup" aria-labelledby="cons-etiq-charge">
+                <button type="button" role="radio" aria-checked="true" data-charge="120">120&nbsp;kg/m²</button><span class="cons-o">ou</span>
+                <button type="button" role="radio" aria-checked="false" data-charge="75">75&nbsp;kg/m²</button><span class="cons-o">ou</span>
+                <button type="button" role="radio" aria-checked="false" data-charge="55">55&nbsp;kg/m²</button>
+              </div>
+              <div class="cons-selects">
+                <label class="r-champ">Portée<select class="js-cons-portee"></select></label>
+                <label class="r-champ">Entraxe des solives<select class="js-cons-entraxe"></select></label>
+              </div>
+            </div>
+            <div class="cons-res js-cons-res" aria-live="polite"></div>
+          </div>
+
+          <div class="r-tarif-bloc cons-soli-bloc r-reveal">
+            <div class="r-tarif-titre"><b>Planchers courants · profils Douglas brut</b><span class="js-cons-soli-sous"></span></div>
+            <table class="r-tarif cons-soli" aria-label="Section de solive conseillée selon la portée et l’entraxe">
+              <thead><tr><th>Portée (mm)</th><th>Entraxe 340 à 360&nbsp;mm</th><th>400 à 420&nbsp;mm</th><th>495 à 515&nbsp;mm</th></tr></thead>
+              <tbody class="js-cons-soli"></tbody>
+            </table>
+            <p class="r-tarif-note">Case verte&nbsp;: profil disponible sur stock en standard, avec les connecteurs correspondants. Pour toute autre dimension, nous consulter. Touchez une case pour la détailler.</p>
+          </div>
+          <div class="cons-fortes r-reveal">
+            <svg viewBox="0 0 200 124" role="img" aria-label="Vue de dessus&nbsp;: des entretoises posées en quinconce entre les solives">
+              <rect class="cons-f-solive" x="18" y="6" width="9" height="112" rx="1.5"/><rect class="cons-f-solive" x="70" y="6" width="9" height="112" rx="1.5"/><rect class="cons-f-solive" x="122" y="6" width="9" height="112" rx="1.5"/><rect class="cons-f-solive" x="174" y="6" width="9" height="112" rx="1.5"/>
+              <rect class="cons-f-entretoise" x="27" y="30" width="43" height="8" rx="1"/><rect class="cons-f-entretoise" x="79" y="42" width="43" height="8" rx="1"/><rect class="cons-f-entretoise" x="131" y="30" width="43" height="8" rx="1"/>
+              <rect class="cons-f-entretoise" x="27" y="82" width="43" height="8" rx="1"/><rect class="cons-f-entretoise" x="79" y="94" width="43" height="8" rx="1"/><rect class="cons-f-entretoise" x="131" y="82" width="43" height="8" rx="1"/>
+            </svg>
+            <div><b>Fortes charges</b><p>Pour une plus grande solidité, consolidez le solivage par des entretoises en quinconce, de même section, tous les 1&nbsp;m (longueur = entraxe − A). Selon vos portées, vous utiliserez ainsi vos éventuelles chutes. Sinon, prévoyez cette longueur dans votre calcul de besoin.</p></div>
+          </div>
+          <p class="cons-source">D’après notre guide «&nbsp;Planchers courants&nbsp;: choix des profils Douglas brut et espacements de solives conseillés&nbsp;».</p>
+        </section>
+
+        <!-- Faire un calepinage -->
+        <section class="r-section cons-ancre" id="calepinage" aria-labelledby="cons-t-cale">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Terrasse</span><h2 id="cons-t-cale">Faire un calepinage</h2><p>Avant toute chose, faites un croquis de votre terrasse. Ce plan lame par lame vous aide à calculer vos besoins précis&nbsp;: bois, longueurs de lames, lambourdes, plots et vis.</p></div><a class="r-lien" href="terrasse.html#calculateur">Calculer mes vis</a></div>
+          <p class="cons-txt r-reveal">À surface égale, le type de pose change les pertes (les coupes), mais aussi le nombre de lambourdes, de plots et de vis nécessaires. Faites donc un dessin de votre projet avant d’acheter les matériaux. Voici les trois poses les plus courantes, à la portée de tous.</p>
+
+          <h3 class="r-reveal">Choisir son type de pose</h3>
+          <div class="cons-poses r-reveal">
+            <article class="cons-option"><div class="cons-option-vis js-cons-pose" data-pose="droite"></div><div class="cons-option-corps"><small>La plus simple</small><h4>La pose droite</h4><p>Pour les terrasses jusqu’à 4&nbsp;m de large, quand les lames font toute la largeur. On les aligne en respectant le jeu&nbsp;: pas de coupe, pas de perte, et une pose rapide.</p></div></article>
+            <span class="cons-ou-sep">ou</span>
+            <article class="cons-option"><div class="cons-option-vis js-cons-pose" data-pose="alignes"></div><div class="cons-option-corps"><small>Pour les grandes largeurs</small><h4>Les aboutages alignés</h4><p>Quand la largeur demande plusieurs lames, les aboutages sont alignés sur une seule ligne. Laissez un jeu pour la dilatation, et posez une double lambourde.</p></div></article>
+            <span class="cons-ou-sep">ou</span>
+            <article class="cons-option"><div class="cons-option-vis js-cons-pose" data-pose="decales"></div><div class="cons-option-corps"><small>La plus esthétique</small><h4>Les joints décalés</h4><p>Les aboutages sont décalés une lame sur deux, comme des pierres. Gardez une symétrie, avec des coupes de même longueur&nbsp;: par exemple 4&nbsp;m et 2 × 1,5&nbsp;m pour 7&nbsp;m de large. Double lambourde sur chaque ligne d’aboutage.</p></div></article>
+          </div>
+          <p class="cons-legende-p r-reveal">Sur les plans&nbsp;: les pointillés sont les lambourdes, sous les lames. Les traits noirs sont les doubles lambourdes, sous les aboutages.</p>
+
+          <h3 class="r-reveal">Les bonnes mesures</h3>
+          <div class="cons-mesures r-reveal">
+            <figure class="cons-schema">
+              <svg viewBox="0 0 420 262" role="img" aria-label="Coupe de deux lames aboutées sur une double lambourde&nbsp;: lames de 25 mm, vis à 20 ou 25 mm du bord, jeu de 3 à 5 mm, lambourdes de 50 mm de large">
+                <rect class="cons-m-lamb" x="120" y="96" width="80" height="120" rx="2"/>
+                <rect class="cons-m-lamb" x="206.4" y="96" width="80" height="120" rx="2"/>
+                <path class="cons-m-lame" d="M10 96V56H195q5 0 5 5v35z"/>
+                <path class="cons-m-lame" d="M206.4 96V61q0-5 5-5H410v40z"/>
+                <path class="cons-m-vis" d="M158 56h12l-4 6h-4zM162.6 62h2.8v100l-1.4 6-1.4-6z"/>
+                <path class="cons-m-vis" d="M236.4 56h12l-4 6h-4zM241 62h2.8v100l-1.4 6-1.4-6z"/>
+                <path class="cons-cote" d="M164 36v12M200 36v12M164 42h36"/>
+                <text class="cons-svg-txt" x="196" y="28" text-anchor="end">20 à 25&nbsp;mm</text>
+                <path class="cons-cote" d="M200 44v10M206.4 44v10"/>
+                <text class="cons-svg-txt" x="214" y="28">jeu 3 à 5&nbsp;mm</text>
+                <path class="cons-cote" d="M16 56h10M16 96h10M21 56v40"/>
+                <text class="cons-svg-txt" x="30" y="81">25&nbsp;mm</text>
+                <path class="cons-cote" d="M96 139H160"/>
+                <text class="cons-svg-txt" x="12" y="124">Vis&nbsp;:</text>
+                <text class="cons-svg-txt" x="12" y="143">2,5 fois</text>
+                <text class="cons-svg-txt" x="12" y="162">l’épaisseur,</text>
+                <text class="cons-svg-txt" x="12" y="181">soit 5 × 70</text>
+                <path class="cons-cote" d="M120 224v12M200 224v12M120 230h80"/>
+                <text class="cons-svg-txt" x="160" y="252" text-anchor="middle">50&nbsp;mm = 2 × l’épaisseur</text>
+                <text class="cons-svg-txt" x="298" y="146">Double</text>
+                <text class="cons-svg-txt" x="298" y="164">lambourde</text>
+              </svg>
+              <figcaption>En coupe&nbsp;: deux lames aboutées sur une double lambourde.</figcaption>
+            </figure>
+            <dl class="cons-reperes">
+              <div><dt>Lambourdes</dt><dd>50 × 75, tous les 50&nbsp;cm au maximum, perpendiculaires aux lames.</dd></div>
+              <div><dt>Plots</dt><dd>Tous les 1&nbsp;m sous les lambourdes&nbsp;: 3,5 à 4 par m² en moyenne. Tous les 50&nbsp;cm sous une charge lourde à un endroit précis.</dd></div>
+              <div><dt>Vis</dt><dd>À 20 ou 25&nbsp;mm du bord. Longues d’au moins 2,5 fois l’épaisseur de la lame&nbsp;: 5 × 70 pour 25&nbsp;mm.</dd></div>
+              <div><dt>Jeu</dt><dd>3 à 5&nbsp;mm entre les lames&nbsp;: 4&nbsp;mm réguliers avec l’espaceur-écarteur.</dd></div>
+              <div><dt>Marge</dt><dd>5&nbsp;% de matière en plus pour les coupes.</dd></div>
+            </dl>
+          </div>
+
+          <h3 class="r-reveal">Au bout des lames</h3>
+          <div class="cons-about r-reveal">
+            <article class="cons-option">
+              <div class="cons-option-vis">
+                <svg viewBox="0 0 260 160" role="img" aria-label="Deux lames aboutées sur une double lambourde, avec un jeu entre elles">
+                  <rect class="cons-m-lamb" x="66" y="60" width="60" height="90" rx="2"/><rect class="cons-m-lamb" x="131" y="60" width="60" height="90" rx="2"/>
+                  <path class="cons-m-lame" d="M10 60V30H122q4 0 4 4v26z"/><path class="cons-m-lame" d="M131 60V34q0-4 4-4h115v30z"/>
+                  <path class="cons-m-vis" d="M94 30h10l-3 5h-4zM97.8 35h2.4v73l-1.2 5-1.2-5z"/><path class="cons-m-vis" d="M153 30h10l-3 5h-4zM156.8 35h2.4v73l-1.2 5-1.2-5z"/>
+                  <path class="cons-cote" d="M126 12v12M131 12v12"/>
+                  <text class="cons-svg-txt" x="140" y="20">jeu 3 à 5&nbsp;mm</text>
+                </svg>
+              </div>
+              <div class="cons-option-corps"><small>Lambourdes debout</small><h4>Une double lambourde</h4><p>Chaque lame a sa lambourde&nbsp;: vous vissez à 20 ou 25&nbsp;mm du bout, et l’eau s’écoule par le jeu.</p></div>
+            </article>
+            <span class="cons-ou-sep">ou</span>
+            <article class="cons-option">
+              <div class="cons-option-vis">
+                <svg viewBox="0 0 260 160" role="img" aria-label="Deux lames aboutées sur une lambourde posée à plat, avec un croisillon-écarteur entre elles">
+                  <rect class="cons-m-lamb" x="83.5" y="64" width="90" height="60" rx="2"/>
+                  <path class="cons-m-lame" d="M10 60V30H122q4 0 4 4v26z"/><path class="cons-m-lame" d="M131 60V34q0-4 4-4h115v30z"/>
+                  <path class="cons-m-plaque" d="M98 60h61v4H98zM126.6 33h3.8v27h-3.8z"/>
+                  <path class="cons-m-vis" d="M100 30h10l-3 5h-4zM103.8 35h2.4v73l-1.2 5-1.2-5z"/><path class="cons-m-vis" d="M147 30h10l-3 5h-4zM150.8 35h2.4v73l-1.2 5-1.2-5z"/>
+                  <path class="cons-cote" d="M128.5 12v14"/>
+                  <text class="cons-svg-txt" x="138" y="20">croisillon 4&nbsp;mm</text>
+                </svg>
+              </div>
+              <div class="cons-option-corps"><small>Lambourde à plat</small><h4>Le croisillon-écarteur</h4><p>Il permet de poser deux lames aboutées sur une lambourde simple, posée à plat, avec un jeu constant de 4&nbsp;mm en bout de lame.</p></div>
+            </article>
+          </div>
+          <div class="cons-eviter r-reveal">
+            <svg viewBox="0 0 260 160" role="img" aria-label="À éviter&nbsp;: deux lames bout à bout sur une seule lambourde, sans jeu, l’eau stagne">
+              <rect class="cons-m-lamb" x="98" y="60" width="60" height="90" rx="2"/>
+              <path class="cons-m-lame" d="M10 60V30H125q2 0 2 2v28z"/><path class="cons-m-lame" d="M129 60V32q0-2 2-2h119v30z"/>
+              <path class="cons-m-vis" d="M112 30h10l-3 5h-4zM115.8 35h2.4v73l-1.2 5-1.2-5z"/><path class="cons-m-vis" d="M134 30h10l-3 5h-4zM137.8 35h2.4v73l-1.2 5-1.2-5z"/>
+              <path class="cons-eau" d="M128 14c3 4 5 7 5 9.5a5 5 0 0 1-10 0c0-2.5 2-5.5 5-9.5z"/>
+              <g class="cons-croix"><circle cx="226" cy="122" r="18"/><path d="M219 115l14 14M233 115l-14 14"/></g>
+            </svg>
+            <div><b>À éviter&nbsp;: économiser une lambourde.</b><p>Deux lames bout à bout sur une seule lambourde, sans jeu&nbsp;: les vis sont trop près des bords, l’eau stagne et le bois finit par pourrir.</p></div>
+          </div>
+
+          <h3 class="r-reveal">Combien de vis&nbsp;?</h3>
+          <div class="r-reveal">
+            <table class="cons-table" aria-label="Nombre minimum de vis par lame Douglas 25 × 200">
+              <thead><tr><th>Lame Douglas 25 × 200</th><th>Surface d’une lame</th><th>Vis par lame, au minimum</th><th>Soit par m²</th></tr></thead>
+              <tbody>
+                <tr><td><b>2,00&nbsp;m</b></td><td>0,40&nbsp;m²</td><td>10</td><td>25</td></tr>
+                <tr><td><b>2,50&nbsp;m</b></td><td>0,50&nbsp;m²</td><td>12</td><td>24</td></tr>
+                <tr><td><b>3,00&nbsp;m</b></td><td>0,60&nbsp;m²</td><td>14</td><td>23,3</td></tr>
+                <tr><td><b>4,00&nbsp;m</b></td><td>0,80&nbsp;m²</td><td>18</td><td>22,5</td></tr>
+              </tbody>
+            </table>
+            <p class="cons-table-note">Pour ne pas en manquer, comptez au moins 25 vis par m² en lames de 200&nbsp;mm. En lames de 145&nbsp;mm, il en faut un tiers de plus&nbsp;: 33 vis par m². Les espaceurs&nbsp;: un pour 2 vis, soit un sac de 100 pour 8&nbsp;m² en 200&nbsp;mm, ou pour 6&nbsp;m² en 145&nbsp;mm.</p>
+          </div>
+
+          <h3 class="r-reveal">Les erreurs à éviter</h3>
+          <div class="cons-erreurs r-reveal">
+            <div class="cons-erreur"><svg class="cons-croix" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19"/><path d="M14 14l12 12M26 14 14 26"/></svg><h4>Économiser une lambourde</h4><p>Les vis se retrouvent trop près des bords et l’eau stagne&nbsp;: le bois pourrit.</p></div>
+            <div class="cons-erreur"><svg class="cons-croix" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19"/><path d="M14 14l12 12M26 14 14 26"/></svg><h4>Des vis trop courtes ou mal placées</h4><p>Le bois vit&nbsp;: il gonfle et se rétracte avec l’humidité, et force sur les vis. Trop courtes, elles ne tiennent plus et le bois éclate.</p></div>
+            <div class="cons-erreur"><svg class="cons-croix" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19"/><path d="M14 14l12 12M26 14 14 26"/></svg><h4>Oublier la protection</h4><p>Sans huile, le Douglas grise et se tache. Protégez la surface et les coupes dès la pose.</p></div>
+          </div>
+          <p class="cons-source r-reveal">D’après notre notice «&nbsp;Calepinage et types de pose&nbsp;» et notre guide conseil de pose.</p>
+        </section>
+
+        <!-- Lisses ou striées -->
+        <section class="r-section cons-ancre" id="lisses-striees" aria-labelledby="cons-t-lisses">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Terrasse</span><h2 id="cons-t-lisses">Lisses ou striées&nbsp;?</h2><p>Une simple question de goût&nbsp;? Presque. Avant de choisir vos lames, voici ce qu’il faut savoir.</p></div><a class="r-lien" href="terrasse.html#prix">Voir le prix des lames</a></div>
+          <div class="cons-question r-reveal">
+            <div>
+              <h3>Les lames striées sont-elles antidérapantes&nbsp;?</h3>
+              <span class="cons-reponse">Pas forcément</span>
+              <p>On les croit antidérapantes, mais dans certaines conditions elles glissent même plus que des lames lisses. Dans les rainures, l’eau a tendance à stagner. Les poussières s’y déposent sans qu’on s’en aperçoive, puis forment une petite pellicule verte, comme une mousse. L’eau et la mousse, et voilà une patinoire.</p>
+              <p><b>Pas de panique.</b> Un entretien régulier suffit&nbsp;: à l’eau et au balai brosse, ou au nettoyeur haute pression, en pression faible ou modérée et à 70&nbsp;cm au moins des lames. Laissez bien sécher. Des saturateurs antidérapants existent aussi, à passer au rouleau ou au pinceau comme un saturateur classique.</p>
+            </div>
+            <div class="cons-eaux">
+              <figure>
+                <svg viewBox="0 0 220 110" aria-hidden="true">
+                  <path class="cons-profil" d="M20 92V68q0-6 6-6h168q6 0 6 6v24z"/>
+                  <path class="cons-eau" d="M104 30c3 4 5 7 5 9.5a5 5 0 0 1-10 0c0-2.5 2-5.5 5-9.5zM120 36c2.4 3.2 4 5.6 4 7.6a4 4 0 0 1-8 0c0-2 1.6-4.4 4-7.6z"/>
+                  <path class="cons-se-pointe" d="M96 54H34M42 48l-8 6 8 6M126 54h60M178 48l8 6-8 6"/>
+                </svg>
+                <figcaption><b>Lisse&nbsp;:</b> l’eau s’écoule dans toutes les directions.</figcaption>
+              </figure>
+              <figure>
+                <svg viewBox="0 0 220 110" aria-hidden="true">
+                  <path class="cons-profil js-cons-profil-v" d="M20 92V68q0-6 6-6h168q6 0 6 6v24z"/>
+                  <g class="js-cons-eau-v"></g>
+                  <path class="cons-eau" d="M110 26c3 4 5 7 5 9.5a5 5 0 0 1-10 0c0-2.5 2-5.5 5-9.5z"/>
+                </svg>
+                <figcaption><b>Striée&nbsp;:</b> l’eau reste dans les rainures, et ne s’écoule que dans le sens de la pente.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <h3 class="r-reveal">Une histoire d’envies et de goûts</h3>
+          <div class="cons-duo r-reveal">
+            <article class="cons-option">
+              <div class="cons-option-vis js-cons-texture" data-tex="lisse"></div>
+              <div class="cons-option-corps">
+                <small>R1F et R3F QDR</small><h4>Les lames lisses</h4>
+                <ul class="cons-points">
+                  <li>Elles gardent intactes les nuances et les teintes du bois.</li>
+                  <li>Un style contemporain et moderne.</li>
+                  <li>L’effet lisse allonge la terrasse et donne une impression de grandeur.</li>
+                </ul>
+                <div class="cons-option-pied"><b>À la scierie&nbsp;:</b> rabotées 1 face lisse (25 × 200), ou 3 faces avec 2 quarts de rond (25 × 200 et 25 × 145), dès 35,25&nbsp;€ le m².</div>
+              </div>
+            </article>
+            <span class="cons-ou-sep">ou</span>
+            <article class="cons-option">
+              <div class="cons-option-vis js-cons-texture" data-tex="striee"></div>
+              <div class="cons-option-corps">
+                <small>R4F 10V et R4F 6V</small><h4>Les lames striées</h4>
+                <ul class="cons-points">
+                  <li>Du relief, un aspect de profondeur pour la terrasse.</li>
+                  <li>Elles atténuent les contrastes naturels du bois et homogénéisent l’ensemble.</li>
+                  <li>Un esprit plus traditionnel, ou cosy.</li>
+                </ul>
+                <div class="cons-option-pied"><b>À la scierie&nbsp;:</b> rabotées 4 faces avec peigne de 10 rainures en V (25 × 200) ou de 6 (25 × 145), à 40,59&nbsp;€ le m².</div>
+              </div>
+            </article>
+          </div>
+          <div class="cons-tendance r-reveal">
+            <p><b>Au fond, c’est une question de goût.</b> La tendance actuelle va plutôt vers les lames lisses.</p>
+            <a class="r-btn r-btn--noir r-btn--petit" href="produits.html#terrasse">Les lames au catalogue</a>
+          </div>
+          <p class="cons-source r-reveal">Source citée sur notre fiche&nbsp;: Nûrban, spécialiste des maisons à structure bois.</p>
+        </section>
+
+        <!-- C18 ou C24 -->
+        <section class="r-section cons-ancre" id="c18-c24" aria-labelledby="cons-t-classes">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Le bois</span><h2 id="cons-t-classes">Bien choisir C18 ou C24</h2><p>Deux classes de résistance du Douglas, deux usages. Sans autre prétention que d’expliquer nos classements, voici les repères pour les non-spécialistes.</p></div><a class="r-lien" href="douglas-brut.html">Voir le Douglas brut</a></div>
+          <figure class="cons-mpa r-reveal" role="img" aria-label="Résistance à la flexion&nbsp;: 18 MPa pour le C18, 24 MPa pour le C24">
+            <figcaption><b>Résistance à la flexion</b><span>en mégapascals (MPa)</span></figcaption>
+            <div class="cons-mpa-rang"><span>C18</span><span class="cons-mpa-piste"><i style="--v:.75"></i></span><b>18&nbsp;MPa</b></div>
+            <div class="cons-mpa-rang"><span>C24</span><span class="cons-mpa-piste"><i style="--v:1"></i></span><b>24&nbsp;MPa</b></div>
+            <div class="cons-mpa-axe" aria-hidden="true"><span></span><div><span style="left:0">0</span><span style="left:25%">6</span><span style="left:50%">12</span><span style="left:75%">18</span><span style="left:100%">24</span></div><span></span></div>
+          </figure>
+          <div class="cons-classes r-reveal">
+            <article class="cons-classe">
+              <div class="cons-classe-tete"><b>C18</b><span>18&nbsp;MPa</span></div>
+              <ul class="cons-points">
+                <li>Pour la charpente traditionnelle.</li>
+                <li>Aspect visuel ST&nbsp;III&nbsp;: les nœuds, les cernes et les fentes sont définis par une norme précise.</li>
+              </ul>
+              <div class="cons-classe-pied"><b>À la scierie</b>Tout notre Douglas brut de sciage, sec et non traité, en 29 sections au tarif.<br><a class="r-lien" href="douglas-brut.html">Le Douglas brut C18</a></div>
+            </article>
+            <span class="cons-ou-sep">ou</span>
+            <article class="cons-classe">
+              <div class="cons-classe-tete"><b>C24</b><span>24&nbsp;MPa</span></div>
+              <ul class="cons-points">
+                <li>Plus résistant et plus esthétique&nbsp;: pour la charpente industrielle et la menuiserie.</li>
+                <li>Un meilleur aspect visuel (ST&nbsp;II), et il se rabote plus facilement.</li>
+              </ul>
+              <div class="cons-classe-pied"><b>À la scierie</b>Le Douglas raboté 1, 2 ou 4 faces, pour une belle charpente. En brut, la qualité «&nbsp;rabotable&nbsp;» C24 se fait sur commande&nbsp;: +30&nbsp;% du tarif C18, préparée à partir du bois en stock.<br><a class="r-lien" href="produits.html#charpente">Le Douglas raboté C24</a></div>
+            </article>
+          </div>
+          <div class="cons-commun r-reveal">
+            <div>
+              <h4>Ce qu’elles ont en commun</h4>
+              <p>Les deux classes résistent naturellement à l’humidité et aux risques biologiques&nbsp;: pourriture, insectes xylophages, termites. Sans traitement chimique, le Douglas est en classe&nbsp;3&nbsp;: il convient aux usages exposés à la pluie ou à l’humidité.</p>
+            </div>
+            <div class="r-conseil">
+              <div><b>Bon à savoir</b>Vous ne trouverez pas de bois traité autoclave chez nous&nbsp;: c’est un choix. Le Douglas résiste naturellement aux intempéries, et vous ne respirez aucune vapeur de produit chimique dans vos pièces de vie. Sur un bois naturel, vous vérifiez aussi plus facilement ce que vous achetez&nbsp;: une teinte peut masquer des nœuds ou de l’aubier.</div>
+            </div>
+          </div>
+          <p class="cons-source r-reveal">D’après notre fiche «&nbsp;Pourquoi choisir le Douglas&nbsp;?&nbsp;» et nos tarifs Douglas brut et raboté.</p>
+        </section>
+
+        <!-- Séchage naturel -->
+        <section class="r-section cons-ancre" id="sechage" aria-labelledby="cons-t-sechage">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Le bois</span><h2 id="cons-t-sechage">Le séchage naturel</h2><p>Chez nous, le Douglas sèche à l’abri, lentement, à l’ancienne. C’est ce qui le rend prêt à l’emploi.</p></div></div>
+          <div class="cons-sechage r-reveal">
+            <figure class="cons-schema">
+              <svg viewBox="0 0 480 290" role="img" aria-label="Une pile de planches sous un toit&nbsp;: des lattes séparent les rangs et l’air circule entre eux">
+                <path class="cons-se-toit" d="M24 92 240 28l216 64M48 85v185M432 85v185"/>
+                <line class="cons-se-sol" x1="14" y1="271" x2="466" y2="271"/>
+                <rect class="cons-se-cale" x="110" y="256" width="18" height="14" rx="1"/><rect class="cons-se-cale" x="190" y="256" width="18" height="14" rx="1"/><rect class="cons-se-cale" x="270" y="256" width="18" height="14" rx="1"/><rect class="cons-se-cale" x="350" y="256" width="18" height="14" rx="1"/>
+                <g class="js-cons-pile"></g>
+                <text class="cons-svg-txt" x="240" y="66" text-anchor="middle">À l’abri</text>
+              </svg>
+              <ul class="cons-legende-s">
+                <li><i class="cons-l-toit"></i>Stocké à l’abri</li>
+                <li><i class="cons-l-latte"></i>Des lattes entre les rangs</li>
+                <li><i></i>L’air circule librement</li>
+              </ul>
+            </figure>
+            <div>
+              <p class="js-cons-sechage-txt"></p>
+              <ul class="cons-points">
+                <li>Usage immédiat&nbsp;: le bois est prêt à l’emploi.</li>
+                <li>Stabilité dimensionnelle, avec un minimum de déformations.</li>
+                <li>Une résistance accrue et un poids mieux maîtrisé.</li>
+                <li>Une empreinte carbone plus faible qu’un étuvage.</li>
+              </ul>
+              <div class="cons-chiffre"><b>1&nbsp;000&nbsp;m³</b><span>de Douglas en stock permanent, issu à 100&nbsp;% des forêts de France.</span></div>
+              <p class="cons-source">Le bois est un matériau vivant&nbsp;: nos sections sont indicatives, et peuvent varier de quelques millimètres selon la durée du stockage.</p>
+              <figure class="cons-photo"><img src="img/stock-planches.jpg" alt="Des piles de planches de Douglas sous le hangar de la scierie" loading="lazy"><figcaption>Les piles de Douglas, à l’abri sous le hangar.</figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- Entretenir sa terrasse -->
+        <section class="r-section cons-ancre" id="entretien" aria-labelledby="cons-t-entretien">
+          <div class="r-tete r-reveal"><div><span class="r-kicker">Terrasse</span><h2 id="cons-t-entretien">Entretenir sa terrasse</h2><p>Le Douglas est naturellement résistant. Une huile de protection lui garde son aspect naturel, évite l’infiltration d’eau et le fendillement, et facilite l’entretien.</p></div><a class="r-lien" href="produits.html#quincaillerie">Huiles et dégriseur</a></div>
+
+          <h3 class="r-reveal">La première fois, deux couches</h3>
+          <ol class="r-etapes r-reveal">
+            <li><b>Un bois propre et sec</b><p>Pas de pluie, une température entre 15 et 35&nbsp;°C, et pas en plein soleil.</p></li>
+            <li><b>Une première couche</b><p>Uniforme, au pinceau, à l’éponge ou à la brosse à poils courts. Sans oublier les coupes, en bout de lame.</p></li>
+            <li><b>Une deuxième couche</b><p>Quelques heures plus tard, dans les 72&nbsp;h. Laissez ensuite sécher 48&nbsp;h.</p></li>
+          </ol>
+
+          <div class="cons-entretien r-reveal">
+            <div class="cons-carte-bloc">
+              <h4>À éviter</h4>
+              <ul class="cons-non">
+                <li><svg class="cons-croix" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10.5"/><path d="M7.5 7.5l7 7M14.5 7.5l-7 7"/></svg><span>Un sol humide, sale, ou déjà traité avec d’autres produits.</span></li>
+                <li><svg class="cons-croix" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10.5"/><path d="M7.5 7.5l7 7M14.5 7.5l-7 7"/></svg><span>Un sol chaud, en plein soleil.</span></li>
+                <li><svg class="cons-croix" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10.5"/><path d="M7.5 7.5l7 7M14.5 7.5l-7 7"/></svg><span>Les périodes de forte humidité, de début octobre à fin mars.</span></li>
+              </ul>
+              <figure class="cons-photo"><img src="img/conseils-sans-traitement.jpg" alt="Des lames de terrasse striées devenues grises, sans traitement" loading="lazy"><figcaption>Des lames sans traitement (photo de juillet 2019)&nbsp;: le Douglas a grisé.</figcaption></figure>
+            </div>
+            <div class="cons-carte-bloc">
+              <h4>Combien d’huile&nbsp;?</h4>
+              <label class="cons-huile-champ" for="cons-huile-m2"><span>Surface à protéger</span><input id="cons-huile-m2" class="js-cons-huile-m2" type="text" inputmode="decimal" value="25" autocomplete="off"><span>m²</span></label>
+              <div class="cons-huile-res" aria-live="polite">
+                <b class="cons-litres js-cons-litres">5 litres</b>
+                <span>pour les deux couches de la première fois</span>
+                <p class="js-cons-pots"></p>
+                <button type="button" class="r-btn r-btn--noir r-btn--petit js-cons-huile-ajout">Ajouter à ma liste</button>
+              </div>
+              <p class="cons-huile-note">Calcul&nbsp;: 1&nbsp;litre pour environ 10&nbsp;m² par couche, un peu moins sur un bois rugueux. Huile hautes performances spéciale Douglas&nbsp;: 31,90&nbsp;€ le pot de 1&nbsp;L, 72,00&nbsp;€ les 2,5&nbsp;L, 131,90&nbsp;€ les 5&nbsp;L.</p>
+            </div>
+          </div>
+
+          <h3 class="r-reveal">Ensuite, au fil des années</h3>
+          <div class="cons-ensuite r-reveal">
+            <div><h4>Une couche tous les 2 ou 3 ans</h4><p>Selon l’exposition, sans décaper la précédente. Retouchez plus souvent les endroits de passage.</p></div>
+            <div><h4>Un nettoyage doux</h4><p>À l’eau et au balai brosse, ou au nettoyeur haute pression en pression faible, à 70&nbsp;cm au moins des lames.</p></div>
+            <div><h4>Bois gris&nbsp;? Dégrisez d’abord</h4><p>Passez le dégriseur concentré avant l’huile&nbsp;: 9,30&nbsp;€ la dose de 400&nbsp;ml, à diluer dans 4&nbsp;L, pour environ 40&nbsp;m².</p></div>
+          </div>
+          <div class="cons-entretien-bas r-reveal">
+            <p class="cons-txt" style="margin:0">Piscine, jardinières, eau stagnante&nbsp;: protégez vos lames dès la pose. Vous éviterez d’avoir à les dégriser.</p>
+            <a class="r-btn r-btn--sauge" href="terrasse.html">Le projet terrasse</a>
+          </div>
+          <p class="cons-source r-reveal">D’après notre guide conseil de pose et nos fiches huile et dégriseur.</p>
+        </section>
+
+        <!-- Pour finir -->
+        <section class="r-section r-reveal" aria-label="Une question&nbsp;?">
+          <div class="cons-fin">
+            <div class="r-conseil"><div><b>Le conseil de la scierie</b><p>Pour toute autre dimension, ou si vous hésitez sur une section, consultez-nous avant d’acheter&nbsp;: au 02&nbsp;41&nbsp;48&nbsp;00&nbsp;68, ou directement au dépôt, aux Cinq Routes.</p></div></div>
+            <div class="cons-fin-btns">
+              <a class="r-btn r-btn--noir" href="contact.html">Nous contacter</a>
+              <a class="r-btn r-btn--blanc" href="tel:+33241480068">Appeler la scierie</a>
+              <small class="js-statut-txt"></small>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer data-pied></footer>
+<script src="donnees.js"></script>
+<script src="base.js"></script>
+<script>
+(function(){
+'use strict';
+var S = window.RetifSite, D = S.donnees, NB = ' ';
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function euros(n){ return S.fmt(n) + NB + '€'; }
+function lire(v){ v = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isNaN(v) ? 0 : v; }
+function sec(id){ return id.replace('x', NB + '×' + NB); }
+
+/* ---------- Le séchage : texte commun (donnees.js) ---------- */
+$('.js-cons-sechage-txt').textContent = S.infos.sechage;
+
+/* ---------- Guide de solivage (relevé sur le guide « Planchers courants ») ---------- */
+/* « + » = profil disponible sur stock en standard ; « | » sépare deux sections possibles */
+var PORTEES = ['2 500', '3 000', '3 500', '4 000', '4 500', '5 000', '5 500', '6 000'];
+var ENTRAXES = ['340 à 360', '400 à 420', '495 à 515'];
+var CHARGES = {'120':'120 kg/m² permanentes, plus de 120 kg/m² temporaires', '75':'75 kg/m² permanentes, plus de 120 kg/m² temporaires', '55':'55 kg/m² permanentes, plus de 120 kg/m² temporaires'};
+var SOLI = {
+  '120':[['+50x150', '+50x150', '+50x150'], ['63x150|38x175', '+63x175', '+63x175'], ['+50x200|63x175', '50x200|75x175', '63x200'], ['63x200', '+75x200', '+75x225'],
+         ['+75x225', '+75x225', '75x250'], ['75x250', '75x250', '100x250'], ['100x250', '100x250|75x280', '100x280|75x300'], ['100x280|75x300', '100x280|75x300', '100x300']],
+  '75': [['+50x150', '+50x150', '+50x150'], ['+50x150', '63x150|38x175', '+63x175'], ['+63x175', '+63x175', '63x200'], ['75x175|63x200', '63x200', '+75x200'],
+         ['+75x200', '+75x225', '+75x225'], ['+75x225', '75x250', '75x250'], ['75x250', '100x250', '100x280'], ['100x250|75x280', '100x280|75x300', '75x300']],
+  '55': [['+35x150', '+50x150', '+50x150'], ['+35x150', '+50x150', '+35x200'], ['38x200', '+63x175', '+63x175|50x200'], ['+50x200|63x175', '75x175|63x200', '63x200'],
+         ['63x200', '+75x200', '+75x225'], ['+75x225', '+75x225', '75x250'], ['75x250', '75x250', '100x250'], ['100x250', '100x250', '75x300']]
+};
+var etat = {charge:'120', p:3, e:1};
+function cellule(v){ return {stock:v.charAt(0) === '+', opts:v.replace('+', '').split('|')}; }
+function tarifDe(id){ var t = null; D.TARIF.forEach(function(r){ if (r[0] === id) t = r[1]; }); return t; }
+var selP = $('.js-cons-portee'), selE = $('.js-cons-entraxe'), corps = $('.js-cons-soli');
+selP.innerHTML = PORTEES.map(function(p, i){ return '<option value="' + i + '">' + p + ' mm</option>'; }).join('');
+selE.innerHTML = ENTRAXES.map(function(e, i){ return '<option value="' + i + '">' + e + ' mm</option>'; }).join('');
+function rendreTable(){
+  corps.innerHTML = SOLI[etat.charge].map(function(r, pi){
+    return '<tr' + (pi === etat.p ? ' class="on"' : '') + '><td><b>' + PORTEES[pi].replace(' ', NB) + '</b></td>' + r.map(function(v, ei){
+      var c = cellule(v);
+      return '<td class="' + (c.stock ? 'p' : 'cons-c') + (pi === etat.p && ei === etat.e ? ' sel' : '') + '" role="button" tabindex="0" data-p="' + pi + '" data-e="' + ei + '" aria-label="Portée ' + PORTEES[pi] + ' mm, entraxe ' + ENTRAXES[ei] + ' mm : ' + c.opts.map(function(o){ return o.replace('x', ' × '); }).join(' ou ') + (c.stock ? ', en stock' : '') + '">' +
+        sec(c.opts[0]) + (c.opts[1] ? '<span class="cons-ou">ou ' + sec(c.opts[1]) + '</span>' : '') + '</td>';
+    }).join('') + '</tr>';
+  }).join('');
+  $('.js-cons-soli-sous').textContent = 'Charges : ' + CHARGES[etat.charge] + ' · entraxes possibles';
+}
+function rendreResultat(){
+  var c = cellule(SOLI[etat.charge][etat.p][etat.e]), boite = $('.js-cons-res');
+  var h = '<span class="cons-res-etiq">Section conseillée</span><div class="cons-res-sec">' + c.opts.map(sec).join('<i>ou</i>') + '</div>' +
+    '<span class="cons-res-badge' + (c.stock ? '' : ' cons-res-badge--non') + '">' + (c.stock ? 'Disponible sur stock en standard' : 'Hors stock standard&nbsp;: nous consulter') + '</span>' +
+    '<p class="cons-res-phrase">Pour une portée de ' + PORTEES[etat.p] + '&nbsp;mm, des solives tous les ' + ENTRAXES[etat.e] + '&nbsp;mm et une charge permanente de ' + etat.charge + '&nbsp;kg/m².</p>';
+  if (c.stock) c.opts.forEach(function(id){
+    var t = tarifDe(id); if (!t) return;
+    h += '<div class="cons-res-prix"><span>' + sec(id) + ' au tarif Douglas brut, à la pièce</span><ul>' + Object.keys(t).map(function(l){ return '<li><span>' + l + NB + 'm</span><b>' + euros(t[l]) + '</b></li>'; }).join('') + '</ul><a class="r-lien" href="douglas-brut.html?sel=' + id + '">Voir la fiche</a></div>';
+  });
+  else h += '<div class="cons-res-prix"><span>Appelez-nous au 02&nbsp;41&nbsp;48&nbsp;00&nbsp;68&nbsp;: nous vous dirons ce qui est possible.</span></div>';
+  boite.innerHTML = h;
+  boite.style.animation = 'none'; void boite.offsetWidth; boite.style.animation = '';
+}
+function majSoli(){ selP.value = etat.p; selE.value = etat.e; rendreTable(); rendreResultat(); }
+$$('.cons-charges [data-charge]').forEach(function(b){
+  b.addEventListener('click', function(){
+    etat.charge = b.getAttribute('data-charge');
+    $$('.cons-charges [data-charge]').forEach(function(x){ x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+    majSoli();
+  });
+});
+selP.addEventListener('change', function(){ etat.p = +selP.value; majSoli(); });
+selE.addEventListener('change', function(){ etat.e = +selE.value; majSoli(); });
+corps.addEventListener('click', function(e){ var td = e.target.closest('td[data-p]'); if (!td) return; etat.p = +td.getAttribute('data-p'); etat.e = +td.getAttribute('data-e'); majSoli(); });
+majSoli();
+
+/* ---------- Types de pose : plans dessinés ---------- */
+function planPose(type){
+  var lambs = [13, 40, 67, 94, 121, 148, 175, 202, 229], joints = type === 'alignes' ? [[121]] : (type === 'decales' ? [[67, 175], [121]] : [[]]), doubles = {}, h = '';
+  joints.forEach(function(j){ j.forEach(function(x){ doubles[x] = 1; }); });
+  for (var i = 0; i < 6; i++){
+    var y = 8 + i * 21, cuts = joints[i % joints.length], x0 = 8;
+    cuts.concat([234]).forEach(function(c){ var x1 = c === 234 ? 232 : c - 2; h += '<rect class="cons-p-lame" x="' + x0 + '" y="' + y + '" width="' + (x1 - x0) + '" height="19" rx="1.5"/>'; x0 = c + 2; });
+  }
+  lambs.forEach(function(x){
+    if (doubles[x]) h += '<line class="cons-p-double" x1="' + (x - 4) + '" y1="3" x2="' + (x - 4) + '" y2="137"/><line class="cons-p-double" x1="' + (x + 4) + '" y1="3" x2="' + (x + 4) + '" y2="137"/>';
+    else h += '<line class="cons-p-lamb" x1="' + x + '" y1="3" x2="' + x + '" y2="137"/>';
+  });
+  var noms = {droite:'Plan d’une pose droite&nbsp;: des lames d’un seul tenant', alignes:'Plan d’une pose à aboutages alignés, avec une double lambourde sous la ligne d’aboutage', decales:'Plan d’une pose à joints décalés, avec une double lambourde sous chaque ligne d’aboutage'};
+  return '<svg viewBox="0 0 240 140" role="img" aria-label="' + noms[type] + '">' + h + '</svg>';
+}
+$$('.js-cons-pose').forEach(function(el){ el.innerHTML = planPose(el.getAttribute('data-pose')); });
+
+/* ---------- Lisses ou striées : profils, rainures et textures ---------- */
+function cheminProfil(n, x0, x1, y0, y1, r){
+  var d = 'M' + x0 + ' ' + y1 + 'V' + (y0 + r) + 'Q' + x0 + ' ' + y0 + ' ' + (x0 + r) + ' ' + y0, a = x0 + r + 3, b = x1 - r - 3, w = (y1 - y0) * .13, hh = (y1 - y0) * .26;
+  for (var i = 0; i < n; i++){ var c = a + (b - a) * (i + .5) / n; d += 'L' + (c - w).toFixed(1) + ' ' + y0 + 'l' + w.toFixed(1) + ' ' + hh.toFixed(1) + 'l' + w.toFixed(1) + ' ' + (-hh).toFixed(1); }
+  return d + 'L' + (x1 - r) + ' ' + y0 + 'Q' + x1 + ' ' + y0 + ' ' + x1 + ' ' + (y0 + r) + 'V' + y1 + 'z';
+}
+$('.js-cons-profil-v').setAttribute('d', cheminProfil(10, 20, 200, 62, 92, 6));
+(function(){
+  var g = $('.js-cons-eau-v'), a = 29, b = 191, w = 30 * .13, hh = 30 * .26, out = '';
+  for (var i = 0; i < 10; i++){ var c = a + (b - a) * (i + .5) / 10; out += '<path class="cons-eau" d="M' + (c - w + .6).toFixed(1) + ' 62.6L' + c.toFixed(1) + ' ' + (62 + hh - .8).toFixed(1) + 'L' + (c + w - .6).toFixed(1) + ' 62.6z"/>'; }
+  g.innerHTML = out;
+})();
+function texture(type){
+  var h = '<svg viewBox="0 0 320 150" aria-hidden="true">';
+  [6, 40, 74].forEach(function(y){ h += '<rect class="cons-tex-lame" x="4" y="' + y + '" width="312" height="30" rx="3"/>'; });
+  if (type === 'lisse') h += '<path class="cons-tex-veine" d="M20 17c40-6 70 6 120 2s90-8 160 0M30 28c50 4 100-5 150-1s80 5 120-1M14 51c60 5 90-6 140-2s100 7 150-1M40 62c40-4 90 4 140 1s70-4 120 1M18 85c50-5 90 5 130 1s100-6 156 1M28 96c60 4 110-4 160 0s70 3 110-1"/>';
+  else { h += '<g class="cons-tex-rainure">'; [6, 40, 74].forEach(function(y){ for (var k = 1; k <= 8; k++){ var yy = (y + k * 30 / 9).toFixed(1); h += '<line x1="8" y1="' + yy + '" x2="312" y2="' + yy + '"/>'; } }); h += '</g>'; }
+  return h + '<path class="cons-profil" d="' + cheminProfil(type === 'lisse' ? 0 : 10, 60, 260, 118, 140, 5) + '"/></svg>';
+}
+$$('.js-cons-texture').forEach(function(el){ el.innerHTML = texture(el.getAttribute('data-tex')); });
+
+/* ---------- Le séchage : la pile et l'air qui circule ---------- */
+(function(){
+  var g = $('.js-cons-pile'), h = '', y = 238;
+  for (var i = 0; i < 6; i++){
+    h += '<rect class="cons-se-rang" x="96" y="' + y + '" width="288" height="18" rx="1.5"/>';
+    if (i < 5){ [112, 192, 272, 352].forEach(function(x){ h += '<rect class="cons-se-latte" x="' + x + '" y="' + (y - 8) + '" width="14" height="8" rx="1"/>'; }); h += '<path class="cons-se-air" style="animation-delay:-' + (i * .35).toFixed(2) + 's" d="M62 ' + (y - 4) + 'H414"/><path class="cons-se-pointe" d="M408 ' + (y - 9) + 'l7 5-7 5"/>'; }
+    y -= 26;
+  }
+  g.innerHTML = h;
+})();
+
+/* ---------- Combien d'huile ? (1 L pour 10 m² par couche, 2 couches) ---------- */
+var POTS = [{l:5, prix:131.90, nom:'pot de 5 L'}, {l:2.5, prix:72.00, nom:'pot de 2,5 L'}, {l:1, prix:31.90, nom:'pot de 1 L'}], panier = null;
+function panierMoinsCher(litres){
+  var best = null;
+  for (var a = 0; a <= Math.ceil(litres / 5); a++) for (var b = 0; b <= 2; b++) for (var c = 0; c <= 4; c++){
+    var L = a * 5 + b * 2.5 + c, P = a * POTS[0].prix + b * POTS[1].prix + c * POTS[2].prix;
+    if (L + 1e-9 >= litres && (!best || P < best.P - 1e-9 || (Math.abs(P - best.P) < 1e-9 && L < best.L))) best = {q:[a, b, c], L:L, P:P};
+  }
+  return best;
+}
+var champH = $('.js-cons-huile-m2'), boutonH = $('.js-cons-huile-ajout');
+function majHuile(){
+  var m2 = Math.max(0, Math.min(5000, lire(champH.value))), litres = Math.round(m2 * 2 / 10 * 10) / 10;
+  $('.js-cons-litres').textContent = (litres % 1 ? S.fmt(litres).replace(/0$/, '') : String(litres)) + (litres > 1 ? ' litres' : ' litre');
+  panier = litres ? panierMoinsCher(litres) : null;
+  if (!panier || !panier.L){ $('.js-cons-pots').textContent = 'Entrez une surface.'; boutonH.disabled = true; return; }
+  var morceaux = [];
+  panier.q.forEach(function(q, i){ if (q) morceaux.push(q + ' ' + POTS[i].nom.replace('pot', q > 1 ? 'pots' : 'pot')); });
+  $('.js-cons-pots').innerHTML = 'Le plus économique&nbsp;: ' + morceaux.join(' + ') + ', soit <b>' + euros(panier.P) + '</b>.';
+  boutonH.disabled = false;
+}
+champH.addEventListener('input', majHuile);
+boutonH.addEventListener('click', function(){
+  if (!panier) return;
+  var bouton = this;
+  panier.q.forEach(function(q, i){ if (q) S.liste.ajouter({cle:'huile-douglas-' + String(POTS[i].l).replace('.', ','), nom:'Huile spéciale Douglas', detail:POTS[i].nom, prix:POTS[i].prix, q:q, vol:0}, bouton); });
+  S.toast('Huile ajoutée à votre liste');
+});
+majHuile();
+
+/* ---------- Sommaire latéral : la section en cours ---------- */
+var liens = $$('.cons-nav a[href^="#"]'), cibles = liens.map(function(a){ return $(a.getAttribute('href')); }), attente = false;
+function enCours(){
+  attente = false;
+  var repere = innerHeight * .3, actif = -1;
+  cibles.forEach(function(s, i){ if (s.getBoundingClientRect().top < repere) actif = i; });
+  liens.forEach(function(a, i){ a.classList.toggle('on', i === actif); if (i === actif) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+}
+window.addEventListener('scroll', function(){ if (!attente){ attente = true; requestAnimationFrame(enCours); } }, {passive:true});
+enCours();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos produits · Scierie Rétif (maquette)</title>
+<meta name="description" content="Le catalogue de la Scierie Rétif : charpente, terrasse, bardage, jardin, intérieur, quincaillerie, chauffage et bonnes affaires. Prix directs de scierie, près d’Angers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+/* ---------- Catalogue « Nos produits » : préfixe cat- ---------- */
+.cat-cache{display:none !important}
+.cat-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap}
+
+/* En-tête de page : bandeau sauge, titre, devise, recherche, vignettes */
+.cat-tete{padding:28px 0 34px}
+.cat-tete-haut{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,500px); gap:22px 56px; align-items:end}
+.cat-fil{display:flex; flex-wrap:wrap; gap:8px; font-size:14px; color:var(--noir); margin:0}
+.cat-fil a{text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--noir) 35%, transparent); text-underline-offset:3px}
+.cat-fil a:hover{text-decoration-color:var(--noir)}
+.cat-tete h1{margin:8px 0 12px}
+.cat-devise{font-size:22px; font-style:italic; line-height:1.4; margin:0 0 6px; max-width:560px}
+.cat-tete-sous{margin:0; font-size:16px; color:var(--noir)}
+.cat-cherche{display:grid; gap:10px}
+.cat-cherche-lbl{font-weight:700; font-size:14.5px}
+.cat-champ{display:flex; align-items:center; gap:10px; height:60px; padding:0 8px 0 22px; background:var(--blanc); border-radius:999px; box-shadow:0 18px 40px -30px rgba(17,20,17,.6); transition:box-shadow .25s}
+.cat-champ:focus-within{box-shadow:0 0 0 3px var(--noir), 0 18px 40px -30px rgba(17,20,17,.6)}
+.cat-champ > svg{width:22px; height:22px; fill:none; stroke:var(--noir); stroke-width:2; stroke-linecap:round; flex:none}
+.cat-champ input{flex:1; min-width:0; height:100%; border:0; background:none; font:inherit; font-size:17px; color:var(--noir); outline:none}
+.cat-champ input::placeholder{color:var(--of)}
+.cat-champ input::-webkit-search-cancel-button{-webkit-appearance:none; display:none}
+.cat-effacer{flex:none; width:44px; height:44px; border-radius:50%; background:var(--sc); display:grid; place-items:center; transition:background .2s, transform .3s var(--ressort)}
+.cat-effacer:hover{background:var(--sc2)}
+.cat-effacer svg{width:16px; height:16px; fill:none; stroke:var(--noir); stroke-width:2.2; stroke-linecap:round}
+.cat-essais{margin:0; font-size:14px; display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center}
+.cat-essais button{font-weight:600; background:color-mix(in srgb, var(--blanc) 55%, transparent); padding:4px 12px; border-radius:999px; transition:background .2s}
+.cat-essais button:hover{background:var(--blanc)}
+
+/* Les 8 vignettes (l'esprit « Cliquez sur chaque visuel ») */
+.cat-rayons{display:grid; grid-template-rows:1fr; margin-top:30px; transition:grid-template-rows .5s var(--ease), opacity .35s, margin-top .5s var(--ease)}
+.cat-rayons-in{min-height:0; overflow:hidden; padding:6px 6px 4px; margin:-6px -6px 0}
+body.cat-cherche-on .cat-rayons{grid-template-rows:0fr; opacity:0; margin-top:0}
+.cat-aide{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; margin:0 0 12px; font-size:15px; color:var(--noir)}
+.cat-aide .r-kicker{font-size:12.5px}
+.cat-vigs{display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:12px}
+.cat-vigs .r-vignette{height:150px; border-radius:18px; outline:2.5px solid transparent; outline-offset:3px; transition:outline-color .25s, opacity .35s}
+.cat-vigs .r-vignette:focus-visible{outline-color:var(--noir)}
+.cat-vigs .r-plaque{left:9px; right:auto; bottom:9px; max-width:calc(100% - 18px); font-size:13.5px; padding:6px 9px; border-radius:9px; transition:background .25s, color .25s}
+.cat-vigs .r-plaque small{font-size:12px}
+.cat-vigs.cat-filtre .r-vignette:not(.on){opacity:.5}
+.cat-vigs.cat-filtre .r-vignette:not(.on):hover{opacity:1}
+.cat-vigs .r-vignette.on{outline-color:var(--noir)}
+.cat-vigs .r-vignette.on .r-plaque{background:var(--vert); color:var(--noir)}
+.cat-vigs .r-vignette.on .r-plaque small{color:var(--noir)}
+.cat-vig-ok{position:absolute; top:8px; right:8px; z-index:1; width:26px; height:26px; border-radius:50%; background:var(--noir); display:grid; place-items:center; transform:scale(0); transition:transform .4s var(--ressort)}
+.cat-vig-ok svg{width:14px; height:14px; fill:none; stroke:var(--vert); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round}
+.r-vignette.on .cat-vig-ok{transform:scale(1)}
+
+/* Corps du catalogue : barre latérale + sections */
+.cat-corps{display:grid; grid-template-columns:236px minmax(0,1fr); gap:0 48px; margin-top:40px}
+.cat-cote{position:sticky; top:calc(var(--cat-colle, var(--hd)) + 24px); align-self:start}
+.cat-cote-t{font-size:12.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); margin:4px 0 10px 10px}
+.cat-nav{display:grid; gap:2px}
+.cat-nav-l{display:grid; grid-template-columns:30px minmax(0,1fr) auto; align-items:center; gap:11px; padding:6px 9px 6px 6px; border-radius:14px; font-weight:600; font-size:15px; line-height:1.25; transition:background .25s, color .25s, opacity .25s}
+.cat-nav-l:hover{background:var(--sc)}
+.cat-nav-l:focus-visible{outline:2px solid var(--noir); outline-offset:1px}
+.cat-nav-ic{width:30px; height:30px; border-radius:9px; overflow:hidden; background:var(--sc2); display:grid; place-items:center}
+.cat-nav-ic img{width:100%; height:100%; object-fit:cover}
+.cat-nav-ic svg{width:16px; height:16px; fill:none; stroke:var(--noir); stroke-width:1.8}
+.cat-nav-l b{font-size:12.5px; font-weight:700; color:var(--noir); background:var(--sc); min-width:28px; text-align:center; padding:2px 8px; border-radius:999px; font-variant-numeric:tabular-nums; transition:background .25s, color .25s}
+.cat-nav-l.on{background:var(--noir); color:var(--blanc)}
+.cat-nav-l.on .cat-nav-ic{background:color-mix(in srgb, var(--blanc) 12%, var(--noir))}
+.cat-nav-l.on .cat-nav-ic svg{stroke:var(--vert)}
+.cat-nav-l.on b{background:var(--vert); color:var(--noir)}
+.cat-nav-l.cat-off{opacity:.35; pointer-events:none}
+.cat-tel-box{margin-top:22px; padding:16px 16px 14px; border-radius:var(--r-s); background:var(--sc); font-size:14.5px}
+.cat-tel-box b{display:block; font-size:15px}
+.cat-tel-box p{margin:2px 0 10px; color:var(--of)}
+.cat-tel{display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:18px; letter-spacing:-.01em}
+.cat-tel svg{width:18px; height:18px; fill:none; stroke:var(--noir); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.cat-tel:hover{text-decoration:underline; text-underline-offset:4px}
+.cat-tel-box .r-statut{display:flex; margin-top:8px; font-size:13.5px}
+.cat-puces{display:none}
+
+.cat-liste{min-width:0}
+.cat-etat{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 14px; min-height:34px; margin:0 0 6px}
+.cat-resume{margin:0; font-size:15.5px; color:var(--of)}
+.cat-resume b{color:var(--noir)}
+.cat-raz{font-weight:700; font-size:14.5px; text-decoration:underline; text-decoration-color:var(--sauge); text-underline-offset:4px}
+.cat-raz:hover{text-decoration-color:var(--noir)}
+
+.cat-sec{padding:34px 0 8px; border-top:1px solid var(--ligne); scroll-margin-top:calc(var(--cat-colle, var(--hd)) + 20px)}
+.cat-sec.cat-prem{border-top:0; padding-top:10px}
+.cat-sec-tete{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px}
+.cat-sec-tete h2{font-size:34px}
+.cat-sec-tete p{margin:6px 0 0; color:var(--of); font-size:16px}
+.cat-sec-nb{flex:none; font-size:13.5px; font-weight:700; background:var(--sc); padding:5px 12px; border-radius:999px; white-space:nowrap; font-variant-numeric:tabular-nums}
+.cat-grille{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.cat-grille .r-carte-img{height:150px}
+.cat-grille .r-carte-img img{position:absolute; inset:0}
+.r-carte-img img.cat-contain{object-fit:contain; background:var(--blanc)}
+.cat-sec .r-conseil{margin-top:18px}
+.cat-sec .r-conseil .r-lien{white-space:nowrap}
+.cat-mark{background:var(--jaune); color:inherit; border-radius:3px; padding:0 1px}
+.cat-entre{animation:cat-entre .55s var(--ease) both; animation-delay:var(--d, 0ms)}
+@keyframes cat-entre{from{opacity:0; transform:translateY(14px)}}
+
+/* Raccourci quand on cherche une section (ex. « 63x175 ») */
+.cat-racc{display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:16px; padding:12px 14px 12px 12px; border-radius:var(--r); background:var(--sc); margin:4px 0 18px; transition:background .25s}
+.cat-racc:hover{background:var(--sc2)}
+.cat-racc-ic{width:58px; height:58px; border-radius:14px; background:var(--blanc); display:grid; place-items:center}
+.cat-racc-ic svg{width:44px; height:44px}
+.cat-racc b{display:block; font-size:16.5px; line-height:1.3}
+.cat-racc small{display:block; color:var(--of); font-size:14px; margin-top:2px}
+.cat-bois{fill:var(--vert-stock); stroke:var(--noir); stroke-width:1.3}
+
+/* État vide */
+.cat-vide{display:grid; justify-items:center; text-align:center; padding:52px 24px 46px; border:1.5px dashed var(--sauge); border-radius:var(--r); background:var(--sc)}
+.cat-vide > svg{width:70px; height:70px; fill:none; stroke:var(--olive); stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; margin-bottom:12px}
+.cat-vide h3{font-size:24px}
+.cat-vide p{color:var(--of); max-width:470px; margin:10px 0 18px}
+.cat-vide-btns{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+.cat-vide-btns .r-btn svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.cat-vide .cat-essais{justify-content:center; margin-top:18px}
+.cat-vide .cat-essais button{background:var(--blanc)}
+.cat-vide .cat-essais button:hover{background:var(--sc2)}
+.cat-vide .r-statut{font-size:14px; margin-top:12px}
+
+/* Notre spécialité : le Douglas (la photo garde sa taille : posée dans le bandeau sauge, jamais étirée) */
+.cat-spe{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); grid-template-areas:"photo txt" "chiffre txt"; gap:0 52px; align-items:center; background:var(--sauge); border-radius:var(--r); padding:28px}
+.cat-spe-photo{grid-area:photo; align-self:end; position:relative; margin:0; aspect-ratio:3 / 2; max-width:600px; border-radius:16px; overflow:hidden; background:var(--olive)}
+.cat-spe-chiffre{grid-area:chiffre; align-self:start}
+.cat-spe-txt{grid-area:txt}
+.cat-mil{margin-left:.17em}
+.cat-spe-photo img{width:100%; height:100%; object-fit:cover}
+.cat-spe-photo figcaption{position:absolute; left:12px; bottom:12px; width:max-content; max-width:calc(100% - 24px); background:color-mix(in srgb, var(--noir) 82%, transparent); color:var(--blanc); font-size:13px; font-weight:600; padding:6px 11px; border-radius:10px}
+.cat-spe-chiffre{display:flex; align-items:center; gap:18px; margin:22px 4px 2px}
+.cat-spe-chiffre .cat-spe-big{margin:0; font-size:60px; font-weight:800; letter-spacing:-.045em; line-height:.9; white-space:nowrap}
+.cat-spe-big small{font-size:28px; letter-spacing:-.02em; margin-left:5px}
+.cat-spe-chiffre p{margin:0; font-size:16px; line-height:1.4}
+.cat-spe-txt{padding:8px 16px 8px 0}
+.cat-spe-txt .r-kicker{color:color-mix(in srgb, var(--noir) 78%, var(--sauge))}
+.cat-spe-txt h2{font-size:42px; margin:8px 0 12px}
+.cat-spe-txt > p{margin:0 0 20px; max-width:600px}
+.cat-spe-points{list-style:none; margin:0 0 24px; padding:18px 0 0; border-top:1px solid color-mix(in srgb, var(--noir) 18%, transparent); display:grid; gap:10px}
+.cat-spe-points li{display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; align-items:start; font-size:15.5px; line-height:1.45}
+.cat-spe-points svg{width:22px; height:22px; fill:none; stroke:var(--noir); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.cat-spe-btns{display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px}
+.cat-spe-btns .r-lien{text-decoration-color:var(--noir)}
+
+/* Nos services */
+.cat-serv-grille{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
+.cat-serv{display:flex; flex-direction:column; border:1px solid var(--ligne); border-radius:var(--r); overflow:hidden; background:var(--blanc); transition:transform .35s var(--ease), box-shadow .35s}
+.cat-serv:hover{transform:translateY(-3px); box-shadow:0 26px 40px -32px rgba(17,20,17,.45)}
+.cat-serv-vis{height:214px; background:var(--sc); display:grid; place-items:center; overflow:hidden}
+.cat-serv-vis img{width:100%; height:100%; object-fit:cover}
+.cat-serv-vis svg{width:min(78%, 330px); height:auto}
+.cat-serv-corps{padding:20px 22px 22px; display:flex; flex-direction:column; gap:8px; flex:1}
+.cat-serv-corps h3{font-size:20px; display:flex; align-items:center; gap:10px}
+.cat-serv-corps h3 svg{width:24px; height:24px; fill:none; stroke:var(--olive); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.cat-serv-corps p{margin:0; color:var(--of)}
+.cat-serv-corps .r-lien{margin-top:auto; align-self:flex-start}
+.cat-tr-l{fill:none; stroke:var(--noir); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.cat-tr-b{fill:var(--blanc); stroke:var(--noir); stroke-width:1.6; stroke-linejoin:round}
+.cat-tr-p{fill:var(--vert-stock); stroke:var(--noir); stroke-width:1.4; stroke-linejoin:round}
+.cat-tr-s{stroke:var(--sauge); stroke-width:1.6; stroke-dasharray:2 5; stroke-linecap:round}
+
+/* ---------- Écrans plus petits ---------- */
+@media (max-width:1300px){
+  .cat-vigs{grid-template-columns:repeat(4, minmax(0,1fr))}
+  .cat-vigs .r-vignette{height:130px}
+  .cat-vigs .r-plaque{font-size:14px}
+}
+@media (max-width:980px){
+  .cat-tete-haut{grid-template-columns:minmax(0,1fr)}
+  .cat-corps{display:block; margin-top:26px}
+  .cat-cote{display:none}
+  .cat-puces{display:flex; gap:8px; overflow-x:auto; position:sticky; top:var(--cat-colle, var(--hd)); z-index:30; margin:0 -32px 12px; padding:11px 32px; background:color-mix(in srgb, var(--blanc) 94%, transparent); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); border-bottom:1px solid var(--ligne); scrollbar-width:none; scroll-padding:0 32px}
+  .cat-puces::-webkit-scrollbar{display:none}
+  .cat-puce{flex:none; white-space:nowrap; border:0}
+  .cat-puce small{font-size:12px; font-weight:700; color:var(--olive)}
+  .cat-puce.on small{color:var(--vert)}
+  .cat-puce.cat-off{opacity:.35; pointer-events:none}
+  .cat-sec{scroll-margin-top:calc(var(--cat-colle, var(--hd)) + 70px)}
+  .cat-spe{grid-template-columns:minmax(0,1fr); grid-template-areas:"photo" "txt" "chiffre"; row-gap:22px}
+  .cat-spe-txt{padding:0 8px}
+  .cat-spe-chiffre{margin:0 8px 8px; padding-top:18px; border-top:1px solid color-mix(in srgb, var(--noir) 18%, transparent)}
+}
+@media (max-width:760px){
+  .cat-tete{padding:18px 0 26px}
+  .cat-tete h1{margin:6px 0 8px}
+  .cat-devise{font-size:19px}
+  .cat-tete-sous{font-size:15px}
+  .cat-champ{height:56px; padding-left:18px}
+  .cat-champ input{font-size:16px}
+  .cat-rayons{margin-top:24px}
+  .cat-rayons-in{padding:6px 0 4px; margin:-6px -16px 0}
+  .cat-aide{font-size:14px; padding:0 16px}
+  .cat-vigs{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:10px; padding:6px 16px 8px; scroll-padding:0 16px; scrollbar-width:none}
+  .cat-vigs::-webkit-scrollbar{display:none}
+  .cat-vigs .r-vignette{flex:0 0 128px; height:140px; scroll-snap-align:start}
+  .cat-vigs .r-plaque{font-size:13.5px}
+  .cat-puces{margin:0 -16px 10px; padding:10px 16px; scroll-padding:0 16px}
+  .cat-sec{padding-top:28px}
+  .cat-sec-tete{flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:14px}
+  .cat-sec-tete h2{font-size:28px}
+  .cat-sec-tete p{font-size:15px}
+  /* Cartes compactes : photo à gauche, texte à droite */
+  .cat-grille{grid-template-columns:minmax(0,1fr); gap:10px}
+  .cat-grille .r-carte{flex-direction:row; border-radius:var(--r-s)}
+  .cat-grille .r-carte:hover{transform:none}
+  .cat-grille .r-carte-img{width:108px; height:auto; min-height:112px; flex:none}
+  .cat-grille .r-carte-img img{position:absolute; inset:0}
+  .cat-grille .r-carte-img svg{width:36px; height:36px}
+  .cat-grille .r-carte-img .r-badge{left:6px; top:6px; font-size:11px; padding:3px 7px}
+  .cat-grille .r-carte-img .r-dispo{right:auto; left:6px; top:auto; bottom:6px; font-size:10.5px; padding:2px 7px}
+  .cat-grille .r-carte-corps{padding:12px 14px 12px}
+  .cat-grille .r-carte-corps h3{font-size:16px}
+  .cat-grille .r-carte-corps p{font-size:13.5px; margin:4px 0 10px}
+  .cat-grille .r-prix{font-size:15px}
+  .cat-grille .r-prix em{font-size:12.5px}
+  .cat-grille .r-voir{font-size:12.5px; padding:6px 11px}
+  .cat-racc{grid-template-columns:auto minmax(0,1fr)}
+  .cat-racc .r-btn{grid-column:1 / -1; justify-self:stretch}
+  .cat-vide{padding:40px 18px 36px}
+  .cat-spe{padding:16px; row-gap:20px}
+  .cat-spe-txt{padding:0 6px}
+  .cat-spe-chiffre{margin:0 6px 10px}
+  .cat-spe-txt h2{font-size:32px}
+  .cat-spe-chiffre .cat-spe-big{font-size:50px}
+  .cat-serv-grille{grid-template-columns:minmax(0,1fr)}
+  .cat-serv-vis{height:auto; aspect-ratio:851 / 315}
+  .cat-serv-vis svg{width:min(64%, 260px)}
+}
+</style>
+</head>
+<body data-page="produits">
+<header data-entete></header>
+<main>
+  <section class="r-tete-page r-tete-page--bandeau cat-tete" aria-labelledby="cat-titre">
+    <div class="r-wrap">
+      <div class="cat-tete-haut">
+        <div>
+          <nav class="cat-fil" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Nos produits</span></nav>
+          <h1 id="cat-titre">Nos produits</h1>
+          <p class="cat-devise">«&nbsp;Tout ce qu’il vous faut, et juste ce qu’il vous faut&nbsp;!&nbsp;»</p>
+          <p class="cat-tete-sous">Prix directs de Scierie, pour les professionnels comme pour les particuliers.</p>
+        </div>
+        <div class="cat-cherche" role="search">
+          <label class="cat-cherche-lbl" for="cat-q">Chercher dans le catalogue</label>
+          <div class="cat-champ">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+            <input id="cat-q" type="search" autocomplete="off" spellcheck="false" placeholder="Bastaing, lame, vis, 50x75…" aria-controls="cat-liste" aria-describedby="cat-resume">
+            <button type="button" class="cat-effacer cat-cache" aria-label="Effacer la recherche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+          <p class="cat-essais"><span>Essayez&nbsp;:</span><button type="button" data-essai="bastaing">bastaing</button><button type="button" data-essai="lame de terrasse">lame de terrasse</button><button type="button" data-essai="vis inox">vis inox</button><button type="button" data-essai="63x175">63x175</button></p>
+        </div>
+      </div>
+      <div class="cat-rayons">
+        <div class="cat-rayons-in js-cat-rayons">
+          <p class="cat-aide"><span class="r-kicker">Par rayon</span><span>Cliquez sur un visuel pour n’afficher que ses produits.</span></p>
+          <div class="cat-vigs js-cat-vigs"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="r-wrap">
+    <div class="cat-corps" id="catalogue">
+      <nav class="cat-cote" aria-label="Catégories du catalogue">
+        <p class="cat-cote-t">Catégories</p>
+        <div class="cat-nav js-cat-nav"></div>
+        <div class="cat-tel-box">
+          <b>Vous ne trouvez pas&nbsp;?</b>
+          <p>Appelez-nous, on a sûrement ce qu’il vous faut.</p>
+          <a class="cat-tel js-cat-tel" href="tel:+33241480068"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4.1-2 1.3a12 12 0 0 0 6.5 6.5l1.3-2 4.1 1.4v2.6a1.6 1.6 0 0 1-1.7 1.6A16.6 16.6 0 0 1 5 5.2a1.6 1.6 0 0 1 1.6-1.7z"/></svg><span class="js-cat-tel-txt">02 41 48 00 68</span></a>
+          <span class="r-statut js-statut"><i></i><span class="js-statut-txt"></span></span>
+        </div>
+      </nav>
+      <div class="cat-puces js-cat-puces" aria-label="Catégories du catalogue"></div>
+
+      <div class="cat-liste" id="cat-liste">
+        <div class="cat-etat"><p class="cat-resume" id="cat-resume" aria-live="polite"></p><button type="button" class="cat-raz js-cat-raz cat-cache"></button></div>
+        <div class="js-cat-racc"></div>
+        <div class="js-cat-secs"></div>
+        <div class="cat-vide js-cat-vide cat-cache">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="27" cy="27" r="16"/><path d="m39 39 13 13"/><path d="M20 27h14"/></svg>
+          <h3 class="js-cat-vide-t">Aucun produit ne correspond</h3>
+          <p>Essayez un autre mot, ou appelez-nous au <b class="js-cat-tel-txt">02 41 48 00 68</b>&nbsp;: on a sûrement ce qu’il vous faut.</p>
+          <div class="cat-vide-btns">
+            <a class="r-btn r-btn--noir js-cat-tel" href="tel:+33241480068"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4.1-2 1.3a12 12 0 0 0 6.5 6.5l1.3-2 4.1 1.4v2.6a1.6 1.6 0 0 1-1.7 1.6A16.6 16.6 0 0 1 5 5.2a1.6 1.6 0 0 1 1.6-1.7z"/></svg>Appeler la scierie</a>
+            <button type="button" class="r-btn r-btn--sauge js-cat-vider">Effacer la recherche</button>
+          </div>
+          <span class="r-statut js-statut"><i></i><span class="js-statut-txt"></span></span>
+          <p class="cat-essais"><span>Essayez plutôt&nbsp;:</span><button type="button" data-essai="bastaing">bastaing</button><button type="button" data-essai="lame">lame</button><button type="button" data-essai="vis">vis</button><button type="button" data-essai="poteau">poteau</button></p>
+        </div>
+      </div>
+    </div>
+
+    <section class="r-section r-reveal" aria-labelledby="cat-spe-t">
+      <div class="cat-spe">
+        <figure class="cat-spe-photo">
+          <img src="img/stock-planches.jpg" alt="Les rangs de Douglas sous le hangar, séparés par des lattes" width="450" height="300">
+          <figcaption>Sous le hangar, les rangs séparés par des lattes</figcaption>
+        </figure>
+        <div class="cat-spe-chiffre">
+          <p class="cat-spe-big">1<span class="cat-mil">000</span><small>m³</small></p>
+          <p>de Douglas<br>en <b>stock permanent</b></p>
+        </div>
+        <div class="cat-spe-txt">
+          <span class="r-kicker">Stocké à l’abri, séché naturellement</span>
+          <h2 id="cat-spe-t">Notre spécialité&nbsp;: le&nbsp;Douglas</h2>
+          <p><span class="js-cat-douglas">Sec, non traité, classe III, naturel, imputrescible à l’air et prêt à l’emploi.</span> Douglas, chêne et frêne&nbsp;: 100&nbsp;% issus des forêts de France.</p>
+          <ul class="cat-spe-points">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M7 7v5M17 12v5M12 7v5M12 12v5" stroke-dasharray="1.5 2.5"/></svg><span><b>Séchage naturel</b>&nbsp;: les rangs sont séparés par des lattes, pour que l’air circule librement.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Un séchage lent, à l’ancienne&nbsp;: sans déformations ni craquelures.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4.4-2.2-7-5.6-7-10.2V5.5L12 3l7 2.5v5.3c0 4.6-2.6 8-7 10.2z"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg><span>Une empreinte carbone plus faible qu’un étuvage, et un bois prêt à l’emploi.</span></li>
+          </ul>
+          <div class="cat-spe-btns">
+            <a class="r-btn r-btn--noir" href="douglas-brut.html">Voir le tarif du Douglas brut</a>
+            <a class="r-lien" href="conseils.html#sechage">Le séchage naturel, en détail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-section r-reveal" aria-labelledby="cat-serv-t">
+      <div class="r-tete"><div><h2 id="cat-serv-t">Nos services</h2><p>Ce que la scierie vous propose, en plus du bois.</p></div><a class="r-lien" href="contact.html">Commande et retrait</a></div>
+      <div class="cat-serv-grille js-cat-serv"></div>
+    </section>
+  </div>
+</main>
+<footer data-pied></footer>
+<script src="donnees.js"></script>
+<script src="base.js"></script>
+<script>
+(function(){
+'use strict';
+var S = window.RetifSite, D = S.donnees, I = S.infos;
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var NB = ' ';
+var TEL_LIEN = 'tel:+33' + I.tel.replace(/\s/g, '').slice(1);
+var VIDES = ['de', 'du', 'des', 'la', 'le', 'les', 'et', 'en', 'au', 'aux', 'pour', 'un', 'une', 'avec', 'sur'];
+var PLACEMENT = {bardage:'48% 45%', terrasse:'40% 60%'};
+
+/* ---------- Outils ---------- */
+function n(s){ return S.norm(s).replace(/×/g, 'x').replace(/[’']/g, ' '); }
+function mots(q){ return n(q).split(/[\s,;:.!?«»"()\/]+/).filter(function(w){ return w && VIDES.indexOf(w) < 0 && (w.length > 1 || /\d/.test(w)); }); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;'}[c]; }); }
+function pl(nb, un, plus){ return nb + NB + (nb > 1 ? plus : un); }
+function catDe(k){ var r = null; D.CATEGORIES.forEach(function(c){ if (c.k === k) r = c; }); return r; }
+/* Hauteur de l'en-tête qui reste collé en haut (0 s'il ne colle pas) : sert aux éléments collants de la page */
+function hauteurCollee(){
+  var hd = $('.r-hd'); if (!hd) return 0;
+  var p = hd.parentElement, cp = getComputedStyle(p), ch = getComputedStyle(hd);
+  if (cp.position === 'sticky' || cp.position === 'fixed') return Math.max(0, p.offsetHeight + (parseFloat(cp.top) || 0));
+  if (ch.position === 'fixed') return hd.offsetHeight;
+  if (ch.position !== 'sticky') return 0;
+  return (p === document.body || cp.display === 'contents' || p.offsetHeight > hd.offsetHeight * 4) ? hd.offsetHeight : 0;
+}
+function majColle(){ document.documentElement.style.setProperty('--cat-colle', hauteurCollee() + 'px'); }
+function ligneTarif(id){ var r = null; D.TARIF.forEach(function(t){ if (t[0] === id) r = t; }); return r; }
+
+/* Mots en plus pour retrouver le Douglas brut par section (« 63x175 », « solive »…) : tout vient de donnees.js */
+var PLUS_BRUT = D.TARIF.map(function(t){ return t[0]; }).join(' ') + ' ' + Object.keys(D.NOMS).map(function(k){ return D.NOMS[k]; }).join(' ') + ' ' + D.SECTIONS.map(function(s){ return s.nom + ' ' + s.usage; }).join(' ');
+function plus(p){ if (p.go === 'douglas-brut.html') return PLUS_BRUT; if (p.go && p.go.indexOf('sel=50x75') > -1) return '50x75 chevron'; return ''; }
+
+/* ---------- Données du catalogue ---------- */
+var TOTAL = 0;
+var CATS = D.CATEGORIES.map(function(c){
+  TOTAL += c.produits.length;
+  return {k:c.k, c:c, n:0, items:c.produits.map(function(p){ return {p:p, txt:n(p.t + ' ' + p.d + ' ' + c.t + ' ' + plus(p)), ok:true, vu:true}; })};
+});
+var CLES = CATS.map(function(x){ return x.k; });
+var etat = {cat:'', q:''};
+
+/* ---------- Rendu ---------- */
+$$('.js-cat-tel').forEach(function(a){ a.href = TEL_LIEN; });
+$$('.js-cat-tel-txt').forEach(function(e){ e.textContent = I.tel; });
+$('.js-cat-douglas').textContent = I.douglas;
+
+var vigs = $('.js-cat-vigs');
+vigs.innerHTML = D.CATEGORIES.map(function(c){
+  var pos = PLACEMENT[c.k] ? ' style="object-position:' + PLACEMENT[c.k] + '"' : '';
+  return '<a class="r-vignette" href="#' + c.k + '" data-cat="' + c.k + '" aria-label="' + esc(c.t) + ', ' + pl(c.produits.length, 'produit', 'produits') + '"><img src="' + c.img + '" alt=""' + pos + '>' +
+    '<span class="cat-vig-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>' +
+    '<span class="r-plaque" aria-hidden="true">' + c.court + '<small>' + pl(c.produits.length, 'produit', 'produits') + '</small></span></a>';
+}).join('');
+
+var nav = $('.js-cat-nav');
+nav.innerHTML = '<a class="cat-nav-l" href="produits.html" data-cat=""><span class="cat-nav-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></span><span>Tous les produits</span><b data-n="">' + TOTAL + '</b></a>' +
+  D.CATEGORIES.map(function(c){ return '<a class="cat-nav-l" href="#' + c.k + '" data-cat="' + c.k + '"><span class="cat-nav-ic"><img src="' + c.img + '" alt=""></span><span>' + c.t + '</span><b data-n="' + c.k + '">' + c.produits.length + '</b></a>'; }).join('');
+
+var puces = $('.js-cat-puces');
+puces.innerHTML = '<button type="button" class="r-puce cat-puce" data-cat="">Tous <small data-n="">' + TOTAL + '</small></button>' +
+  D.CATEGORIES.map(function(c){ return '<button type="button" class="r-puce cat-puce" data-cat="' + c.k + '">' + c.court + ' <small data-n="' + c.k + '">' + c.produits.length + '</small></button>'; }).join('');
+
+var CONSEILS = {
+  charpente:'<div class="r-conseil"><div><b>Le conseil de la scierie</b>Pour savoir combien de solives prévoir, et à quel espacement, suivez notre <a class="r-lien" href="conseils.html#solivage">guide de solivage</a>.</div></div>',
+  terrasse:'<div class="r-conseil"><div><b>Le conseil de la scierie</b>Faites d’abord le plan de votre terrasse, le <a class="r-lien" href="conseils.html#calepinage">calepinage</a>&nbsp;: vous saurez combien de lames, de lambourdes et de vis prévoir. <a class="r-lien" href="terrasse.html">Voir le projet terrasse</a></div></div>'
+};
+var secs = $('.js-cat-secs');
+secs.innerHTML = D.CATEGORIES.map(function(c){
+  return '<section class="cat-sec" id="' + c.k + '" data-cat="' + c.k + '" aria-labelledby="cat-h-' + c.k + '">' +
+    '<div class="cat-sec-tete"><div><h2 id="cat-h-' + c.k + '">' + c.t + '</h2><p>' + c.d + '</p></div><span class="cat-sec-nb"></span></div>' +
+    '<div class="cat-grille">' + c.produits.map(S.carteProduit).join('') + '</div>' + (CONSEILS[c.k] || '') + '</section>';
+}).join('');
+CATS.forEach(function(x){
+  x.el = document.getElementById(x.k);
+  x.nb = $('.cat-sec-nb', x.el);
+  var cartes = $$('.r-carte', x.el);
+  x.items.forEach(function(it, i){ it.el = cartes[i]; it.txts = $$('.r-carte-corps h3, .r-carte-corps > p', cartes[i]); });
+});
+
+/* Services, depuis donnees.js */
+var REMORQUE = '<svg viewBox="0 0 260 130" role="img" aria-label="Dessin d’une remorque chargée de planches">' +
+  '<path class="cat-tr-s" d="M8 112h244"/>' +
+  '<path class="cat-tr-l" d="M58 86 22 96h-8"/><circle class="cat-tr-b" cx="12" cy="96" r="3.5"/>' +
+  '<rect class="cat-tr-p" x="46" y="44" width="186" height="9" rx="1.5"/><rect class="cat-tr-p" x="52" y="35" width="186" height="9" rx="1.5"/><rect class="cat-tr-p" x="46" y="26" width="178" height="9" rx="1.5"/>' +
+  '<path class="cat-tr-l" d="M226 30.5h0M232 39.5h0M226 48.5h0"/>' +
+  '<rect class="cat-tr-b" x="56" y="53" width="146" height="27" rx="2"/><path class="cat-tr-l" d="M56 66.5h146M92 53v27M128 53v27M164 53v27"/>' +
+  '<path class="cat-tr-l" d="M108 80a21 21 0 0 1 42 0"/><circle class="cat-tr-b" cx="129" cy="94" r="16"/><circle class="cat-tr-l" cx="129" cy="94" r="5.5"/>' +
+  '<path class="cat-tr-l" d="M70 80v24h-6M192 80v10"/></svg>';
+var EN_PLUS = {'Prêt de remorque':I.commande.remorque.split('. ')[1] || '', 'Sapins de Noël':''};
+var LIENS = {'Prêt de remorque':['contact.html', 'Commande et retrait'], 'Sapins de Noël':['realisations.html', 'Voir les actualités']};
+$('.js-cat-serv').innerHTML = D.SERVICES.map(function(s){
+  var vis = s.img ? '<img src="' + s.img + '" alt="Bannière de la scierie : commandez votre sapin, sélection premium de 1 à 3 m">' : REMORQUE;
+  var lien = LIENS[s.t] || ['contact.html', 'Nous contacter'];
+  return '<article class="cat-serv"><div class="cat-serv-vis">' + vis + '</div><div class="cat-serv-corps"><h3>' + s.t + '</h3><p>' + s.d + '. ' + (EN_PLUS[s.t] ? EN_PLUS[s.t].replace(/\.?$/, '.') : '') + '</p><a class="r-lien" href="' + lien[0] + '">' + lien[1] + '</a></div></article>';
+}).join('');
+
+/* Photos petites : jamais plus de 1,5 fois leur taille (sinon on les montre entières, sur fond blanc). Les schémas sont toujours montrés entiers. */
+var SCHEMAS = /\/(plot|lambourde)\.jpg$/;
+function gardeTaille(img){
+  if (!img.naturalWidth) return;
+  var b = img.parentNode.getBoundingClientRect();
+  if (!b.width) return;
+  img.classList.toggle('cat-contain', SCHEMAS.test(img.getAttribute('src')) || Math.max(b.width / img.naturalWidth, b.height / img.naturalHeight) > 1.5);
+}
+function gardeTout(){ $$('.cat-grille .r-carte-img img').forEach(gardeTaille); }
+$$('.cat-grille .r-carte-img img').forEach(function(img){ if (img.complete) gardeTaille(img); else img.addEventListener('load', function(){ gardeTaille(img); }); });
+var tRes = 0;
+window.addEventListener('resize', function(){ clearTimeout(tRes); tRes = setTimeout(function(){ gardeTout(); majColle(); }, 150); });
+/* base.js construit l'en-tête au DOMContentLoaded, après ce script : on mesure ensuite */
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', majColle); else majColle();
+
+/* ---------- Surlignage des mots cherchés ---------- */
+function surligner(el, ws){
+  if (el._orig == null) el._orig = el.textContent;
+  var t = el._orig;
+  if (!ws.length){ if (el._marque){ el.textContent = t; el._marque = false; } return; }
+  var nt = Array.from(t).map(function(ch){ var x = n(ch); return x.length ? x.charAt(0) : ch; }).join('');
+  var m = new Array(t.length), trouve = false;
+  ws.forEach(function(w){ var i = nt.indexOf(w); while (i > -1){ for (var k = i; k < i + w.length; k++) m[k] = true; trouve = true; i = nt.indexOf(w, i + w.length); } });
+  if (!trouve){ if (el._marque){ el.textContent = t; el._marque = false; } return; }
+  var h = '', on = false;
+  for (var k = 0; k < t.length; k++){
+    if (m[k] && !on){ h += '<mark class="cat-mark">'; on = true; }
+    if (!m[k] && on){ h += '</mark>'; on = false; }
+    h += esc(t.charAt(k));
+  }
+  if (on) h += '</mark>';
+  el.innerHTML = h; el._marque = true;
+}
+
+/* ---------- Raccourci vers une section du Douglas brut ---------- */
+function petitBois(ep, larg){
+  var k = 40 / Math.max(ep, larg, 120), w = Math.max(3, ep * k), h = Math.max(3, larg * k);
+  return '<svg viewBox="0 0 44 44" aria-hidden="true"><rect class="cat-bois" x="' + (22 - w / 2).toFixed(1) + '" y="' + (22 - h / 2).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="1"/></svg>';
+}
+function raccourci(q){
+  var m = n(q).trim().replace(/\s*mm$/, '').match(/^(\d{2,3})\s*[x*]\s*(\d{2,3})$/);
+  if (!m) return '';
+  var r = ligneTarif(m[1] + 'x' + m[2]) || ligneTarif(m[2] + 'x' + m[1]);
+  if (!r) return '';
+  var lgs = D.LONGUEURS.filter(function(l){ return r[1][l]; }), px = lgs.map(function(l){ return r[1][l]; });
+  var mini = Math.min.apply(null, px), maxi = Math.max.apply(null, px), d = r[0].split('x'), nom = D.NOMS[r[0]];
+  return '<a class="cat-racc" href="douglas-brut.html?sel=' + r[0] + '"><span class="cat-racc-ic">' + petitBois(+d[0], +d[1]) + '</span>' +
+    '<span><b>Douglas brut ' + d[0] + NB + '×' + NB + d[1] + NB + 'mm' + (nom ? ' · ' + nom : '') + '</b><small>' + pl(lgs.length, 'longueur', 'longueurs') + ' au tarif, ' +
+    (lgs.length > 1 ? 'de ' + S.fmt(mini) + NB + '€ à ' + S.fmt(maxi) + NB + '€' : S.fmt(mini) + NB + '€') + ' la pièce, TTC</small></span>' +
+    '<span class="r-btn r-btn--noir r-btn--petit">Choisir ma longueur</span></a>';
+}
+
+/* ---------- Filtre (catégorie) + recherche ---------- */
+var resume = $('#cat-resume'), raz = $('.js-cat-raz'), vide = $('.js-cat-vide'), racc = $('.js-cat-racc');
+var champ = $('#cat-q'), effacer = $('.cat-effacer'), rayons = $('.js-cat-rayons');
+
+function appliquer(anim){
+  var q = etat.q.trim(), ws = mots(q), total = 0;
+  CATS.forEach(function(x){
+    x.n = 0;
+    x.items.forEach(function(it){ it.ok = ws.every(function(w){ return it.txt.indexOf(w) > -1; }); if (it.ok) x.n++; });
+    total += x.n;
+  });
+  var d = 0, premiere = true;
+  CATS.forEach(function(x){
+    var montrer = (!etat.cat || etat.cat === x.k) && x.n > 0;
+    x.el.classList.toggle('cat-cache', !montrer);
+    x.el.classList.toggle('cat-prem', montrer && premiere);
+    if (montrer) premiere = false;
+    x.items.forEach(function(it){
+      var vis = montrer && it.ok;
+      if (vis && !it.vu && anim && !S.reduit){ it.el.classList.remove('cat-entre'); void it.el.offsetWidth; it.el.style.setProperty('--d', Math.min(d++, 9) * 40 + 'ms'); it.el.classList.add('cat-entre'); }
+      it.el.classList.toggle('cat-cache', !vis);
+      it.vu = vis;
+      it.txts.forEach(function(t){ surligner(t, vis ? ws : []); });
+    });
+    x.nb.textContent = q ? pl(x.n, 'résultat', 'résultats') + ' sur ' + x.items.length : pl(x.items.length, 'produit', 'produits');
+  });
+  // compteurs de la barre latérale et des puces
+  $$('[data-n]').forEach(function(b){
+    var k = b.getAttribute('data-n'), x = k ? CATS[CLES.indexOf(k)] : null, v = k ? x.n : total;
+    b.textContent = q ? v : (k ? x.items.length : TOTAL);
+    var lien = b.closest('[data-cat]');
+    lien.classList.toggle('cat-off', !!q && !!k && v === 0);
+  });
+  var visibles = etat.cat ? CATS[CLES.indexOf(etat.cat)].n : total;
+  vide.classList.toggle('cat-cache', visibles > 0);
+  if (!visibles) $('.js-cat-vide-t').textContent = 'Rien trouvé pour «' + NB + q + NB + '»';
+  racc.innerHTML = q ? raccourci(q) : '';
+  // phrase de résumé
+  var c = etat.cat ? catDe(etat.cat) : null, txt, bouton = '', action = '';
+  if (!q){
+    if (!c) txt = '<b>' + pl(TOTAL, 'produit', 'produits') + '</b> dans ' + D.CATEGORIES.length + ' catégories';
+    else { txt = '<b>' + c.t + '</b> · ' + pl(c.produits.length, 'produit', 'produits'); bouton = 'Voir tous les produits'; action = 'tous'; }
+  } else {
+    txt = visibles ? '<b>' + pl(visibles, 'résultat', 'résultats') + '</b> pour «' + NB + esc(q) + NB + '»' + (c ? ' dans ' + c.t : '') : 'Aucun résultat pour «' + NB + esc(q) + NB + '»';
+    if (c && total > visibles){ bouton = 'Voir les ' + total + ' résultats'; action = 'tous'; } else { bouton = 'Effacer la recherche'; action = 'vider'; }
+  }
+  resume.innerHTML = txt + '.';
+  raz.textContent = bouton; raz.setAttribute('data-action', action); raz.classList.toggle('cat-cache', !bouton);
+  majNav();
+}
+function majNav(){
+  $$('.cat-nav-l, .cat-puce').forEach(function(b){
+    var on = b.getAttribute('data-cat') === etat.cat;
+    b.classList.toggle('on', on);
+    if (b.tagName === 'A'){ if (on) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); }
+    else b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  vigs.classList.toggle('cat-filtre', !!etat.cat);
+  $$('.r-vignette', vigs).forEach(function(v){ var on = v.getAttribute('data-cat') === etat.cat; v.classList.toggle('on', on); if (on) v.setAttribute('aria-current', 'true'); else v.removeAttribute('aria-current'); });
+  var actif = $('.cat-puce.on', puces);
+  if (actif && puces.offsetParent){ var g = actif.offsetLeft - (puces.clientWidth - actif.offsetWidth) / 2; puces.scrollTo({left:Math.max(0, g), behavior:S.reduit ? 'auto' : 'smooth'}); }
+}
+
+/* Adresse de la page : ?q= pour la recherche, #categorie pour le filtre */
+function adresse(){ return location.pathname + (etat.q.trim() ? '?q=' + encodeURIComponent(etat.q.trim()) : '') + (etat.cat ? '#' + etat.cat : ''); }
+function noter(pousser){
+  var u = adresse();
+  if (u === location.pathname + location.search + location.hash) return;
+  try { history[pousser ? 'pushState' : 'replaceState'](null, '', u); } catch (e) {}
+}
+
+var corps = $('#catalogue');
+function defiler(force){
+  var hd = hauteurCollee(), r = corps.getBoundingClientRect();
+  var cible = r.top + scrollY - hd - (puces.offsetParent ? 0 : 22);
+  if (!force && r.top > hd + 10 && r.top < innerHeight * 0.62) return;
+  if (Math.abs(scrollY - cible) > 4) window.scrollTo({top:cible, behavior:S.reduit ? 'auto' : 'smooth'});
+}
+function choisirCat(k, opts){
+  opts = opts || {};
+  if (opts.vider && etat.q){ etat.q = ''; champ.value = ''; majRecherche(); }
+  etat.cat = k;
+  appliquer(true);
+  noter(opts.pousser);
+  if (opts.defiler) defiler(opts.force);
+}
+function majRecherche(){
+  var actif = !!etat.q.trim();
+  document.body.classList.toggle('cat-cherche-on', actif);
+  effacer.classList.toggle('cat-cache', !etat.q);
+  if (actif) rayons.setAttribute('inert', ''); else rayons.removeAttribute('inert');
+}
+function chercher(q, opts){
+  etat.q = q;
+  if (etat.cat) etat.cat = '';   // une nouvelle recherche porte sur tout le catalogue
+  majRecherche();
+  appliquer(true);
+  noter(false);
+  if (opts && opts.defiler) defiler(true);
+}
+
+/* Clics : vignettes (bascule), barre latérale, puces */
+vigs.addEventListener('click', function(e){
+  var a = e.target.closest('[data-cat]'); if (!a) return;
+  e.preventDefault();
+  var k = a.getAttribute('data-cat');
+  choisirCat(etat.cat === k ? '' : k, {pousser:true, defiler:true, vider:true});
+});
+nav.addEventListener('click', function(e){
+  var a = e.target.closest('[data-cat]'); if (!a) return;
+  e.preventDefault();
+  choisirCat(a.getAttribute('data-cat'), {pousser:true, defiler:true});
+});
+puces.addEventListener('click', function(e){
+  var b = e.target.closest('[data-cat]'); if (!b) return;
+  choisirCat(b.getAttribute('data-cat'), {pousser:true, defiler:true});
+});
+raz.addEventListener('click', function(){
+  if (raz.getAttribute('data-action') === 'vider'){ champ.value = ''; chercher(''); champ.focus(); }
+  else choisirCat('', {pousser:true});
+});
+
+/* Recherche en direct */
+champ.addEventListener('input', function(){ chercher(champ.value); });
+champ.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); defiler(true); } });
+effacer.addEventListener('click', function(){ champ.value = ''; chercher(''); champ.focus(); });
+$('.js-cat-vider').addEventListener('click', function(){ champ.value = ''; chercher(''); champ.focus(); });
+$$('[data-essai]').forEach(function(b){ b.addEventListener('click', function(){ champ.value = b.getAttribute('data-essai'); chercher(champ.value, {defiler:true}); }); });
+
+/* L'ancre de l'adresse choisit la catégorie : au chargement, puis à chaque changement */
+function lireAdresse(){
+  var h = decodeURIComponent(location.hash.slice(1)), q = new URLSearchParams(location.search).get('q') || '';
+  return {cat:CLES.indexOf(h) > -1 ? h : '', q:q};
+}
+window.addEventListener('hashchange', function(){
+  document.body.classList.remove('r-menu-ouvert');
+  var a = lireAdresse();
+  if (a.cat === etat.cat && a.q === etat.q) return;
+  var viderQ = a.q === etat.q && a.cat && etat.q;   // venu du menu pendant une recherche : on montre toute la catégorie
+  if (a.q !== etat.q || viderQ){ etat.q = viderQ ? '' : a.q; champ.value = etat.q; majRecherche(); }
+  etat.cat = a.cat;
+  appliquer(true);
+  if (viderQ) noter(false);
+  defiler();
+});
+window.addEventListener('popstate', function(){
+  var a = lireAdresse();
+  if (a.cat === etat.cat && a.q === etat.q) return;
+  etat.q = a.q; champ.value = a.q; majRecherche();
+  etat.cat = a.cat;
+  appliquer(true);
+  defiler();
+});
+
+/* Démarrage */
+var depart = lireAdresse();
+etat.q = depart.q; etat.cat = depart.cat; champ.value = depart.q;
+majRecherche();
+appliquer(false);
+if (depart.cat){
+  var aller = function(){ var hd = hauteurCollee(); window.scrollTo({top:corps.getBoundingClientRect().top + scrollY - hd - (puces.offsetParent ? 0 : 22), behavior:'instant'}); };
+  requestAnimationFrame(aller);
+  window.addEventListener('load', function(){ setTimeout(aller, 0); });
+}
+})();
+</script>
+</body>
+</html>
