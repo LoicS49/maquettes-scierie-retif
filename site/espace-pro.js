@@ -10,6 +10,8 @@ var REDUIT = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
 /* ---------- Petits outils ---------- */
 function fmt(n){ var p = n.toFixed(2).split('.'); return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ',' + p[1]; }
 function eur(n){ return fmt(n) + '&nbsp;€'; }
+/* Les prix des modules restent cachés, sauf si l'adresse contient ?prix (pour le rendez-vous et le lien du devis). */
+var AVEC_PRIX = /[?&]prix\b/.test(location.search);
 function ent(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
 function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function maj(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -271,7 +273,7 @@ function vueTarifs(voir){
     (voir === 'douglas-brut' ? tarifComplet() : '') +
     '</div><div class="col">' +
     panneau('Comment ça se passe', '<div class="pad"><ol class="etapes-txt"><li>Vous mettez votre fichier à jour, comme aujourd’hui.</li><li>Vous l’envoyez ici, en un clic.</li><li>Loïc met les nouveaux prix en ligne dans la semaine, et vous prévient.</li></ol></div>') +
-    panneau('Module en plus : l’import automatique', '<div class="pad"><p class="petit muet">Vous déposez le fichier, vous voyez les prix qui changent, et vous publiez vous-même, tout de suite.</p><a class="btn btn-blanc" style="margin-top:14px; width:100%" href="#modules/import">Voir le module · 600 €</a></div>', '', 'option-cadre') +
+    panneau('Module en plus : l’import automatique', '<div class="pad"><p class="petit muet">Vous déposez le fichier, vous voyez les prix qui changent, et vous publiez vous-même, tout de suite.</p><a class="btn btn-blanc" style="margin-top:14px; width:100%" href="#modules/import">Voir le module' + (AVEC_PRIX ? ' · 600 €' : '') + '</a></div>', '', 'option-cadre') +
     '</div></div>';
   return h;
 }
@@ -328,7 +330,7 @@ function vueInfos(){
     panneau('Horaires', '<div class="tab-wrap"><table class="tab horaires"><thead><tr><th>Jour</th><th>Matin</th><th>Après-midi</th></tr></thead><tbody>' + HORAIRES.map(function(r){ return '<tr><td><b>' + r[0] + '</b></td><td><input value="' + r[1] + '" aria-label="' + r[0] + ', matin"></td><td><input value="' + r[2] + '" aria-label="' + r[0] + ', après-midi"></td></tr>'; }).join('') + '</tbody></table></div><div class="pad champs" style="padding-top:4px">' + champ('Enlèvements', '<input value="' + esc(I.retraits) + '">') + '</div>') +
     '</div><div class="col">' +
     panneau('Ce que voient vos clients', '<div class="pad">' + blocEtat() + '<p class="petit muet" style="margin-top:8px">Calculé tout seul avec vos horaires, en haut de chaque page et sur la page contact.</p></div>') +
-    panneau('Module en plus : annonces et fermetures', '<div class="pad"><p class="petit muet">Une fermeture exceptionnelle, les sapins de Noël, une bonne affaire : un bandeau en haut du site, aux dates choisies.</p><a class="btn btn-blanc" style="margin-top:14px; width:100%" href="#modules/annonces">Voir le module · 150 €</a></div>', '', 'option-cadre') +
+    panneau('Module en plus : annonces et fermetures', '<div class="pad"><p class="petit muet">Une fermeture exceptionnelle, les sapins de Noël, une bonne affaire : un bandeau en haut du site, aux dates choisies.</p><a class="btn btn-blanc" style="margin-top:14px; width:100%" href="#modules/annonces">Voir le module' + (AVEC_PRIX ? ' · 150 €' : '') + '</a></div>', '', 'option-cadre') +
     '</div></div>';
 }
 
@@ -375,19 +377,19 @@ function boutonAjout(o, large){
   return DEMANDES_MODULES[o.r] ? '<span class="btn btn-blanc' + (large ? '' : ' btn-plein') + '" aria-disabled="true">' + (large ? 'Demande envoyée' : 'Demandé') + '</span>' : '<button type="button" class="btn btn-noir' + (large ? '' : ' btn-plein') + '" data-act="ajouter-module" data-k="' + o.r + '">' + svg('plus') + 'Ajouter</button>';
 }
 function vueOption(o){
-  return '<a class="retour" href="#modules">← Tous les modules</a>' + tete(o.titre, (o.reco ? '<span class="badge b-noir">Recommandé</span> ' : '') + '<span class="badge b-opt">Module en plus · ' + o.prix + ' € ' + (o.unite || 'HT') + '</span>', boutonAjout(o, true)) +
+  return '<a class="retour" href="#modules">← Tous les modules</a>' + tete(o.titre, (o.reco ? '<span class="badge b-noir">Recommandé</span> ' : '') + '<span class="badge b-opt">Module en plus' + (AVEC_PRIX ? ' · ' + o.prix + ' € ' + (o.unite || 'HT') : '') + '</span>', boutonAjout(o, true)) +
     '<div class="grille"><div class="col">' +
     panneau('Ce que ça fait', '<div class="pad opt-intro"><p>' + (o.intro || o.court) + '</p>' + (o.pts ? '<ul>' + o.pts.map(function(p){ return '<li>' + p + '</li>'; }).join('') + '</ul>' : '') + '</div>') +
     apercuOption(o) +
     '</div><div class="col">' +
-    panneau('Bon à savoir', '<div class="pad"><p class="petit muet">Ce module n’est pas dans le devis de départ. Il s’ajoute au site quand vous voulez, sans rien refaire.</p><p class="stat-v" style="margin-top:12px">' + o.prix + ' € <span class="petit muet">' + (o.unite || 'HT, une fois') + '</span></p></div>', '', 'option-cadre') +
+    panneau('Bon à savoir', '<div class="pad"><p class="petit muet">Ce module n’est pas dans le devis de départ. Il s’ajoute au site quand vous voulez, sans rien refaire.</p>' + (AVEC_PRIX ? '<p class="stat-v" style="margin-top:12px">' + o.prix + ' € <span class="petit muet">' + (o.unite || 'HT, une fois') + '</span></p>' : '<p class="petit muet" style="margin-top:10px">Son prix est fixe, et vous le connaissez avant de vous décider.</p>') + '</div>', '', 'option-cadre') +
     '</div></div>';
 }
 
 /* ---------- Modules : ceux du devis, et ceux qu'on peut ajouter ---------- */
 function carteModule(x){
   return '<article class="panel module"><div class="module-h"><span class="ic">' + svg(x.ic) + '</span>' + (x.reco ? '<span class="badge b-noir">Recommandé</span>' : '') + '</div>' +
-    '<h3>' + x.titre + '</h3><p>' + x.court + '</p><p class="prix">' + x.prix + ' € <small>' + (x.unite || 'HT, une fois') + '</small></p>' +
+    '<h3>' + x.titre + '</h3><p>' + x.court + '</p>' + (AVEC_PRIX ? '<p class="prix">' + x.prix + ' € <small>' + (x.unite || 'HT, une fois') + '</small></p>' : '') +
     '<div class="acts"><a class="btn btn-blanc btn-plein" href="#modules/' + x.r + '">Découvrir</a>' + boutonAjout(x) + '</div></article>';
 }
 function vueModules(k){
@@ -396,7 +398,7 @@ function vueModules(k){
   var actifs = MENU.filter(function(m){ return m.r !== 'tableau-de-bord' && m.r !== 'modules'; });
   function dans(id, x){ return id === 'tous' || (id === 'reco' ? !!x.reco : x.g === id); }
   function nb(id){ return id === 'actifs' ? actifs.length : OPTIONS.filter(function(x){ return dans(id, x); }).length; }
-  var h = tete('Modules', 'Ajoutez une fonction quand vous en avez besoin, sans rien refaire.', '');
+  var h = tete('Modules', 'Ajoutez une fonction quand vous en avez besoin, sans rien refaire.' + (AVEC_PRIX ? '' : ' Chaque module a un prix fixe, donné avec le devis.'), '');
   h += '<div class="filtres" role="group" aria-label="Trier les modules">' + ONGLETS.map(function(t){ return '<button type="button" class="puce" data-act="onglet-mod" data-o="' + t[0] + '" aria-pressed="' + (t[0] === onglet) + '">' + t[1] + ' <span>' + nb(t[0]) + '</span></button>'; }).join('') + '</div>';
   if (onglet === 'reco') h += '<p class="petit muet">Choisis pour une scierie qui vend sur tarif : ils vont avec votre catalogue et «&nbsp;Ma liste&nbsp;».</p>';
   if (onglet === 'actifs') return h + '<div class="actifs">' + actifs.map(function(m){
